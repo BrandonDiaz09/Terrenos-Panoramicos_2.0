@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<title>Ofrece tu predio</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+{% endblock %}
+
+{% block container %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+                <h4 class="mb-4">¡Ofrece tu predio!</h4>
+
+                <form action="{% url 'ofrece'%}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for error in form.error%}
+                        <div class="alert alert-danger" role="alert">
+                            {% for e in error%}
+                                {{e}}
+                            {%endfor%}
+                        </div>
+                    {%endfor%}
+
+                    <input type="hidden" name="user" value="{{ user.pk}}" />
+                    <input type="hidden" name="profile" value="{{ profile.pk }}" />
+
+                    {# Website field #}
+                    <div class="form-group">
+                        <label>Superficie del inmuble:</label>
+                        <input
+                            class="form-control {% if form.surface.errors %}is-invalid{% endif %}"
+                            type="number"
+                            min="1" 
+                            step = "0.0000000001"
+                            name="surface"
+                            placeholder="Superficie"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.surface.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Frente:</label>
+                        <input
+                            class="form-control {% if form.front.errors %}is-invalid{% endif %}"
+                            type="number"
+                            min="0.1" 
+                            step = "0.0000000001"
+                            name="front"
+                            placeholder="Frente"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.front.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fondo:</label>
+                        <input
+                            class="form-control {% if form.bottom.errors %}is-invalid{% endif %}"
+                            type="number"
+                            min="0.1" 
+                            step = "0.0000000001"
+                            name="bottom"
+                            placeholder="Fondo"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.bottom.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio por m2:</label>
+                        <input
+                            class="form-control {% if form.price.errors %}is-invalid{% endif %}"
+                            type="number"
+                            min="0.1" 
+                            step = "0.0000000001"
+                            name="price"
+                            placeholder="Precio por m2"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.price.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Precio total:</label>
+                        <input
+                            class="form-control {% if form.totalprice.errors %}is-invalid{% endif %}"
+                            type="number"
+                            min="0.1" 
+                            step = "0.0000000001"
+                            name="totalprice"
+                            placeholder="Precio total"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.totalprice.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Regimen propiedad:</label>
+                        <select class="form-control {% if form.regimen_propiedad.errors %}is-invalid{% endif %}"
+                                name="regimen_propiedad"
+                                placeholder="Regimen Propiedad">
+                            <option value="PR">Privada</option>
+                            <option value="EJ">Ejidal</option>
+                            <option value="CM">Comunal</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            {% for error in form.regimen_propiedad.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Uso de suelo:</label>
+                        <select class="form-control {% if form.uso_suelo.errors %}is-invalid{% endif %}"
+                                name="uso_suelo"
+                                placeholder="Uso de suelo"
+                        >
+                            <option value="RS">Residencial</option>
+                            <option value="AP">Actividades Productivas</option>
+                            <option value="EQ">Equipamiento</option>
+                            <option value="IN">Infraestructura</option>
+                            <option value="AV">Area Verde</option>
+                            <option value="OT">Otro</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            {% for error in form.uso_suelo.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea
+                        class="form-control {% if form.description.errors %}is-invalid{% endif %}"
+                        name="description"
+                    ></textarea>
+
+                    <div class="invalid-feedback">
+                        {% for error in form.description.errors %}
+                            {{ error }}
+                        {% endfor%}
+                    </div>
+                    </div>
+
+                    {# Photo field #}
+                    <div class="form-group">
+                        <label>Escoje la foto de tu inmueble:</label>
+                        <input
+                            class="form-control {% if form.photo.errors %}is-invalid{% endif %}"
+                            type="file"
+                            name="photo"
+                            placeholder="photo"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.photo.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

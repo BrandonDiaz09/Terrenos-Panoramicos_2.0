@@ -1,0 +1,125 @@
+#izquierdo{
+top: 91px;
+left: 138px;
+width: 569px;
+height: 161px;
+text-align: left;
+font: normal normal 900 60px/81px Segoe UI;
+letter-spacing: 0px;
+color: #56411F;
+opacity: 1;
+}
+
+#elemental{
+top: 12px;
+left: 9px;
+width: 4px;
+height: 12px;
+text-align: left;
+font: normal normal normal 16px/21px Segoe UI Historic;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+#detalles{
+    background: #F7F8EC;
+  margin-top: 0px!important;
+}
+
+#derecho{
+    text-align: right;
+    font: normal normal normal 30px/40px Segoe UI Historic;
+    letter-spacing: 0px;
+    color: #344130;
+    opacity: 1;
+}
+
+#elector{
+    text-align: left;
+    font: normal normal bold 22px/30px Segoe UI;
+    letter-spacing: 0px;
+    color: #56411F;
+    opacity: 1;
+}
+
+.card-text{
+ width: 674px!important;
+}
+
+#titular{
+top: 62px;
+left: -0.001220703125px;
+height: 511px;
+background: transparent linear-gradient(180deg, #AACA46 0%, #F7F8EC 100%) 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+
+.card{
+    border: 0px;
+    background-color: transparent;
+    width: 300px;
+}
+
+#introduccion{
+    top: 183px;
+left: 307px;
+width: 778px;
+height: 81px;
+text-align: left;
+font: italic normal bold 20px/27px Segoe UI;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+.card-text{
+     opacity: 1;
+}
+
+#elementos {
+  background: #F7F8EC;
+  margin-top: 0px!important;
+}
+
+#titulo{
+    top: 68px;
+left: 307px;
+width: 768px;
+text-align: center;
+font: normal normal 900 70px/95px Segoe UI;
+letter-spacing: 0px;
+color: #56411F;
+text-shadow: 0px 3px 6px #00000029;
+opacity: 1;
+}
+
+#cambio{
+    fill: #ACE14C!important;
+}
+
+#index-home{
+    width: 30px;
+    height: 30px;
+}
+
+#menú{
+    color:black;
+    font-weight: bold;
+}
+
+#header .navbar {
+    background-color: #91D2BD;
+}
+
+#TerrenosPanoramicos {
+  width: 370px;
+  height: 40px;
+}
+
+
+#footer {
+  padding: 90px 0;
+  text-align: center;
+  font-size: 18px;
+}

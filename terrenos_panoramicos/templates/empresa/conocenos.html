@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>Conócenos</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+{% endblock %}
+
+{% block container %}
+<!-- Main -->
+<main id="main">
+      <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{%static 'img/turqueza.png'%}" alt="sin carrusel">
+          </div>
+          <div class="overlay">
+            <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-md-12 offset-md-2  col-lg-12 text-center text-md-right">
+                    <h1 id="titulo">Terrenos Panorámicos</h1>
+                  <p id="introduccion" class="d-none d-md-block">
+                    Somos una microempresa que piensa en la población en general, que se adapta a los cambios de un Ordenamiento Territorial con miras al futuro.</p>
+                </div>
+              </div>
+            </div>
+          </div>               
+      </div>
+        <div class="wave" style="height: 150px; overflow: hidden; background-color: #C3E6E0"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+            style="height: 100%; width: 100%;" >
+             <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+             style="stroke: none; fill: #fff;"></path>
+        </svg>
+      </div>
+      </div>
+    </main>
+    <!-- /Main -->
+
+    <!-- Detalles -->
+    <section id="elementos" class="mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">QUIENES SOMOS.</h2>
+                <p class="card-text"> Somos una microempresa que piensa en la población en general, que se adapta a los cambios de un Ordenamiento Territorial con miras al futuro. Una herramienta indispensable para el sector inmobiliario. Un escaparate para las personas que buscan un nuevo hogar con un mejor ámbito geográfico.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">FILOSOFÍA  </h2>
+                  <p class="card-text">
+                  Satisfacer las necesidades de nuestros clientes con inmediatez. Conjugar el esfuerzo humano con las nuevas tecnologías. Nuestro principal pilar en el Portal es Profesionalismo, Dedicación y Constancia. 
+                  </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">A TU SERVICIO.</h2>
+                <p class="card-text"> 
+                Nuestro equipo esta integrado por expertos de diferentes disciplinas. La diversidad profesional enriquece y aporta distintas perspectivas y fortalece la homogeneidad en todos los sectores. Desde la adquisición de tu inmueble hasta la construcción de tu hogar regularizado ante los diferentes sectores de Gobierno.
+                Sólo tienes que entrar en nuestra página. Así podrás encontrar el inmueble que estás buscando. Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.
+
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">MISIÓN</h2>
+                <p class="card-text"> Ofrecer predios con características excepcionales a precios accesibles. Para lograrlo, hemos establecido en todos los miembros de nuestro equipo honestidad e integridad para ofrecer nuestros servicios pensando en la sustentabilidad, bienestar y confianza en nuestros clientes..</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">VISIÓN</h2>
+                <p class="card-text"> Ser los mejores de la región, promoviendo inmuebles y servicios administrativos para mejorar la calidad de vida de nuestros clientes y a la vez pensando en un crecimiento urbano ordenado.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">PRINCIPIOS Y VALORES.</h2>
+                <p class="card-text"> 
+                  <ul>
+                    <li>Basado en los principios de honestidad y ética de todos nuestros integrantes.</li>
+                    <li>Apolítica. Sin fines gremiales ni ideas religiosas o filosóficas.</li>
+                    <li>Respeto, calidad humana pertenencia e igualdad de oportunidades para los integrantes, comprometidos con su Visión y Misión.</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <!-- /Detalles -->
+
+
+{% endblock %}
+
+
+
+{% comment %} <!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+    <link rel="shortcut icon" type="image/x-icon" href="images/icono.ico" />
+    <title>Conocenos</title>
+  </head>
+  <body data-spy="scroll" data-target="#navbar" data-offset="57" >
+    <!-- Header -->
+    {% include "nav.html" %}
+    <!-- /Header -->
+
+    <!-- Main -->
+    <main id="main">
+      <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{%static 'img/turqueza.png'%}" alt="sin carrusel">
+          </div>
+          <div class="overlay">
+            <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-md-12 offset-md-2  col-lg-12 text-center text-md-right">
+                    <h1 id="titulo">Terrenos Panorámicos</h1>
+                  <p id="introduccion" class="d-none d-md-block">
+                    Introducción de la empresa Introducción de la empresa Introducción de la empresa Introducción de la empresa Introducción de la empresa Introducción de la empresa Introducción de la empresa Introducción de la empresa Introducción de la empresa
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>               
+      </div>
+        <div class="wave" style="height: 150px; overflow: hidden; background-color: #C3E6E0"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+            style="height: 100%; width: 100%;" >
+             <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+             style="stroke: none; fill: #fff;"></path>
+        </svg>
+      </div>
+      </div>
+    </main>
+    <!-- /Main -->
+
+    <!-- Detalles -->
+    <section id="elementos" class="mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Elemento</h2>
+                <p class="card-text"> Todo el texto y componentes de la empresa.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">Elemento</h2>
+                <p class="card-text"> Todo el texto y componentes de la empresa.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">Elemento</h2>
+                <p class="card-text"> Todo el texto y componentes de la empresa.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="badges">
+                </div>
+                <h2 class="card-title">Elemento</h2>
+                <p class="card-text"> Todo el texto y componentes de la empresa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /Detalles -->
+
+    <!-- Footer -->
+    {%include "footer.html"%}
+  </body>
+</html> {% endcomment %}

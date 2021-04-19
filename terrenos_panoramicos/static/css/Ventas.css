@@ -1,0 +1,136 @@
+#busqueda{
+    background: #f7f8ec!important;
+    
+}
+
+body{
+    background: #f7f8ec!important;
+}
+
+#Subtitulo{
+background: #F7F8EC!important;
+top: 340px;
+left: 139px;
+width: 164px;
+height: 30px;
+text-align: left;
+font: normal normal bold 22px/30px Segoe UI;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+#car1{
+    background: #F7F8EC!important;
+}
+
+.btn-primary{
+    background-color: transparent!important;
+    border-color: transparent!important;
+}
+
+.card mb-2{
+    border: 0px;
+    background-color: transparent;
+    width: 300px;
+}
+
+#introduccion{
+    top: 183px;
+left: 307px;
+width: 778px;
+height: 81px;
+text-align: left;
+font: italic normal bold 20px/27px Segoe UI;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+.card-text{
+     opacity: 1;
+}
+
+#elementos {
+  background: #F7F8EC;
+  margin-top: 0px!important;
+}
+
+#titulo{
+top: 76px;
+left: 125px;
+width: 500px;
+height: 182px;
+text-align: center;
+font: normal normal 900 45px/61px Segoe UI;
+letter-spacing: 0px;
+color: #344130;
+text-shadow: 1px 3px 6px #00000029;
+opacity: 1;
+
+}
+
+#cambio{
+    fill: #F7F8EC!important;
+}
+
+#index-home{
+    width: 30px;
+    height: 30px;
+}
+
+#menú{
+    color:black;
+    font-weight: bold;
+}
+
+#header .navbar {
+    background-color: #91D2BD;
+}
+
+#TerrenosPanoramicos {
+  width: 370px;
+  height: 40px;
+}
+
+#main .carousel-inner img {
+  max-height: 250px;
+  object-fit: cover;
+  filter: grayscale(70%);
+}
+
+#carousel {
+  position: relative;
+}
+
+#carousel .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 250px;
+  background-color: #AACA46;
+  color: white;
+}
+
+#carousel .overlay .container,
+#carousel .overlay .row {
+  height: 100%;
+}
+
+#place-time {
+  background-color: #343a40;
+  color: white;
+}
+
+#place-time img {
+  max-width: 100%;
+}
+
+#footer {
+  padding: 90px 0;
+  text-align: center;
+  font-size: 18px;
+  background: white!important;
+}

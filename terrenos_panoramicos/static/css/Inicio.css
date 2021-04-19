@@ -1,0 +1,175 @@
+body{
+  background: #F7F8EC!important;
+}
+
+#Principal{
+  top: 57px;
+left: 0.423828125px;
+width: 1366px;
+height: 408px;
+background: #F7F8EC 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+
+#ingreso{
+  top: 390px;
+left: 168px;
+width: 82px;
+height: 27px;
+text-align: center;
+font: normal normal bold 20px/27px Segoe UI;
+letter-spacing: 0px;
+color: #F1EEEE!important;
+opacity: 1;
+}
+
+#boro{
+  background: linear-gradient(to bottom right, #AACA46, #AACA46 50%, #F7F8EC 50%, #F7F8EC 75%);
+}
+
+#diagonal{
+top: 57px;
+left: -0.0002111196517944336px;
+width: 1366px;
+height: 408px;
+background: linear-gradient(to bottom right, #AACA46, #AACA46 50%, #F7F8EC 50%, #F7F8EC 75%);
+
+opacity: 1;
+}
+
+#botonera{
+  align-content: center;
+text-align: center;
+font: normal normal bold 55px/73px Segoe UI;
+letter-spacing: 0px;
+color: #344130!important;
+background: #91D2BD!important;
+opacity: 1;
+}
+
+.card{
+  border: 0px;
+  background-color: transparent;
+  width: 300px;
+}
+
+#introduccion{
+  top: 183px;
+left: 307px;
+width: 778px;
+height: 81px;
+text-align: left;
+font: italic normal bold 20px/27px Segoe UI;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+.card-text{
+   opacity: 1;
+}
+
+#elementos {
+background: transparent linear-gradient(180deg, #ACE14C 0%, #F7F8EC 100%) 0% 0% no-repeat padding-box;
+margin-top: 0px!important;
+}
+
+#izquierdo{
+top: 91px;
+left: 138px;
+width: 569px;
+height: 161px;
+letter-spacing: 0px;
+opacity: 1;
+}
+
+#descriptivo{
+top: 281px;
+margin-left: 130px;
+margin-bottom: 40px;
+width: 321px;
+height: 81px;
+text-align: left;
+font: normal normal normal 20px/27px Segoe UI Historic;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+#titulo{
+top: 53px;
+left: 139px;
+width: 526px;
+height: 242px;
+text-align: center;
+font: normal normal 900 90px/122px Segoe UI;
+font-size: 100px;
+letter-spacing: 0px;
+color: #344130;
+opacity: 1;
+}
+
+#cambio{
+  fill: #ACE14C!important;
+}
+
+#index-home{
+  width: 30px;
+  height: 30px;
+}
+
+#menú{
+  color:black;
+  font-weight: bold;
+}
+
+#header .navbar {
+  background-color: #91D2BD;
+}
+
+#TerrenosPanoramicos {
+width: 370px;
+height: 40px;
+}
+
+#main .carousel-inner img {
+max-height: 250px;
+object-fit: cover;
+filter: grayscale(70%);
+}
+
+#carousel {
+position: relative;
+}
+
+#carousel .overlay {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 250px;
+background-color: #C3E6E0;
+color: white;
+}
+
+#carousel .overlay .container,
+#carousel .overlay .row {
+height: 100%;
+}
+
+#place-time {
+background-color: #343a40;
+color: white;
+}
+
+#place-time img {
+max-width: 100%;
+}
+
+#footer {
+padding: 90px 0;
+text-align: center;
+font-size: 18px;
+background: white!important;
+}

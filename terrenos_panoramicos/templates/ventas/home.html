@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{%load static%}
+{% block head_content %}
+<title>Terrenos Panorámicos</title>
+ <link href="{% static 'css/Inicio.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block container %}
+    <!-- Central -->
+ <div >
+    <div id="boro" class="container" style="margin-left: 0px;">
+      <div   class="row">
+        <div   class="col">
+          <h1 id="titulo" 
+              style="margin-left: 25px;">
+                  Terrenos en Venta
+          </h1>
+          <p id="descriptivo">Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.</p>
+          <a href="{% url 'catalogo' %}">
+            <button div="ingreso" 
+                    type="button" 
+                    class="btn btn-brown" 
+                    style="margin:20px 0px 0px 350px;
+                          background: #A37A37;
+                          color: #fff;
+                          ">Ingresar
+          </button>
+        </a>  
+    </div>
+    <div class="col-md-auto">
+      <div class="card" style="width: 18rem; margin-top: 75px;">
+  <img class="card-img-top" src="https://www.abacobrasil.com.br/media/zoo/images/blog-10-motivos_ed66a93c7ccae03ce0b50e66bde6a064.jpg" 
+    alt="Card image cap"
+    width= "358px"
+        height= "150px">
+  <div class="card-body">
+    <p class="card-text">Construye la casa detu sueños</p>
+  </div>
+</div>
+      <div class="card" style="width: 18rem; margin-top: 50px;">
+  <img class="card-img-top" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
+    alt="Card image cap"
+    
+    width= "358px"
+        height= "150px">
+  <div class="card-body">
+    <p class="card-text">Adquiere los mas grandes</p>
+  </div>
+</div>
+
+    </div>
+    <div class="col col-lg-2">
+      <div class="card" style="width: 18rem; margin-top: 75px;">
+        <img class="card-img-top" src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/land.jpg" 
+        alt="Card image cap"
+        width= "358px"
+        height= "150px">
+            <div class="card-body">
+                <p class="card-text">Ciembra tanto como quieras</p>
+            </div>
+      </div>
+      <div class="card" style="width: 18rem; margin-top: 50px;">
+  <img class="card-img-top" src="https://www.cafeviena.pe/wp-content/uploads/2020/05/terrenos-5-678x381.jpg" 
+    alt="Card image cap"
+    
+    
+    width= "358px"
+        height= "150px">
+  <div class="card-body">
+    <p class="card-text">Compratus los lotes que quieras</p>
+  </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+    
+    <!-- /Central -->
+    
+    <!-- /Espaciador-->
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <!--Espaciador-->
+    
+    <!-- Botonera -->
+  <center>
+    <button id="botonera" type="button" class="btn btn-primary btn-lg col-lg-5 align-items-center" style="height: 187px; margin-right: 34px;">Construcción</button>
+<button id="botonera" type="button" class="btn btn-secondary btn-lg col-lg-5 align-items-center" style="height: 187px">Servicios</button>
+  </center>    
+<!-- /Botonera -->
+
+    <!-- /Espaciador-->
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <!--Espaciador-->
+
+{% endblock %}

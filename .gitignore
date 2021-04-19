@@ -1,0 +1,12 @@
+*.pyc
+*.cpython-37.pyc
+
+*.cpytho
+*.cpython-3
+/terrenos_panoramicos/terrenos_panoramicos/__pycache__/
+/terrenos_panoramicos/empresa/__pycache__/
+/terrenos_panoramicos/users/__pycache__/
+/terrenos_panoramicos/users/migrations/__pycache__/
+/terrenos_panoramicos/ventas/__pycache__/
+/terrenos_panoramicos/ventas/migrations/__pycache__/
+/terrenos_panoramicos/empresa/__pycache__/__init__.cpython-37.pyc
