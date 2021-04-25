@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<title>Solicita Reunion</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+{% endblock %}
+
+{% block container %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+                <h4 class="mb-4">¡Agenda una reunión con nosotros!</h4>
+
+                <form action="{% url 'solicitud_reunion'%}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for error in form.error%}
+                        <div class="alert alert-danger" role="alert">
+                            {% for e in error%}
+                                {{e}}
+                            {%endfor%}
+                        </div>
+                    {%endfor%}
+
+                    <input type="hidden" name="user" value="{{user.pk}}" />
+
+                    
+                    <div class="form-group">
+                        <label>Servicio a tratar:</label>
+                        <!-- <select class="form-control {% if form.servicio_a_tratar.errors %}is-invalid{% endif %}"
+                        name="servicio_reunion">
+                        
+                        {% for servicio in servicio_reuniones %}
+                            <option value="{{servicio.id}}">{{servicio.servicio}}</option>
+                        {% endfor %}
+                            
+                        </select> -->
+                        {{form.servicio_reunion}}
+                    <div class="invalid-feedback">
+                        {% for error in form.servicio_a_tratar.errors %}{{ error }}{% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Primera Fecha:</label>
+                    <input
+                        class="form-control {% if form.primera_fecha.errors %}is-invalid{% endif %}"
+                        type="datetime"
+                        name="primera_fecha"
+                        placeholder="Primera fecha"
+                    >
+                    <div class="invalid-feedback">
+                        {% for error in form.primera_fecha.errors %}{{ error }}{% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Segunda Fecha:</label>
+                    <input
+                        class="form-control {% if form.segunda_fecha.errors %}is-invalid{% endif %}"
+                        type="datetime"
+                        name="segunda_fecha"
+                        placeholder="Segunda fecha"
+                    >
+                    <div class="invalid-feedback">
+                        {% for error in form.segunda_fecha.errors %}{{ error }}{% endfor %}
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Tercera Fecha:</label>
+                    <input
+                        class="form-control {% if form.tercera_fecha.errors %}is-invalid{% endif %}"
+                        type="datetime"
+                        name="tercera_fecha"
+                        min="now"
+                        placeholder="Tercera fecha"
+                    >
+                    <div class="invalid-feedback">
+                        {% for error in form.tercera_fecha.errors %}{{ error }}{% endfor %}
+                    </div>
+                </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
