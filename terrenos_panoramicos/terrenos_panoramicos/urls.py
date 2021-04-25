@@ -25,6 +25,7 @@ from django.conf.urls.static import static
 from users import views as users_views
 from ventas import views as catalogo_views
 from empresa import views as terrenospa_views
+from reuniones import views as reuniones_views
 
 urlpatterns = [
     #Admin
@@ -43,6 +44,9 @@ urlpatterns = [
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup_view, name='signup'),
     path('users/me/profile/', users_views.update_profile, name='update_profile'),
-    path('<str:username>/', view=users_views.UserDetailView.as_view(), name='detail')
+    path('<str:username>/', view=users_views.UserDetailView.as_view(), name='detail'),
+
+    #Reuniones
+    path('reuniones/solicitud/', reuniones_views.solicitar_reunion,name='solicitud_reunion')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

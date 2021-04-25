@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Inmueble(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='inmuebles')
     profile = models.ForeignKey('users.Profile', on_delete=models.CASCADE)
     surface= models.DecimalField(max_digits=19, decimal_places=2)
     front = models.DecimalField(max_digits=15, decimal_places=2)
@@ -18,6 +18,12 @@ class Inmueble(models.Model):
 
     creted = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    interesados = models.ManyToManyField(User, default = None, blank = True, related_name='me_interesan')
+
+    @property
+    def num_interesados(self):
+        return self.interesados.all().count()
 
     #Choice Regimen propiedad
     PRIVADA = 'PR'
@@ -76,6 +82,6 @@ class Inmueble(models.Model):
         default=SOLICITUD
     )
     
-    def __str__(self):
+    def __str__(self ):
         
-        return '{} by @{}'.format(self.surface, self.user.username)
+        return 'Inmueble de {}m de @{}'.format(self.surface, self.user.username)
