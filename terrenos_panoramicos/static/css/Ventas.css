@@ -7,6 +7,17 @@ body{
     background: #f7f8ec!important;
 }
 
+#me_interesa{
+  transition: .5s;
+}
+#me_interesa:hover{
+  height: 35px;
+  width: 35px;
+}
+#me_interesa:active{
+  fill: red;
+}
+
 #Subtitulo{
 background: #F7F8EC!important;
 top: 340px;
