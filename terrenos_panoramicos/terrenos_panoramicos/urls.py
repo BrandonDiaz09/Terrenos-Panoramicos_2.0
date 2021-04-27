@@ -26,6 +26,7 @@ from users import views as users_views
 from ventas import views as catalogo_views
 from empresa import views as terrenospa_views
 from reuniones import views as reuniones_views
+from soporte import views as soporte_views
 
 urlpatterns = [
     #Admin
@@ -39,14 +40,20 @@ urlpatterns = [
     #Ventas
     path('ventas/catalogo/', catalogo_views.InmuebleView.as_view(), name ='catalogo' ),
 
+
+    path('reuniones/solicitud/', reuniones_views.solicitar_reunion,name='solicitud_reunion'),
+
+    #Soporte
+    path('faqs/', soporte_views.soporte_FAQ, name='faqs'),
+    path('faqs/crear', soporte_views.createFAQ, name='faqs_create'),
+    path('faqs/editar/<str:pk>', soporte_views.updateFAQ, name='faqs_update'),
+    path('faqs/borrar/<str:pk>', soporte_views.deleteFAQ, name='faqs_delete'),
+
     #Users 
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup_view, name='signup'),
     path('users/me/profile/', users_views.update_profile, name='update_profile'),
     path('<str:username>/', view=users_views.UserDetailView.as_view(), name='detail'),
-
-    #Reuniones
-    path('reuniones/solicitud/', reuniones_views.solicitar_reunion,name='solicitud_reunion')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

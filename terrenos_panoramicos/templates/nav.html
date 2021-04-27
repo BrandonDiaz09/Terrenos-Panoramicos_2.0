@@ -25,6 +25,9 @@
                 <a class="nav-link" href="{% url "conocenos" %}" id="menú">Conócenos</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{% url "faqs" %}" id="menú">Preguntas frecuentes</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{% url "update_profile" %}">
                 {% if request.user.profile.picture %}
                         <img class="rounded-circle" src="{{ request.user.profile.picture.url }}" id="index-home" alt="user"/>
