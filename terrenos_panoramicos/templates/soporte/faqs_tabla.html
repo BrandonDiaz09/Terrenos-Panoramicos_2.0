@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row justify-content-md-center">
+		<h5>FAQs Registradas</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Pregunta</th>
+					<th>Respuesta</th>
+					<th>Creado</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+
+				{% for faq in faqs %}
+					<tr>
+						<td>{{faq.pregunta}}</td>
+						<td>{{faq.respuesta}}</td>
+						<td>{{faq.creado}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'faqs_update' faq.pk %}">Editar</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'faqs_delete' faq.pk %}">Eliminar</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+            <a class="btn btn-primary  d-grid gap-2 col-3 mx-auto" href="{% url 'faqs_create' %}">Crear FAQ</a>
+		</div>
+	</div>

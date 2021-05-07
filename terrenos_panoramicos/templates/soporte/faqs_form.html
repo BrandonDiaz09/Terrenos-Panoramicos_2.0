@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>FAQs</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+{% endblock %}
+
+{% block container %}
+<div class="row justify-content-md-center">
+    <div class="col-6 pt-3 pb-3">
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="btn btn-primary" type="submit" >
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

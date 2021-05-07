@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>Borrar FAQs</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+{% endblock %}
+
+{% block container %}
+<div class="row justify-content-md-center">
+    <div class="col-6 pt-3 pb-3">
+        <div class="card card-body">
+            <h4>¿Estás seguro que quieres eliminar <i>"{{faq}}"</i></h4>
+
+                <form action="{% url 'faqs_delete' faq.pk %}" method="POST">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2" style="border: 1%;">
+                        <a class="btn btn-warning" href="{% url 'faqs' %}" >Cancelar</a>
+                        <input class="btn btn-danger" type="submit" value="Confirmar" style="border: 1%;">
+                    </div>
+                </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

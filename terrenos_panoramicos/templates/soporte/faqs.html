@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>Preguntas frecuentes</title>
+<link rel="stylesheet" href="{% static 'css/Beta-css.css' %}" >
+{% endblock %}
+
+{% block container %}
+
+<!-- /Titular -->
+<section id="titular" class="pt-3 pb-3">
+    <div class="container">
+      <div class="row">
+          <div id="izquierdo" class="col-12 col-md-12 col-lg-6 text-left" style="
+               top:0px;
+                left: 100px;
+                width: 600px;
+                height: 161px;
+                text-align: left;
+                font: normal normal 900 60px/81px Segoe UI;
+                letter-spacing: 0px;
+                color: #56411F;
+                opacity: 1;">
+            <p>Preguntas Frecuentes</p>
+        </div>
+      </div>
+      </div>
+  </section>
+  <!-- /Titular -->
+
+  <div class="acordion col-6 col-md-6 col-lg-6">
+    <ul class="liston">
+      {% for faq in faqs %}
+        <li class="listin">
+            <input type="checkbox" checked>
+            <i class="flecha"></i>
+            <h2 class="question">
+              <strong>  
+                {{faq.pregunta}}
+              </strong>
+              </h2>
+            <p class="answer">
+              {{faq.respuesta}}
+            </p>
+        </li>
+            
+        <p class="espaciador"></p>
+
+      {% endfor %}
+    </ul>    
+  </div>
+  
+<br>
+<br>
+<div>
+{% if not request.user.is_anonymous %}
+    
+    {% if request.user.is_staff %}
+        {% include 'soporte/faqs_tabla.html' %}
+    {% endif %}
+        
+{% endif %}
+</div>   
+
+
+{% endblock %}
