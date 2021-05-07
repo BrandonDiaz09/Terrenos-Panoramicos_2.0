@@ -4,12 +4,22 @@
         <div id="car1" class="card mb-2">
           <img id="car1" class="card-img-top"
             src="{{ inmueble.photo.url }}" alt="Card image cap">
-           <div id="car1" class="card-body">
-            <p id="car1" class="card-text">Superficie: {{ inmueble.surface }}</p> 
-            <p id="car1" class="card-text">Uso de suelo: {{ inmueble.uso_suelo }}</p>
-            <p id="car1" class="card-text">Régimen de propiedad: {{ inmueble.regimen_propiedad }}</p>
-            <p id="car1" class="card-text">Frente: {{ inmueble.front }}</p>
-            <p id="car1" class="card-text">Fondo: {{ inmueble.bottom }}</p>
+            <div class="card-body">
+              <p class="card-text">{{inmueble.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li id="car1" class="list-group-item">Superficie: {{ inmueble.surface }}</li>
+              <li id="car1" class="list-group-item">Uso de suelo: {{ inmueble.uso_suelo }}</li>
+              <li id="car1" class="list-group-item">Régimen de propiedad: {{ inmueble.regimen_propiedad }}</li>
+              <li id="car1" class="list-group-item">Frente: {{ inmueble.front }}</li>
+              <li id="car1" class="list-group-item">Fondo: {{ inmueble.bottom }}</li>
+            </ul>
+            <div id="car1" class="card-body">
+              <span>
+                {% include 'ventas/me_interesa.html' %}
+              </span>
+            </div>
+          <!-- </div>
             <a  id="car1" div="boron" class="btn btn-primary text-">
               <svg xmlns="http://www.w3.org/2000/svg" 
                    width="30" 
@@ -32,6 +42,6 @@
                   0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
               </svg>
             </a>
-          </div>
+          </div> -->
         </div>
       </div>

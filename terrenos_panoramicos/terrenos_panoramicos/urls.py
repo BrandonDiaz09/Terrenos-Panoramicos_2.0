@@ -39,8 +39,9 @@ urlpatterns = [
     
     #Ventas
     path('ventas/catalogo/', catalogo_views.InmuebleView.as_view(), name ='catalogo' ),
+    path('ventas/catalogo/me_interesa', catalogo_views.me_interesa, name ='me_interesa' ),
 
-
+    #reuniones
     path('reuniones/solicitud/', reuniones_views.solicitar_reunion,name='solicitud_reunion'),
 
     #Soporte
