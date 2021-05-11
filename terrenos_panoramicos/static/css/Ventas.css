@@ -12,9 +12,6 @@
 body{
     background: #f7f8ec!important;
 }
-button{
-  background: #F7F8EC!important;
-}
 .icono{
   fill: transparent;
   stroke: var(--pink);
@@ -108,16 +105,6 @@ svg{
     opacity: 0;
   }
 }
-/* #me_interesa{
-  transition: .5s;
-}
-#me_interesa:hover{
-  height: 35px;
-  width: 35px;
-}
-#me_interesa:active{
-  fill: pink;
-} */
 
 #Subtitulo{
 background: #F7F8EC!important;
@@ -242,4 +229,62 @@ opacity: 1;
   text-align: center;
   font-size: 18px;
   background: white!important;
+}
+
+/* Carrusel */
+.carousel__contenedor {
+	position: relative;
+  padding-left:2%;
+  padding-right:2%;
+}
+
+#carousel__anterior,
+#carousel__siguiente {
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: none;
+	top: calc(50% - 35px);
+	cursor: pointer;
+	line-height: 30px;
+	text-align: center;
+	background: none;
+	color: #201202;
+	opacity: 20%;
+  overflow: visible;
+}
+
+#carousel__anterior:hover,
+#carousel__siguiente:hover {
+	opacity: 100%;
+}
+
+#carousel__anterior {
+	left: -0px;
+}
+
+#carousel__siguiente {
+	right: -0px;
+}
+
+.carousel__lista {
+	overflow: hidden;
+}
+
+.carousel__indicadores .glider-dot {
+	display: block;
+	width: 30px;
+	height: 4px;
+	background: #201202;
+	opacity: .2;
+	border-radius: 0;
+}
+
+.carousel__indicadores .glider-dot:hover {
+	opacity: .5;
+}
+
+.carousel__indicadores .glider-dot.active {
+	opacity: 1;
 }
