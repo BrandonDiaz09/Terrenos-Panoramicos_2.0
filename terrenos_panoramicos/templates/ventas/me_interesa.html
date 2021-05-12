@@ -1,5 +1,5 @@
 {% load static %}
-<form action="{% url 'me_interesa'%}" method="POST" class='meInteresa_form' id='{{inmueble.pk}}'>
+<form action="{% url 'me_interesa'%}" method="POST" class='meInteresa_form' id='{{inmueble.pk}}' >
   {% csrf_token %}
   <input type="hidden" name="inmueble_id" value="{{inmueble.pk}}"/>
   {% if user not in inmueble.interesados.all %}
@@ -19,7 +19,7 @@
       </svg>
     </button>
   {% else %}
-  <button id="car1" class="icono_active">
+  <button id="car1" class="icono_active" >
     <svg class="heart-main" viewBox="0 0 512 512" width="30" title="heart">
       <path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 
       96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 

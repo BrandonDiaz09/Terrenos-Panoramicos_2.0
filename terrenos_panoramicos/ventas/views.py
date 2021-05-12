@@ -17,7 +17,7 @@ class InmuebleView(LoginRequiredMixin, ListView):
     #model = Inmueble
     queryset = Inmueble.objects.filter(status__exact='OF')
     #ordering = ('-created',)
-    paginate_by = 4
+    #paginate_by = 4
     context_object_name = 'inmuebles'
 
 # @login_required
