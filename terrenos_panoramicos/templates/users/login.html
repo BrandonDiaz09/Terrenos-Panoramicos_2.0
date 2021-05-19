@@ -14,9 +14,11 @@
         {% csrf_token %}
         <div class="form-group">
             <input class="form-control mb-2" type="text" placeholder="Username" name="username" />
-            <input class="form-control" type="password" placeholder="Password" name="password" />
         </div>
-        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <div class="form-group">                
+            <input class="form-control" type="password" placeholder="Contraseña" name="password" />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Entrar</button>
 
     </form>
     <p class="mt-4">¿No tienes una cuenta aún?<a href="{% url "signup" %}"> Registrate Aquí</a></p>

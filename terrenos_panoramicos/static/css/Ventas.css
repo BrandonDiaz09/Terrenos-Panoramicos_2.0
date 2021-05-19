@@ -107,12 +107,7 @@ svg{
 }
 
 #Subtitulo{
-background: #F7F8EC!important;
-top: 340px;
-left: 139px;
-width: 164px;
-height: 30px;
-text-align: left;
+padding-left: 2.5%;
 font: normal normal bold 22px/30px Segoe UI;
 letter-spacing: 0px;
 color: #344130;
@@ -239,7 +234,9 @@ opacity: 1;
 }
 
 #carousel__anterior,
-#carousel__siguiente {
+#carousel__siguiente,
+#carousel__anterior2,
+#carousel__siguiente2 {
 	position: absolute;
 	display: block;
 	width: 30px;
@@ -256,23 +253,29 @@ opacity: 1;
 }
 
 #carousel__anterior:hover,
-#carousel__siguiente:hover {
+#carousel__siguiente:hover,
+#carousel__anterior2:hover,
+#carousel__siguiente2:hover {
 	opacity: 100%;
 }
 
-#carousel__anterior {
+#carousel__anterior,
+#carousel__anterior2 {
 	left: -0px;
 }
 
-#carousel__siguiente {
+#carousel__siguiente,
+#carousel__siguiente2 {
 	right: -0px;
 }
 
-.carousel__lista {
+.carousel__lista, 
+.carousel__lista2 {
 	overflow: hidden;
 }
 
-.carousel__indicadores .glider-dot {
+.carousel__indicadores .glider-dot, 
+.carousel__indicadores2 .glider-dot {
 	display: block;
 	width: 30px;
 	height: 4px;
@@ -281,10 +284,12 @@ opacity: 1;
 	border-radius: 0;
 }
 
-.carousel__indicadores .glider-dot:hover {
+.carousel__indicadores .glider-dot:hover,
+.carousel__indicadores2 .glider-dot:hover {
 	opacity: .5;
 }
 
-.carousel__indicadores .glider-dot.active {
+.carousel__indicadores .glider-dot.active,
+.carousel__indicadores2 .glider-dot.active {
 	opacity: 1;
 }

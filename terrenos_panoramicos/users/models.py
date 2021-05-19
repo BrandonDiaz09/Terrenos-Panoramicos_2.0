@@ -29,6 +29,7 @@ class Profile(models.Model):
         upload_to = 'users/ine', 
         blank=True,
         null = True)
+    agente_soporte = models.BooleanField('Agente de soporte', default=False)
 
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now= True)

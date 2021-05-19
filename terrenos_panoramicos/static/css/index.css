@@ -65,26 +65,6 @@ opacity: 1;
   filter: grayscale(70%);
 }
 
-#carousel {
-  position: relative;
-}
-
-#carousel .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 250px;
-  background-color: #C3E6E0;
-  color: white;
-}
-
-#carousel .overlay .container,
-#carousel .overlay .row {
-  height: 100%;
-}
-
 #place-time {
   background-color: #343a40;
   color: white;

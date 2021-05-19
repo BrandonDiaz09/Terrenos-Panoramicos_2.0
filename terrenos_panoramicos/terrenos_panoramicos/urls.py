@@ -50,6 +50,10 @@ urlpatterns = [
     path('faqs/editar/<str:pk>', soporte_views.updateFAQ, name='faqs_update'),
     path('faqs/borrar/<str:pk>', soporte_views.deleteFAQ, name='faqs_delete'),
 
+    path('reportes/', soporte_views.soporte_reporte, name='reporte'),
+    path('reportes/editar/<str:pk>', soporte_views.updateReporte, name='reporte_update'),
+    path('reportes/editar/atendido/<str:pk>', soporte_views.updateReporte_atendido, name='reporte_atendido'),
+
     #Users 
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout/', users_views.logout_view, name='logout'),

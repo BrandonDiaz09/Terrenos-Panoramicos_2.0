@@ -4,61 +4,103 @@
 {%load static%}
 <title>@{{ user.username }} | Terrenos Panorámicos</title>
 <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="{% static 'css/Ventas.css' %}" >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
 
 {% endblock %}
 
 {% block container %}
-
-    <div class="container mb-5" style="margin-top: 8em;">
-        <div class="row">
-
-            <div class="col-sm-4 d-flex justify-content-center">
-                <img
-                    src="{{ user.profile.picture.url }}"
-                    alt="@{{ user.username}}"
-                    class="rounded-circle"
-                    width="150px"
-                />
+<div class="container mb-5" style="margin-top: 2em;">
+    <div class="row">
+        <div class="col-sm-4 d-flex justify-content-center">
+                {% if user.profile.picture %}
+                <img src="{{ user.profile.picture.url }}" 
+                alt="@{{ user.username}}"
+                class="rounded-circle"
+                width="150px"/>
+                {% else%}
+                <img src="{% static 'img/default-profile.png' %}" 
+                alt="@{{ user.username}}"
+                class="rounded-circle"
+                width="150px"/>
+                {% endif %}
             </div>
-
             <div class="col-sm-8">
                 <h2 style="font-weight: 100;">
                     {{ user.username }}
-                        <a
-                            href="{% url "update_profile" %}"
-                            class="ml-5 btn btn-sm btn-outline-info"
-                        >
-                            Editar Perfil
-                        </a>
-                </h2>
-
-                {% comment %} <div class="row mt-2" style="font-size: 1.2em">
-                    <div class="col-sm-4">
-                        <b>{{ user.profile.posts_count }}</b> 
-                    </div>
-                    <div class="col-sm-4">
-                        <b>{{ user.profile.followers }}</b> 
-                    </div>
-                    <div class="col-sm-4">
-                        <b>{{ user.profile.following }}</b> 
-                    </div>
+                    <a
+                    href="{% url "update_profile" %}"
+                    class="ml-5 btn btn-sm btn-outline-info"
+                    >
+                    Editar Perfil
+                </a>
+            </h2>
+            
+            {% comment %} <div class="row mt-2" style="font-size: 1.2em">
+                <div class="col-sm-4">
+                    <b>{{ user.profile.posts_count }}</b> 
+                </div>
+                <div class="col-sm-4">
+                    <b>{{ user.profile.followers }}</b> 
+                </div>
+                <div class="col-sm-4">
+                    <b>{{ user.profile.following }}</b> 
+                </div>
                 </div> {% endcomment %}
             </div>
         </div>
     </div>
-
-    <hr>
-
-    {% comment %} <div class="container" id="user-posts">
-        <div class="row mt-3">
-            {% for post in posts %}
-            <div class="col-sm-4 pt-5 pb-5 pr-5 pl-5 d-flex justify-content-center align-items-center">
-                <a href="" class="border">
-                    <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="img-fluid"/>
-                </a>
-            </div>
+    
+    <div class="">
+        <p id="Subtitulo">Inmuebles que te interesan</p>
+        <div class="carousel__contenedor">
+            <button aria-label="Anterior" id="carousel__anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+          <div class="carousel__lista">
+            {% for inmueble in inmueble_interesado %}
+                    {% include "ventas/terreno.html" %}
             {% endfor %}
+          </div>
+      
+          <button aria-label="Siguiente" id="carousel__siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
-    </div> {% endcomment %}
+      
+        <div role="tablist" class="carousel__indicadores"></div>
+        
+        <!-- Tus inmuebles -->
+        <p id="Subtitulo">Tus inmuebles</p>
+        <div class="carousel__contenedor">
+            <button aria-label="Anterior" id="carousel__anterior2">
 
-{% endblock %}
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+          <div class="carousel__lista2">
+            {% for inmueble in inmuebles_creador %}
+                    {% include "ventas/terreno.html" %}
+            {% endfor %}
+          </div>
+      
+          <button aria-label="Siguiente" id="carousel__siguiente2">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      
+        <div role="tablist" class="carousel__indicadores2"></div>
+      </div>
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/JavaScript" src="{% static 'js/ventas/perfil.js' %}" ></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    {% endblock %}

@@ -1,3 +1,5 @@
+from django.http import request
+from ventas.views import me_interesa
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -25,12 +27,13 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     queryset = User.objects.all()
     context_object_name = 'user'
 
-    # def get_context_data(self, **kwargs):
-    #     """Add user's favorites to context."""
-    #     context = super().get_context_data(**kwargs)
-    #     user = self.get_object()
-    #     context['posts'] = Post.objects.filter(user=user).order_by('-created')
-    #     return context
+    def get_context_data(self, **kwargs):
+        """Add user's favorites to context."""
+        context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context['inmuebles_creador'] = Inmueble.objects.filter(user=user).order_by('-created')
+        context['inmueble_interesado'] = User.objects.get(id=user.pk).meInteresan.all()
+        return context
 
 def login_view(request):
 

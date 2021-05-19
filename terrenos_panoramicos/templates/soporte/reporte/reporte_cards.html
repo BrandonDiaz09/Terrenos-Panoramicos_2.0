@@ -1,0 +1,33 @@
+
+<div class="row">
+  {% for reporte in reportes_no_atendidos %}
+
+  <div class="col-sm-4">
+    <div class="card text-white bg-danger">
+      <div class="card-header">Reporte {{reporte.pk}}: Sin atender</div>
+      <div class="card-body">
+        <h5 class="card-title">{{reporte.asunto}}</h5>
+        <p class="card-text">{{reporte.reporte}}<br><br> Creado:{{reporte.creado}}</p>
+          <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk %}">Editar</a>
+        </div>
+      </div>
+    </div> 
+
+    {% endfor %}
+</div>
+<div class="row">
+  {% for reporte in reportes_atendidos %}
+    
+  <div class="col-sm-4">
+    <div class="card text-white bg-success">
+      <div class="card-header">Reporte {{reporte.pk}}: Atendido</div>
+      <div class="card-body">
+        <h5 class="card-title">{{reporte.asunto}}</h5>
+        <p class="card-text">{{reporte.reporte}}<br><br> Creado:{{reporte.creado}}</p>
+        <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk %}">Editar</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>

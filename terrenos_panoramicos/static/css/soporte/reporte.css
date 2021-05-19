@@ -1,0 +1,25 @@
+body{
+    background-color: #F7F8EC!important;
+    overflow-x: hidden;
+}
+#izquierdo{
+    font: normal normal 900 60px/81px Segoe UI;
+    letter-spacing: 0px;
+    color: #56411F;
+    opacity: 1;
+    }
+#titular{
+        top: 62px;
+        height: 160px;
+        background: transparent linear-gradient(180deg, #AACA46 0%, #F7F8EC 100%) 0% 0% no-repeat padding-box;
+        opacity: 1;
+        }    
+.card{
+    background-color: #F7F8EC!important;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+.row{
+    padding-left: 2%;
+    padding-right: 2%;
+}

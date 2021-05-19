@@ -58,7 +58,7 @@
 {% if not request.user.is_anonymous %}
     
     {% if request.user.is_staff %}
-        {% include 'soporte/faqs_tabla.html' %}
+        {% include 'soporte/faqs/faqs_tabla.html' %}
     {% endif %}
         
 {% endif %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>FAQs</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/soporte/reporte.css' %}">
+{% endblock %}
+
+{% block container %}
+<section id="titular" class="pt-3 pb-3">
+  <div class="container">
+    <div class="row">
+        <div id="izquierdo" class="col-12 col-md-12 col-lg-6 text-left" >
+          <p>Reportes</p>
+      </div>
+    </div>
+    </div>
+</section>
+<div class="row justify-content-md-center">
+  <div class="col-6 pt-4 pb-4" style="font-size: 1.2rem; font-family: Segoe UI; color: #56411F;">
+        <div class="card card-body" style="font-size: 1.1rem;">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for error in form.error%}
+                        <div class="alert alert-danger" role="alert">
+                            {% for e in error%}
+                                {{e}}
+                            {%endfor%}
+                        </div>
+                    {%endfor%}
+
+                    {{ form.as_p }}
+                    <input class="btn btn-primary" type="submit" >
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% include 'soporte/reporte/reporte_cards.html' %}
+
+
+{% endblock %}
