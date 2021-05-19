@@ -16,19 +16,19 @@ class Inmueble(models.Model):
 
     photo = models.ImageField(upload_to='ventas/photos_terrenos')
 
-    creted = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
-    interesados = models.ManyToManyField(User, default = None, blank = True, related_name='me_interesan')
+    interesados = models.ManyToManyField(User, default = None, blank = True, related_name='meInteresan')
 
     @property
     def num_interesados(self):
         return self.interesados.all().count()
 
     #Choice Regimen propiedad
-    PRIVADA = 'PR'
-    EJIDAL= 'EJ'
-    COMUNAL='CM'
+    PRIVADA = 'Privada'
+    EJIDAL= 'Ejidal'
+    COMUNAL='Comunal'
     
     REGIMEN_PROPIEDAD = [
         (PRIVADA,'Privada'),
@@ -37,18 +37,18 @@ class Inmueble(models.Model):
     ]
 
     regimen_propiedad = models.CharField(
-        max_length=2,
+        max_length=15,
         choices=REGIMEN_PROPIEDAD,
         default=PRIVADA
     )
 
     #Choice uso de suelo
-    RESIDENCIAL = 'RS'
-    ACTIVIDADES_PRODUCTIVAS= 'AP'
-    EQUIPAMIENTO='EQ'
-    INFRAESTRUCTURA= 'IN' 
-    AREA_VERDE= 'AV'
-    OTRO= 'OT'
+    RESIDENCIAL = 'Residencial'
+    ACTIVIDADES_PRODUCTIVAS= 'Actividades Productivas'
+    EQUIPAMIENTO='Equipamiento'
+    INFRAESTRUCTURA= 'Infraestructura' 
+    AREA_VERDE= 'Area Verde'
+    OTRO= 'Otro'
     
     USO_SUELO = [
         (RESIDENCIAL,'Residencial'),
@@ -60,15 +60,15 @@ class Inmueble(models.Model):
     ]
 
     uso_suelo = models.CharField(
-        max_length=2,
+        max_length=25,
         choices=USO_SUELO,
         default=AREA_VERDE
     )
     
     #Choice status
-    OFERTA = 'OF'
-    SOLICITUD= 'SO'
-    VENDIDO='VD'
+    OFERTA = 'Oferta'
+    SOLICITUD= 'Solicitud'
+    VENDIDO='Vendido'
     
     STATUS = [
         (OFERTA,'Oferta'),
@@ -77,7 +77,7 @@ class Inmueble(models.Model):
     ]
 
     status = models.CharField(
-        max_length=2,
+        max_length=10,
         choices=STATUS,
         default=SOLICITUD
     )
