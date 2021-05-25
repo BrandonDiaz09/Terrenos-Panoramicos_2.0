@@ -26,7 +26,11 @@
             </div>
           </div>               
       </div>
-        <div class="wave" style="height: 150px; overflow: hidden; background-color: #AACA46"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+        <div class="wave" style="height: 100px; 
+                                overflow: hidden; 
+                                background-color: #AACA46">
+                                <svg viewBox="0 0 500 150" 
+                                preserveAspectRatio="none"
             style="height: 100%; width: 100%;" >
              <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
              style="stroke: none; fill: #fff;"></path>
@@ -35,6 +39,22 @@
       </div>
     </main>
     <!-- /Main -->
+
+    <!-- Barra de busqueda -->
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 offset-md-7">
+        <div class="container-fluid">
+          <form class="d-flex" method="GET">
+            <input class="form-control me-2" type="search" placeholder="Busca algún predio..." aria-label="Search" name="buscar"
+                   value="{{request.GET.buscar}}" >
+            <button class="btn btn-success" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- /Barra de busqueda -->
 
     <!--!Característica 1-->
     <p id="Subtitulo">Característica 1</p>

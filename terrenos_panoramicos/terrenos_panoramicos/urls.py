@@ -38,7 +38,7 @@ urlpatterns = [
     path('conocenos/', terrenospa_views.conocenos, name ='conocenos'),
     
     #Ventas
-    path('ventas/catalogo/', catalogo_views.InmuebleView.as_view(), name ='catalogo' ),
+    path('ventas/catalogo/', catalogo_views.catalogo_view , name ='catalogo' ),
     path('ventas/catalogo/me_interesa', catalogo_views.me_interesa, name ='me_interesa' ),
 
     #reuniones
