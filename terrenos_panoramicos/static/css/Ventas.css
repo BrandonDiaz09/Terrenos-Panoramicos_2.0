@@ -148,14 +148,20 @@ opacity: 1;
 }
 
 #titulo{
-top: 76px;
-left: 125px;
-width: 500px;
-height: 182px;
 text-align: center;
 font: normal normal 900 45px/61px Segoe UI;
 letter-spacing: 0px;
-color: #344130;
+color: #F7F8EC;
+text-shadow: 1px 3px 6px #00000029;
+opacity: 1;
+
+}
+#titulo_des{
+text-align: center;
+font-size: 1.1rem;
+font: normal  Segoe UI;
+letter-spacing: 0px;
+color: #F7F8EC;
 text-shadow: 1px 3px 6px #00000029;
 opacity: 1;
 
@@ -186,8 +192,9 @@ opacity: 1;
 
 #main .carousel-inner img {
   max-height: 250px;
+  width: 95.5%;
   object-fit: cover;
-  filter: grayscale(70%);
+  filter: grayscale(15%);
 }
 
 #carousel {
@@ -200,8 +207,8 @@ opacity: 1;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 250px;
-  background-color: #AACA46;
+  height: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 

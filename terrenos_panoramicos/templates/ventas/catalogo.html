@@ -11,28 +11,34 @@
 {% block container %}
 <!-- Main -->
     <main id="main">
-      <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
+      <div id="carousel" class="carousel" >
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="{% static 'img/turqueza.png' %}" alt="sin carrusel">
+          <div style="
+                      background: transparent linear-gradient(180deg, #91D2BD 48%, #AACA46 95%) 0% 0% no-repeat padding-box;">
+            <img src="{% static 'img/ventas/portada-ventas.jpg' %}" class="img-fluid  rounded mx-auto d-block">
           </div>
-          <div class="overlay">
+          <div class="overlay" id="overlay">
             <div class="container">
               <div class="row align-items-center">
-                  <div class="col-md-12 offset-md-2  col-lg-12 text-center text-md-right">
-                    <h1 id="titulo">Los mejores predios que podrás encontrar en el valle de Toluca</h1>
-                </div>
+                  <div class="col-md-6 offset-md-6 text-right">
+                    <h1 id="titulo">Los mejores predios del valle de Toluca</h1>
+                    <strong><p id="titulo_des" class="d-none d-md-block">
+                      Busca los inmuebles de tu preferencia en la barra de búsqueda y
+                      marca con un corazón los inmuebles que más te interesen, estos apareceran en tu perfil.
+                    </p></strong>
+                  </div>
               </div>
             </div>
           </div>               
       </div>
-        <div class="wave" style="height: 100px; 
+        <div class="wave" style="height: 60px; 
                                 overflow: hidden; 
                                 background-color: #AACA46">
-                                <svg viewBox="0 0 500 150" 
-                                preserveAspectRatio="none"
+        <svg viewBox="0 0 500 80" 
+                               5 preserveAspectRatio="none"
             style="height: 100%; width: 100%;" >
-             <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+             <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,80.00 L0.00,80.00 Z"
              style="stroke: none; fill: #fff;"></path>
         </svg>
       </div>
