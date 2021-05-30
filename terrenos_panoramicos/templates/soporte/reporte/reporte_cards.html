@@ -12,12 +12,23 @@
       
       {% endif %}
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{{reporte.asunto}}</h5>
-        <p class="card-text">{{reporte.reporte}}<br><br><i>Creado: {{reporte.creado}}</i>
+        <div class="card-body">
+          <h5 class="card-title">{{reporte.asunto}}</h5>
+          <p class="card-text">{{reporte.reporte}}<br><br><i>Creado: {{reporte.creado}}</i>
           <br><i> Modificado: {{reporte.modificado}}</i>
-        </p>
-          <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk %}">Editar</a>
+          </p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            
+            {% if  request.user.profile.gerente_soporte %}
+              <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk %}">Editar</a>
+              <form action="{% url 'reporte_delete' reporte.pk %}" method="POST">
+              {% csrf_token %}
+              <input style="margin-left: 10px;" class="btn btn-warning" type="submit" value="Eliminar">
+            </form>
+            {% endif %}
+              
+            
+          </div>
         </div>
       </div>
     </div> 
@@ -44,7 +55,56 @@
         <p class="card-text">{{reporte.reporte}}<br><br><i> Creado: {{reporte.creado}}</i>
           <br><i> Modificado: {{reporte.modificado}}</i>
         </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          
+          {% if request.user.profile.gerente_soporte %}
           <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk%}">Editar</a>
+            <form action="{% url 'reporte_delete' reporte.pk %}" method="POST">
+            {% csrf_token %}
+            <input style="margin-left: 10px;" class="btn btn-danger" type="submit" value="Eliminar">
+          </form>
+          {% endif %}
+            
+          
+        </div>
+        </div>
+      </div>
+    </div> 
+
+    {% endfor %}
+</div>
+<div class="row">
+  {% for reporte in reportes_mantenimiento %}
+
+  <div class="col-sm-4">
+    <div class="card text-white bg-secondary">
+      <div class="card-header">ID-{{reporte.pk}}: Reporte En mantenimiento <br>
+      
+      {% if reporte.agente_soporte %}
+        Agente de soporte: {{reporte.agente_soporte}}
+      {% else %}
+        Agente de soporte: <strong>¡No hay un Agente de Soporte a cargo!</strong>
+      
+      {% endif %}
+        
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{reporte.asunto}}</h5>
+        <p class="card-text">{{reporte.reporte}}<br><br><i> Creado: {{reporte.creado}}</i>
+          <br><i> Modificado: {{reporte.modificado}}</i>
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          
+          {% if request.user.profile.gerente_soporte %}
+          <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk%}">Editar</a>
+            <form action="{% url 'reporte_delete' reporte.pk %}" method="POST">
+            {% csrf_token %}
+            <input style="margin-left: 10px;" class="btn btn-danger" type="submit" value="Eliminar">
+          </form>
+          {% endif %}
+            
+          
+        </div>
         </div>
       </div>
     </div> 
@@ -56,7 +116,7 @@
     
   <div class="col-sm-4">
     <div class="card text-white bg-success">
-      <div class="card-header">ID-{{reporte.pk}}: Reporte Cerrado <br>
+      <div class="card-header">ID-{{reporte.pk}}: Reporte Resuelto <br>
       {% if reporte.agente_soporte %}
         Agente de soporte: {{reporte.agente_soporte}}
       {% else %}
@@ -69,7 +129,24 @@
         <p class="card-text">{{reporte.reporte}}<br><br><i> Creado: {{reporte.creado}}</i>
           <br><i> Modificado: {{reporte.modificado}}</i>
         </p>
-        <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk %}">Editar</a>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          
+          {% if request.user.profile.gerente_soporte %}
+                  
+            {% ifequal reporte.estado 'Resuelto' %} 
+              <a class="btn btn-sm btn-primary" href="{% url 'reporte_update' reporte.pk %}">Editar</a>
+            {% else %}
+              <a class="btn btn-sm btn-primary" href="{% url 'reporte_resuelto' reporte.pk %}">Editar</a>
+            {% endifequal %}
+                
+              <form action="{% url 'reporte_delete' reporte.pk %}" method="POST">
+                {% csrf_token %}
+                <input style="margin-left: 10px;" class="btn btn-danger" type="submit" value="Eliminar">
+              </form>
+          {% endif %}
+            
+          
+        </div>
       </div>
     </div>
   </div>

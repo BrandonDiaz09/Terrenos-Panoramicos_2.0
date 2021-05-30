@@ -63,14 +63,13 @@
                     
                     <div class="form-group">
                         <label>Gerente de Soporte:</label>
-                        {{form.gerente_soporte}}
+                        <input class="form-control" value="{{reporte.gerente_soporte}}" disabled>
+
                     </div>
                     <div class="form-group">
                         <label>Solución:</label>
-                        {{form.solucion}}
-                        <div class="invalid-feedback">
-                            {% for error in form.solucion.errors %}{{ error }}{% endfor %}
-                        </div>
+                        <textarea name="" id="" cols="40" rows="3" resize=none class="form-control"
+                                    maxlength="3000" disabled>{{reporte.solucion}}</textarea>
                     </div>
                     <input class="btn btn-primary" type="submit" >
                 </form>

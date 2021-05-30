@@ -52,7 +52,9 @@ urlpatterns = [
 
     path('reportes/', soporte_views.soporte_reporte, name='reporte'),
     path('reportes/editar/<str:pk>', soporte_views.updateReporte, name='reporte_update'),
-    path('reportes/editar/atendido/<str:pk>', soporte_views.updateReporte_atendido, name='reporte_atendido'),
+    path('reportes/editar/<str:pk>', soporte_views.updateReporte_resuelto, name='reporte_resuelto'),
+    path('reportes/borrar/<str:pk>', soporte_views.deleteReporte, name='reporte_delete'),
+
 
     #Users 
     path('users/login/', users_views.login_view, name='login'),

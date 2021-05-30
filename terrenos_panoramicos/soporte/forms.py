@@ -10,7 +10,8 @@ from users.models import Profile
 ESTADO = [
         ('Abierto','Abierto'),
         ('En proceso','En proceso'),
-        ('Cerrado','Cerrado')
+        ('Mantenimiento','Mantenimiento'),
+        ('Resuelto','Resuelto')
     ]
 class FaqForm(ModelForm):
     class Meta:
@@ -24,7 +25,7 @@ class FaqForm(ModelForm):
         }
 class ReporteUpdateForm(ModelForm):
     #user = forms.ModelChoiceField(queryset=User.objects.all(),widget=forms.Select(attrs={'class':'form-control','disabled':True}))
-    agente_soporte = forms.ModelChoiceField(queryset=User.objects.filter(profile__agente_soporte=True),empty_label='¿Quién atiende este reporte?',widget=forms.Select(attrs={'class':'form-control'}))
+    gerente_soporte = forms.ModelChoiceField(queryset=User.objects.filter(profile__gerente_soporte=True),empty_label='Escoje al gerente...',widget=forms.Select(attrs={'class':'form-control'}))
     estado = forms.CharField(
         max_length=15,
         required=False,
@@ -32,7 +33,31 @@ class ReporteUpdateForm(ModelForm):
     )
     class Meta:
         model = Reporte
-        fields =['user','asunto','reporte','estado','agente_soporte']
+        fields =['asunto','reporte','estado','gerente_soporte','solucion']
+        widgets = {
+            'asunto': forms.TextInput(attrs={'class': 'form-control'}),
+            'reporte': forms.Textarea(attrs={'class': 'form-control', 
+                                                'rows':'3', 
+                                              'resize':'none'}),
+            'solucion': forms.Textarea(attrs={'class': 'form-control', 
+                                                'rows':'3', 
+                                              'resize':'none'}),
+            'estado': forms.Select(attrs={'class': 'form-select'})
+        }
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['user'].widget.attrs.update({'class': 'form-control'})
+        #self.fields['agente_soporte'].widget.attrs.update({'class': 'form-control', 'value':'{{ agente_soporte.pk}}'})
+
+class ReporteUpdateSolucion(ModelForm):
+    estado = forms.CharField(
+        max_length=15,
+        required=False,
+        widget=forms.Select(choices=ESTADO)
+    )
+    class Meta:
+        model = Reporte
+        fields =['asunto','reporte','estado','gerente_soporte']
         widgets = {
             'asunto': forms.TextInput(attrs={'class': 'form-control'}),
             'reporte': forms.Textarea(attrs={'class': 'form-control', 
@@ -40,11 +65,28 @@ class ReporteUpdateForm(ModelForm):
                                               'resize':'none'}),
             'estado': forms.Select(attrs={'class': 'form-select'})
         }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['user'].widget.attrs.update({'class': 'form-control'})
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['user'].widget.attrs.update({'class': 'form-control'})
         #self.fields['agente_soporte'].widget.attrs.update({'class': 'form-control', 'value':'{{ agente_soporte.pk}}'})
 
+class ReporteUpdateAgente(ModelForm):
+    #user = forms.ModelChoiceField(queryset=User.objects.all(),widget=forms.Select(attrs={'class':'form-control','disabled':True}))
+    gerente_soporte = forms.ModelChoiceField(queryset=User.objects.filter(profile__gerente_soporte=True),empty_label='Escoje al gerente...',widget=forms.Select(attrs={'class':'form-control'}))
+    estado = forms.CharField(
+        max_length=15,
+        required=False,
+        widget=forms.Select(choices=ESTADO)
+    )
+    class Meta:
+        model = Reporte
+        fields =['asunto','reporte']
+        widgets = {
+            'asunto': forms.TextInput(attrs={'class': 'form-control'}),
+            'reporte': forms.Textarea(attrs={'class': 'form-control', 
+                                                'rows':'3', 
+                                              'resize':'none'}),
+        } 
 
 class ReporteForm(ModelForm):
     class Meta:

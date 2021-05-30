@@ -68,7 +68,7 @@
     </div>
     
 </div>
-{% if request.user.profile.agente_soporte %}
+{% if request.user.profile.agente_soporte or request.user.profile.gerente_soporte %}
   {% include 'soporte/reporte/reporte_cards.html' %}
 {% endif %}
 

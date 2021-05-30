@@ -17,12 +17,14 @@ class Reporte(models.Model):
     reporte = models.CharField('Reporte', max_length=3000)
     ABIERTO = 'Abierto'
     PROCESO= 'En proceso'
-    CERRADO='Cerrado'
+    MANTENIMIENTO='Mantenimiento'
+    RESUELTO='Resuelto'
     
     ESTADO = [
         (ABIERTO,'Abierto'),
         (PROCESO,'En proceso'),
-        (CERRADO,'Cerrado')
+        (MANTENIMIENTO,'Mantenimiento'),
+        (RESUELTO,'Resuelto')
     ]
 
     estado = models.CharField('Estado',
@@ -30,7 +32,9 @@ class Reporte(models.Model):
         choices=ESTADO,
         default=ABIERTO
     )
+    solucion = models.CharField('Solución', max_length=3000, blank=True)
     agente_soporte = ForeignKey(User, on_delete=models.CASCADE,null=True,related_name="SoporteReporte",verbose_name='Agente de soporte')
+    gerente_soporte = ForeignKey(User, on_delete=models.CASCADE,null=True,related_name="GerenteReporte",verbose_name='Gerente de soporte')
     creado = models.DateTimeField('Fecha de creación',auto_now_add=True)
     modificado = models.DateTimeField('Fecha de modificacion',auto_now=True)
     

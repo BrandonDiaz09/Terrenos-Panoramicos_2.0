@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Pregunta_frecuente, Reporte
 
 #Forms
-from .forms import FaqForm, ReporteForm, ReporteUpdateForm
+from .forms import FaqForm, ReporteForm, ReporteUpdateForm, ReporteUpdateSolucion
 
 def soporte_FAQ(request):
     faqs = Pregunta_frecuente.objects.all()
@@ -67,9 +67,10 @@ def deleteFAQ(request, pk):
 
 @login_required
 def soporte_reporte(request):
-    reportes_cerrados = Reporte.objects.filter(estado='Cerrado')
+    reportes_cerrados = Reporte.objects.filter(estado='Resuelto')
     reportes_abiertos = Reporte.objects.filter(estado='Abierto')
     reportes_proceso = Reporte.objects.filter(estado='En proceso')
+    reportes_mantenimiento = Reporte.objects.filter(estado='Mantenimiento')
     form = ReporteForm()
     if request.method == 'POST':
         print('Printing POST', request.POST)
@@ -85,12 +86,51 @@ def soporte_reporte(request):
                         'reportes_cerrados': reportes_cerrados, 
                         'reportes_abiertos': reportes_abiertos,
                         'reportes_proceso': reportes_proceso,
+                        'reportes_mantenimiento': reportes_mantenimiento
                         }) 
 
 @login_required
 def updateReporte(request, pk):
     reporte = Reporte.objects.get(pk=pk)
-    form = ReporteUpdateForm(instance=reporte)
+    if reporte.estado =='Resuelto':
+        form = ReporteUpdateSolucion(instance=reporte)
+        if request.method == 'POST':
+            form = ReporteUpdateSolucion(request.POST, instance=reporte)
+            if form.is_valid():
+                form.save()
+                return redirect('reporte')
+
+        return render(
+        request=request,
+        template_name='soporte/reporte/reporte_solucionado.html',
+        context={
+            'form':form,
+            'reporte': reporte,
+            'agente_soporte':request.user,
+            }
+        )
+    else:
+        form = ReporteUpdateForm(instance=reporte)
+        print(reporte.estado)
+        if request.method == 'POST':
+            form = ReporteUpdateForm(request.POST, instance=reporte)
+            if form.is_valid():
+                form.save()
+                return redirect('reporte')
+        return render(
+            request=request,
+            template_name='soporte/reporte/reporte_update.html',
+            context={
+                'form':form,
+                'reporte': reporte,
+                'agente_soporte':request.user,
+            }
+        )
+
+@login_required
+def updateReporte_resuelto(request, pk):
+    reporte = Reporte.objects.get(pk=pk)
+    form = ReporteUpdateSolucion(instance=reporte)
 
     if request.method == 'POST':
         form = ReporteUpdateForm(request.POST, instance=reporte)
@@ -99,30 +139,20 @@ def updateReporte(request, pk):
             return redirect('reporte')
     return render(
         request=request,
-        template_name='soporte/reporte/reporte_update.html',
+        template_name='soporte/reporte/reporte_solucionado.html',
         context={
             'form':form,
+            'reporte': reporte,
             'agente_soporte':request.user,
-            #'reuniones': Servicio_Reunion.objects.all()
         }
     )
 
 @login_required
-def updateReporte_atendido(request, pk):
+def deleteReporte(request, pk):
     reporte = Reporte.objects.get(pk=pk)
-
     if request.method == 'POST':
-        if reporte.atendido:
-            reporte.update(estado='Abierto')
-            url = reverse('reporte',)
-            return redirect(url)
-        else:
-            reporte.update(estado = 'Cerrado')
-            return redirect('reporte')
-    return render(
-        request=request,
-        template_name='soporte/reporte/reporte_atender.html',
-        context={
-            'reporte': reporte
-        }
-    )
+        reporte.delete()
+        return redirect('reporte')
+    return render(request=request, 
+                template_name='soporte/reporte/reporte.html',
+                context={})
