@@ -3,6 +3,7 @@
 {% block head_content %}
 <title>Terrenos Panorámicos</title>
  <link href="{% static 'css/Inicio.css' %}" rel="stylesheet" type="text/css"/>
+ <link href="{% static 'css/aos.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block container %}
@@ -29,24 +30,24 @@
     </div>
     <div class="col-md-auto">
       <div class="card" style="width: 18rem; margin-top: 75px;">
-  <img class="card-img-top" src="https://www.abacobrasil.com.br/media/zoo/images/blog-10-motivos_ed66a93c7ccae03ce0b50e66bde6a064.jpg" 
-    alt="Card image cap"
-    width= "358px"
-        height= "150px">
-  <div class="card-body">
-    <p class="card-text">Construye la casa detu sueños</p>
-  </div>
-</div>
-      <div class="card" style="width: 18rem; margin-top: 50px;">
-  <img class="card-img-top" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
-    alt="Card image cap"
-    
-    width= "358px"
-        height= "150px">
-  <div class="card-body">
-    <p class="card-text">Adquiere los más grandes</p>
-  </div>
-</div>
+        <img class="card-img-top" src="https://www.abacobrasil.com.br/media/zoo/images/blog-10-motivos_ed66a93c7ccae03ce0b50e66bde6a064.jpg" 
+          alt="Card image cap"
+          width= "358px"
+              height= "150px">
+        <div class="card-body">
+          <p class="card-text">Construye la casa detu sueños</p>
+        </div>
+      </div>
+            <div class="card" style="width: 18rem; margin-top: 50px;">
+        <img class="card-img-top" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
+          alt="Card image cap"
+          
+          width= "358px"
+              height= "150px">
+        <div class="card-body">
+          <p class="card-text">Adquiere los más grandes</p>
+        </div>
+      </div>
 
     </div>
     <div class="col col-lg-2">
@@ -87,39 +88,163 @@
     <!--Espaciador-->
     
     <!-- Botonera -->
-  <!-- <center>
-    <button id="botonera" type="button" class="btn btn-primary btn-lg col-lg-5 align-items-center" style="height: 187px; margin-right: 34px;">Construcción</button>
-<button id="botonera" type="button" class="btn btn-secondary btn-lg col-lg-5 align-items-center" style="height: 187px">Servicios</button>
-  </center>     -->
-<!-- /Botonera -->
-
+    <!-- <center>
+      <button id="botonera" type="button" class="btn btn-primary btn-lg col-lg-5 align-items-center" style="height: 187px; margin-right: 34px;">Construcción</button>
+      <button id="botonera" type="button" class="btn btn-secondary btn-lg col-lg-5 align-items-center" style="height: 187px">Servicios</button>
+    </center>     -->
+    <!-- /Botonera -->
+    
     <!-- /Espaciador-->
     <!--Espaciador-->
-<!-- Construcción -->
-<section class="service py-5">
-  <div class="heading text-center pt-5">
-    <h2 class="font-weight-bold pb-5">Servicios de construcción</h2>
-  </div>
-  <div class="row mx-auto justify-content-center aligns-items-center text-center container">
-    <div class="one col-lg-3 col-md-3 col-12 w-25">
-        <img class="img-fluid w-75" src="{% static 'img/home/arquitectura.jpg' %}" alt="Arquitectura">
-        <h5 class="font-weight-bold">Arquitectura</h5>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Animi tempore corporis </p>
-    </div>
-    <div class="one col-lg-3 col-md-3 col-12 w-25">
-        <img class="img-fluid w-75" src="{% static 'img/home/arquitectura.jpg' %}" alt="Arquitectura">
-        <h5 class="font-weight-bold">Arquitectura</h5>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Animi tempore corporis </p>
-    </div>
-    <div class="one col-lg-3 col-md-3 col-12 w-25">
-        <img class="img-fluid w-75" src="{% static 'img/home/arquitectura.jpg' %}" alt="Arquitectura">
-        <h5 class="font-weight-bold">Arquitectura</h5>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Animi tempore corporis </p>
+    <!-- Construcción -->
+    <div class="site-section overlay site-cover-2" style="background-image: url('{% static 'img/home/portada_cons.jpg' %}')">
+      <div class="container">
+        <div class="row">
+      <div class="col-lg-7 mx-auto text-center">
+        <h2 id="titulo2" class="text-white mb-4">Nuestros Servicios de Construcción</h2>
+      </div>
     </div>
   </div>
-</section>
-<!-- /Construcción -->
-{% endblock %}
+</div>
+<div class="features-lg ">
+  <div class="container">
+    <div class="row feature align-items-center justify-content-between">
+      <div class="col-lg-7 section-stack order-lg-2 mb-4 mb-lg-0 position-relative" data-aos="fade-up" data-aos-delay="0">
+
+        <div class="image-stack">
+          <div class="image-stack__item image-stack__item--top">
+            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+          </div>
+          <div class="image-stack__item image-stack__item--bottom">
+            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
+        
+        <h2 class="font-weight-bold mb-4 heading">Far far away, behind the word mountains</h2>
+        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
+        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="features-lg">
+  <div class="container">
+    
+    <div class="row feature align-items-center justify-content-between">
+      <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
+        <img src="{% static 'img/home/portada_cons.jpg' %}" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
+        
+        <h2 class="font-weight-bold mb-4">Far far away, behind the word mountains</h2>
+        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
+        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<div class="features-lg ">
+  <div class="container">
+    <div class="row feature align-items-center justify-content-between">
+      <div class="col-lg-7 section-stack order-lg-2 mb-4 mb-lg-0 position-relative" data-aos="fade-up" data-aos-delay="0">
+
+        <div class="image-stack">
+          <div class="image-stack__item image-stack__item--top">
+            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+          </div>
+          <div class="image-stack__item image-stack__item--bottom">
+            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
+        
+        <h2 class="font-weight-bold mb-4 heading">Far far away, behind the word mountains</h2>
+        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
+        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="features-lg">
+  <div class="container">
+    
+    <div class="row feature align-items-center justify-content-between">
+      <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
+        <img src="{% static 'img/home/portada_cons.jpg' %}" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
+        
+        <h2 class="font-weight-bold mb-4">Far far away, behind the word mountains</h2>
+        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
+        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<div class="features-lg ">
+  <div class="container">
+    <div class="row feature align-items-center justify-content-between">
+      <div class="col-lg-7 section-stack order-lg-2 mb-4 mb-lg-0 position-relative" data-aos="fade-up" data-aos-delay="0">
+
+        <div class="image-stack">
+          <div class="image-stack__item image-stack__item--top">
+            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+          </div>
+          <div class="image-stack__item image-stack__item--bottom">
+            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
+        
+        <h2 class="font-weight-bold mb-4 heading">Far far away, behind the word mountains</h2>
+        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
+        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="features-lg">
+  <div class="container">
+    
+    <div class="row feature align-items-center justify-content-between">
+      <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
+        <img src="{% static 'img/home/portada_cons.jpg' %}" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
+        
+        <h2 class="font-weight-bold mb-4">Far far away, behind the word mountains</h2>
+        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
+        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+      <!-- /Construcción -->
+      <script src="{% static 'js/aos.js' %}"></script>
+      <script src="{% static 'js/index.js' %}"></script>
+      {% endblock %}
