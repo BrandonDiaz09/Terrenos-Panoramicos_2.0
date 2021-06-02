@@ -51,7 +51,9 @@
             </div>
         </div>
     </div>
+
     
+    {% if  inmueble_interesado %}
     <div class="">
         <p id="Subtitulo">Inmuebles que te interesan</p>
         <div class="carousel__contenedor">
@@ -71,8 +73,12 @@
         </div>
       
         <div role="tablist" class="carousel__indicadores"></div>
+      
+    {% endif %}
+      
         
-        <!-- Tus inmuebles -->
+        {% if inmuebles_creador %}
+        
         <p id="Subtitulo">Tus inmuebles</p>
         <div class="carousel__contenedor">
             <button aria-label="Anterior" id="carousel__anterior2">
@@ -93,6 +99,9 @@
       
         <div role="tablist" class="carousel__indicadores2"></div>
       </div>
+        {% endif %}
+          
+        <!-- Tus inmuebles -->
       
 
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
