@@ -5,26 +5,26 @@ from users.models import Profile
 class SignupForm(forms.Form):
     """Sign up form."""
 
-    username = forms.CharField(min_length=4, max_length=50)
+    username = forms.CharField(min_length=4, max_length=50,widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     contraseña = forms.CharField(
         max_length=70,
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
     confirmar_contraseña = forms.CharField(
         max_length=70,
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
 
-    nombre = forms.CharField(min_length=2, max_length=50)
-    apellido_paterno = forms.CharField(min_length=2, max_length=50)
+    nombre = forms.CharField(min_length=2, max_length=50,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    apellido_paterno = forms.CharField(min_length=2, max_length=50,widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    apellido_materno = forms.CharField( min_length=2, max_length=50)
+    apellido_materno = forms.CharField( min_length=2, max_length=50,widget=forms.TextInput(attrs={'class': 'form-control'}))
     
     correo_electrónico = forms.CharField(
         min_length=6,
         max_length=70,
-        widget=forms.EmailInput()
+        widget=forms.EmailInput(attrs={'class': 'form-control'})
     )
 
     def clean_username(self):
@@ -71,7 +71,8 @@ class SignupForm(forms.Form):
 class ProfileForm(forms.Form):
     """Profile form."""
 
-    curp = forms.CharField(max_length=18,required=True )
+    curp = forms.CharField(max_length=18,required=False )
     phone_number = forms.CharField(max_length=20, required=False)
-    picture = forms.ImageField()
-    ine = forms.ImageField()
+    picture = forms.ImageField(required=False)
+    ine = forms.ImageField(required=False)
+    fecha_nacimiento = forms.DateField(required=False)

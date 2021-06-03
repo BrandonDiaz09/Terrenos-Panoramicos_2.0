@@ -11,6 +11,7 @@
 
 body{
     background: #f7f8ec!important;
+    overflow-x:hidden;
 }
 .icono{
   fill: transparent;
@@ -106,7 +107,7 @@ svg{
   }
 }
 
-#Subtitulo{
+.Subtitulo{
 padding-left: 2.5%;
 font: normal normal bold 22px/30px Segoe UI;
 letter-spacing: 0px;
@@ -116,6 +117,8 @@ opacity: 1;
 
 #car1{
     background: #F7F8EC!important;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 
@@ -186,8 +189,8 @@ opacity: 1;
 }
 
 #TerrenosPanoramicos {
-  width: 370px;
-  height: 40px;
+  width: 250px;
+  height: 30px;
 }
 
 #main .carousel-inner img {
@@ -212,9 +215,13 @@ opacity: 1;
   color: white;
 }
 
-#carousel .overlay .container,
-#carousel .overlay .row {
-  height: 100%;
+.carousel .overlay .container-fluid,
+.carousel .overlay .row {
+  height: 250px;
+}
+
+.carousel .overlay .row {
+  height: 250px;
 }
 
 #place-time {
@@ -232,6 +239,44 @@ opacity: 1;
   font-size: 18px;
   background: white!important;
 }
+
+/* Buscador*/
+.buscador{
+  padding:10px;
+}
+.mensaje-busqueda{
+  font-size: 16px;
+}
+
+/* /Buscador*/
+
+/* list group */
+.ancla:before {       
+  display: block;       
+  content: " ";       
+  margin-top: -62px;       
+  height: 62px;       
+  visibility: hidden; 
+} 
+
+.list-gr{
+  padding: 2.2%;
+}
+
+.list-group a {
+  font-family: Segoe UI;
+  background: #91D2BD;
+}
+.list-group .disabled{
+  font-family: Segoe UI;
+  background: #c6c8ca !important;
+}
+
+.list-group a:hover{
+  background: #8dc9b6 ;
+}
+
+/* /list group */
 
 /* Carrusel */
 .carousel__contenedor {
@@ -282,7 +327,6 @@ opacity: 1;
 	background: none;
 	color: #201202;
 	opacity: 50%;
-  overflow: visible;
 }
 
 #carousel__anterior:hover,

@@ -64,6 +64,9 @@ letter-spacing: 0px;
 color: #344130;
 opacity: 1;
 }
+.card-inmueble{
+  padding: 15%;
+}
 
 .card-text{
    opacity: 1;
@@ -84,11 +87,6 @@ opacity: 1;
 }
 
 #descriptivo{
-top: 281px;
-margin-left: 130px;
-margin-bottom: 40px;
-width: 321px;
-height: 81px;
 text-align: left;
 font: normal normal normal 20px/27px Segoe UI Historic;
 letter-spacing: 0px;
@@ -97,10 +95,6 @@ opacity: 1;
 }
 
 #titulo{
-top: 53px;
-left: 139px;
-width: 526px;
-height: 242px;
 text-align: center;
 font: normal normal 900 90px/122px Segoe UI;
 font-size: 100px;
@@ -132,8 +126,8 @@ opacity: 1;
   font-weight: bold;
 }
 #TerrenosPanoramicos {
-width: 370px;
-height: 40px;
+width: 250px;
+height: 30px;
 }
 
 #footer {

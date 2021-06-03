@@ -8,44 +8,51 @@
 {% block container %}
 
 
-    {% comment %} {% if error %}
+    {% if error %}
         <p class="alert alert-danger">{{ error }}</p>
     {% endif %}
 
-    <form action="{% url 'signup' %}" method="POST">
+    <!-- <form action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
 
+        <div class="form-group mb-3">
+            <label for="floatingUsername">Username:</label>
+            <input class="form-control" id="floatingUsername" type="text" name="username" required="true" />
+        </div>
+        
         <div class="form-group">
-            <input class="form-control" type="text" placeholder="Nombre de Usuario" name="username" required="true" />
+            <label for="floatingEmail">Correo Electronico:</label>
+            <input class="form-control" id="floatingEmail" type="email"  name="correo_electrónico" required="true" />
+        </div>
+        <div class="form-group">
+            <label for="floatingPassword">Contraseña:</label>
+            <input class="form-control" id="floatingPassword" type="password" name="contraseña" required="true" />
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="password" placeholder="Contraseña" name="passwd" required="true" />
+            <label for="floatingPasswordConf">Confirmar contraseña:</label>
+            <input class="form-control" id="floatingPasswordConf" type="password" name="confirmar_contraseña" required="true" />
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="password" placeholder="Confirmar contraseña" name="passwd_confirmation" required="true" />
+            <label for="floatingName">Nombre(s):</label>
+            <input class="form-control" id="floatingName" type="text" name="nombre"required="true" />
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="text" placeholder="Nombre(s)" name="first_name" required="true" />
+            <label for="floatingApellidoP">Apellido Paterno:</label>
+            <input class="form-control" id="floatingApellidoP" type="text"  name="apellido_paterno" required="true" />
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="text" placeholder="Apellido Paterno" name="last_name" required="true" />
+            <label for="floatingApellidoM">Apellido Materno:</label>
+            <input class="form-control" id="floatingApellidoM" type="text" name="apellido_materno" required="true" />
         </div>
 
-        <div class="form-group">
-            <input class="form-control" type="text" placeholder="Apellido Materno" name="last_nameMa" required="true" />
-        </div>
-
-        <div class="form-group">
-            <input class="form-control" type="email" placeholder="Correo Electronico" name="email" required="true" />
-        </div>
 
         <button class="btn btn-primary btn-block mt-5" type="submit">Registrate!</button>
 
-    </form> {% endcomment %}
+    </form> -->
     <form action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
 

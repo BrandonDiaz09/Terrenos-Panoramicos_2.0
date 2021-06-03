@@ -8,73 +8,84 @@
 
 {% block container %}
     <!-- Central -->
- <div >
-    <div id="boro" class="container" style="margin-left: 0px;">
-      <div   class="row">
-        <div   class="col">
-          <h1 id="titulo" 
-              style="margin-left: 25px;">
-                  Terrenos en Venta
+<div id="boro" class="container-fluid" style="margin-left: 0px;">
+  <div   class="row justify-content-center">
+      <div   class="col-12 col-md-4">
+          <h1 id="titulo">
+                 <strong>Terrenos en Venta</strong>
           </h1>
           <p id="descriptivo">Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.</p>
           <a href="{% url 'catalogo' %}">
-            <button div="ingreso" 
-                    type="button" 
+            <button type="button" 
                     class="btn btn-brown" 
-                    style="margin:20px 0px 0px 350px;
-                          background: #A37A37;
+                    style="background: #A37A37;
                           color: #fff;
+                          margin-top: 20px;
                           ">Ingresar
           </button>
-        </a>  
-    </div>
-    <div class="col-md-auto">
-      <div class="card" style="width: 18rem; margin-top: 75px;">
-        <img class="card-img-top" src="https://www.abacobrasil.com.br/media/zoo/images/blog-10-motivos_ed66a93c7ccae03ce0b50e66bde6a064.jpg" 
-          alt="Card image cap"
-          width= "358px"
-              height= "150px">
-        <div class="card-body">
-          <p class="card-text">Construye la casa detu sueños</p>
-        </div>
+          </a>  
       </div>
-            <div class="card" style="width: 18rem; margin-top: 50px;">
-        <img class="card-img-top" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
-          alt="Card image cap"
-          
-          width= "358px"
-              height= "150px">
-        <div class="card-body">
-          <p class="card-text">Adquiere los más grandes</p>
-        </div>
-      </div>
-
-    </div>
-    <div class="col col-lg-2">
-      <div class="card" style="width: 18rem; margin-top: 75px;">
-        <img class="card-img-top" src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/land.jpg" 
-        alt="Card image cap"
-        width= "358px"
-        height= "150px">
-            <div class="card-body">
-                <p class="card-text">Ciembra tanto como quieras</p>
+      <div class="col-md-6">
+        <div class="row justify-content-around align-items-center">
+          <div class="col-md-3 ">
+            <div class="card-inmueble">
+              <div class="card">
+                <img class="card-img-top" src="https://www.abacobrasil.com.br/media/zoo/images/blog-10-motivos_ed66a93c7ccae03ce0b50e66bde6a064.jpg" 
+                  alt="Card image cap"
+                  width= "358px"
+                  height= "150px">
+                <div class="card-body">
+                  <p class="card-text">Construye la casa detu sueños</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="card-inmueble">
+              <div class="card" >
+                <img class="card-img-top" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
+                    alt="Card image cap"
+
+                    width= "358px"
+                     height= "150px">
+                <div class="card-body">
+                  <p class="card-text">Adquiere los más grandes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-md-3 ">
+            <div class="card-inmueble">
+              <div class="card">
+                <img class="card-img-top" src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/land.jpg" 
+                   alt="Card image cap"
+                   width= "358px"
+                   height= "150px">
+                <div class="card-body">
+                  <p class="card-text">Ciembra tanto como quieras</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="card-inmueble">
+              <div class="card">
+                <img class="card-img-top" src="https://www.cafeviena.pe/wp-content/uploads/2020/05/terrenos-5-678x381.jpg" 
+                  alt="Card image cap"
+                  width= "358px"
+                  height= "150px">
+                <div class="card-body">
+                  <p class="card-text">Consigue los lotes que quieras</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card" style="width: 18rem; margin-top: 50px;">
-  <img class="card-img-top" src="https://www.cafeviena.pe/wp-content/uploads/2020/05/terrenos-5-678x381.jpg" 
-    alt="Card image cap"
-    
-    
-    width= "358px"
-        height= "150px">
-  <div class="card-body">
-    <p class="card-text">Consigue los lotes que quieras</p>
-  </div>
-    </div>
   </div>
 </div>
-    </div>
-  </div>
     
     <!-- /Central -->
     
@@ -113,19 +124,19 @@
 
         <div class="image-stack">
           <div class="image-stack__item image-stack__item--top">
-            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+            <img src="{% static 'img/home/carpinteriah.jpg' %}" alt="">
           </div>
           <div class="image-stack__item image-stack__item--bottom">
-            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+            <img src="{% static 'img/home/carpinteria2.jpg' %}" alt="">
           </div>
         </div>
 
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
-        <h2 class="font-weight-bold mb-4 heading">Far far away, behind the word mountains</h2>
+        <h2 class="font-weight-bold mb-4 heading">Servicios de Carpinteria</h2>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+        <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Ingresar</a></p>
 
       </div>
       
@@ -138,13 +149,13 @@
     
     <div class="row feature align-items-center justify-content-between">
       <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
-        <img src="{% static 'img/home/portada_cons.jpg' %}" alt="Image" class="img-fluid">
+        <img src="{% static 'img/home/construccion.jpg' %}" alt="Image" class="img-fluid">
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
-        <h2 class="font-weight-bold mb-4">Far far away, behind the word mountains</h2>
+        <h2 class="font-weight-bold mb-4">Servicios de construcción de obra</h2>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+        <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Ingresar</a></p>
 
       </div>
       
@@ -159,19 +170,19 @@
 
         <div class="image-stack">
           <div class="image-stack__item image-stack__item--top">
-            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+            <img src="{% static 'img/home/acabados2.jpg' %}" alt="">
           </div>
           <div class="image-stack__item image-stack__item--bottom">
-            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+            <img src="{% static 'img/home/acabadosengeneralH.jpg' %}" alt="">
           </div>
         </div>
 
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
-        <h2 class="font-weight-bold mb-4 heading">Far far away, behind the word mountains</h2>
+        <h2 class="font-weight-bold mb-4 heading">Servcios de acabados en general</h2>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+        <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Ingresar</a></p>
 
       </div>
       
@@ -184,13 +195,13 @@
     
     <div class="row feature align-items-center justify-content-between">
       <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
-        <img src="{% static 'img/home/portada_cons.jpg' %}" alt="Image" class="img-fluid">
+        <img src="{% static 'img/home/arquitectura.jpg' %}" alt="Image" class="img-fluid">
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
-        <h2 class="font-weight-bold mb-4">Far far away, behind the word mountains</h2>
+        <h2 class="font-weight-bold mb-4">Servicios de Arquitectura</h2>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+        <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Ingresar</a></p>
 
       </div>
       
@@ -205,19 +216,19 @@
 
         <div class="image-stack">
           <div class="image-stack__item image-stack__item--top">
-            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+            <img src="{% static 'img/home/electricidadH.jpg' %}" alt="">
           </div>
           <div class="image-stack__item image-stack__item--bottom">
-            <img src="{% static 'img/home/portada_cons.jpg' %}" alt="">
+            <img src="{% static 'img/home/electricidad2.jpg' %}" alt="">
           </div>
         </div>
 
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
-        <h2 class="font-weight-bold mb-4 heading">Far far away, behind the word mountains</h2>
+        <h2 class="font-weight-bold mb-4 heading">Servicios de electricidad</h2>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+        <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Ingresar</a></p>
 
       </div>
       
@@ -230,13 +241,13 @@
     
     <div class="row feature align-items-center justify-content-between">
       <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
-        <img src="{% static 'img/home/portada_cons.jpg' %}" alt="Image" class="img-fluid">
+        <img src="{% static 'img/home/plomeria.jpg' %}" alt="Image" class="img-fluid">
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
-        <h2 class="font-weight-bold mb-4">Far far away, behind the word mountains</h2>
+        <h2 class="font-weight-bold mb-4">Servicios de plomeria</h2>
         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live.</p>
-        <p><a href="#" class="btn btn-primary">Get Started</a></p>
+        <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Ingresar</a></p>
 
       </div>
       

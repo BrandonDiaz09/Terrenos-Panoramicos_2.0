@@ -24,6 +24,8 @@ from ventas.models import Inmueble
 
 @login_required
 def catalogo_view(request):
+    mensaje = str
+    inmuebles = {}
     #Todos los inmuebles
     inmuebles_todos = Inmueble.objects.filter(status__exact='Oferta')
     #Inmuebles con una superfice menor a 250m
@@ -64,8 +66,11 @@ def catalogo_view(request):
             Q(price__icontains=querset) | 
             Q(totalprice__icontains=querset)
         ).distinct() 
-
-    return render(request, 'ventas/catalogo.html', {'inmuebles_todos':inmuebles_todos,
+        if not inmuebles:
+            mensaje = "Lo sentimos, no encontramos ningún inmuebles con esas características"
+    return render(request, 'ventas/catalogo.html', {'mensaje':mensaje,
+                                                    'inmuebles':inmuebles,
+                                                    'inmuebles_todos':inmuebles_todos,
                                                     'inmuebles_sup_menos250':inmuebles_sup_menos250,
                                                     'inmuebles_front_mas10':inmuebles_front_mas10,
                                                     'inmuebles_bot_mas15':inmuebles_bot_mas15,
