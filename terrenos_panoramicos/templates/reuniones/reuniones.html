@@ -4,15 +4,28 @@
 {%load static%}
 <title>Solicita Reunion</title>
 <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block container %}
-
+<div class="hero-slant overlay" data-stellar-background-ratio="0.5" style="background-image: url('{% static 'img/forms/portada_reunion.jpg' %}')">
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-6 pt-3 pb-3" id="profile-box">
-                <h4 class="mb-4">¡Agenda una reunión con nosotros!</h4>
-
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-7 intro text-center">
+            <h1 class="text-white font-weight-bold mb-4" data-aos="fade-up" data-aos-delay="0">¡Agenda una reunión!</h1>
+            <p class="text-white mb-4" data-aos="fade-up" data-aos-delay="100">Colocaa tres fechas para que nos podamos reunir y empezar a hacer tu sueño realidad. Trata de colocar fechas donde este libre para evitar cancelamientos.</p>            
+          
+           </div>
+        </div>        
+    </div>
+<div class="slant" style="background-image: url('{% static 'img/forms/slant-grey.svg' %}');"></div>
+    
+<div class="section-grey bg-light">
+<div style="background-color:#a9d6c9 ;" class="container p-5">
+    <div class="block">
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-10 col-md-6 pt-3 pb-3 " id="profile-box">
+                <img src="{% static 'img/logo.png' %}" class="img-fluid rounded mx-auto d-block pb-4" style="max-width: 60%;">
                 <form action="{% url 'solicitud_reunion'%}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
@@ -45,9 +58,11 @@
 
                 <div class="form-group">
                     <label>Primera Fecha:</label>
+                    
                     <input
                         class="form-control {% if form.primera_fecha.errors %}is-invalid{% endif %}"
-                        type="datetime"
+                        type="datetime-local"
+                        min="{{hoy}}"
                         name="primera_fecha"
                         placeholder="Primera fecha"
                     >
@@ -59,7 +74,8 @@
                     <label>Segunda Fecha:</label>
                     <input
                         class="form-control {% if form.segunda_fecha.errors %}is-invalid{% endif %}"
-                        type="datetime"
+                        type="datetime-local"
+                        min="{{hoy}}"
                         name="segunda_fecha"
                         placeholder="Segunda fecha"
                     >
@@ -72,7 +88,8 @@
                     <label>Tercera Fecha:</label>
                     <input
                         class="form-control {% if form.tercera_fecha.errors %}is-invalid{% endif %}"
-                        type="datetime"
+                        type="datetime-local"
+                        min="{{hoy}}"
                         name="tercera_fecha"
                         min="now"
                         placeholder="Tercera fecha"
@@ -84,8 +101,13 @@
 
                     <button type="submit" class="btn btn-primary btn-block mt-5">Enviar</button>
                 </form>
+
             </div>
         </div>
     </div>
+</div>
+</div>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
     
 {% endblock %}

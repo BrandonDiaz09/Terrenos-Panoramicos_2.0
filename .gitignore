@@ -1,6 +1,6 @@
 *.pyc
 *.cpython-37.pyc
-
+terrenos_panoramicos/db.sqlite3
 *.cpytho
 *.cpython-3
 /terrenos_panoramicos/terrenos_panoramicos/__pycache__/

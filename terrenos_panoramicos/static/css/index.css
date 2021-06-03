@@ -1,3 +1,6 @@
+body{
+  background-color:#f7f8ec!important ;
+}
 .card{
     border: 0px;
     background-color: transparent;
@@ -55,27 +58,89 @@ opacity: 1;
 }
 
 #TerrenosPanoramicos {
-  width: 370px;
-  height: 40px;
+  width: 250px;
+  height: 30px;
 }
-
-#main .carousel-inner img {
-  max-height: 250px;
-  object-fit: cover;
-  filter: grayscale(70%);
-}
-
-#place-time {
-  background-color: #343a40;
-  color: white;
-}
-
-#place-time img {
-  max-width: 100%;
-}
-
 #footer {
   padding: 90px 0;
   text-align: center;
   font-size: 18px;
 }
+/*Form*/
+/* .container .form{
+  background-color:;
+} */
+
+.hero-slant {
+  background-color: #ccc;
+  position: relative;
+  background-size: cover; }
+  .hero-slant.overlay {
+    position: relative; }
+    .hero-slant.overlay:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.35); }
+  .hero-slant .container {
+    position: relative; }
+  .hero-slant, .hero-slant > .container > .row {
+    height: 110vh; }
+  .hero-slant .sign-up-form {
+    padding: 10px;
+    border-radius: 7px;
+    background: #ffffff;
+    -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1); }
+    .hero-slant .sign-up-form .form-control {
+      border: none; }
+      .hero-slant .sign-up-form .form-control:active, .hero-slant .sign-up-form .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none; }
+    .hero-slant .sign-up-form input[type="submit"] {
+      -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 7px; }
+  .hero-slant .intro {
+    position: relative;
+    z-index: 2;
+    max-width: 500px; }
+  .hero-slant .hero_img {
+    position: absolute;
+    right: 0;
+    z-index: 9;
+    bottom: 100px; }
+    @media (max-width: 991.98px) {
+      .hero-slant .hero_img {
+        position: relative;
+        margin-top: -200px;
+        bottom: -100px;
+        margin-bottom: 140px; } }
+  .hero-slant .slant {
+    position: absolute;
+    width: calc(100% + 2px);
+    height: 380px;
+    bottom: -2px;
+    left: -2px;
+    z-index: 1;
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat; }
+
+.section-grey {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background: #f5f5f5; }
+  @media (max-width: 991.98px) {
+    .section-grey .img-wrap .img {
+      margin-top: 0; } }
+
+
+#profile-box form label{
+  font-size: 1.2rem;
+}
+/*/Form*/

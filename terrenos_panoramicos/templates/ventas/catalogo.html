@@ -4,6 +4,7 @@
 <title>Ventas|Terrenos Panoramicos</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="{% static 'css/Ventas.css' %}" >
+<link href="{% static 'css/aos.css' %}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
 {% endblock %}
@@ -16,138 +17,574 @@
           <div class="carousel-item active">
           <div style="
                       background: transparent linear-gradient(180deg, #91D2BD 48%, #AACA46 95%) 0% 0% no-repeat padding-box;">
-            <img src="{% static 'img/ventas/portada-ventas.jpg' %}" class="img-fluid  rounded mx-auto d-block">
+            <img src="{% static 'img/ventas/portada-ventas.jpg' %}" style="min-height: 240px;" class="img-fluid  rounded mx-auto d-block">
           </div>
           <div class="overlay" id="overlay">
-            <div class="container">
-              <div class="row align-items-center">
-                  <div class="col-md-6 offset-md-6 text-right">
-                    <h1 id="titulo">Los mejores predios del valle de Toluca</h1>
-                    <strong><p id="titulo_des" class="d-none d-md-block">
-                      Busca los inmuebles de tu preferencia en la barra de búsqueda y
-                      marca con un corazón los inmuebles que más te interesen, estos apareceran en tu perfil.
-                    </p></strong>
-                  </div>
+            <div class="container-fluid">
+              <div class="row justify-content-center align-items-center">
+                <!-- list group -->
+                <!-- /list group -->
+                <div class="col-12 col-md-5 order-md-1 align-self- text-right">
+                  <h1 id="titulo">Lo mejor del valle de Toluca</h1>
+                </div>
+                <div class="col-12 col-md-6">
+                  <strong><p id="titulo_des" class="d-none d-md-block">
+                    Busca los inmuebles de tu preferencia en la barra de búsqueda y
+                    marca con un corazón los inmuebles que más te interesen, estos apareceran en tu perfil.
+                  </p></strong>
+                </div>
               </div>
             </div>
           </div>               
-      </div>
-        <div class="wave" style="height: 60px; 
+      </div>  
+      <div class="wave" style="height: 60px; 
                                 overflow: hidden; 
                                 background-color: #AACA46">
         <svg viewBox="0 0 500 80" 
-                               5 preserveAspectRatio="none"
+        5 preserveAspectRatio="none"
             style="height: 100%; width: 100%;" >
-             <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,80.00 L0.00,80.00 Z"
+            <path id="cambio" d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,80.00 L0.00,80.00 Z"
              style="stroke: none; fill: #fff;"></path>
-        </svg>
-      </div>
-      </div>
+            </svg>
+          </div>
+        </div>
     </main>
     <!-- /Main -->
-
     <!-- Barra de busqueda -->
-
+    
     <div class="row justify-content-center">
-      <div class="col-md-4 offset-md-7">
-        <div class="container-fluid">
+      <div class="col-10 col-md-4 offset-md-7">
+        <div class="container buscador">
           <form class="d-flex" method="GET">
             <input class="form-control me-2" type="search" placeholder="Busca algún predio..." aria-label="Search" name="buscar"
-                   value="{{request.GET.buscar}}" >
+            value="{{request.GET.buscar}}" required>
             <button class="btn btn-success" type="submit">Buscar</button>
           </form>
         </div>
       </div>
     </div>
-
     <!-- /Barra de busqueda -->
-
-    <!--!Característica 1-->
-    <h2 id="Subtitulo">Inmuebles con área verde</h2>
     
-    <!--Carousel Wrapper-->
-{% comment %} <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel"> {% endcomment %}
+    {% if not inmuebles %}
+    {% if not mensaje %}
+      
+    <h2 class="Subtitulo ancla  id=""">Los inmuebles más buscados</h2>
+    <div class="row justify-content-around list-gr">
+      <div class="col-12 col-md">
+        <div class="list-group  start">
+          {% if inmuebles_todos %}
+          <a href="#todos" class="list-group-item list-group-item-action">Todos los inmuebles</a>
+          {% else %}
+          <a href="#todos" class="list-group-item list-group-item-action disabled">Todos los inmuebles</a>
 
-  <!--Controls-->
-  <!-- <div class="controls-top">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-        class="fas fa-chevron-right"></i></a>
-  </div> -->
-  <!--/.Controls-->
+          {% endif %}
+          {% if inmuebles_sup_menos250 %}
+          <a href="#superfice_menor_250" class="list-group-item list-group-item-action">Inmuebles con una superfice menor a 250 m²</a>
+          {% else %}
+          <a href="#superfice_menor_250" class="list-group-item list-group-item-action disabled">Inmuebles con una superfice menor a 250 m²</a>
 
-  <!--Slides-->
-  <div class="">
-    <div class="carousel__contenedor">
-      <button aria-label="Anterior" id="carousel__anterior">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-  
-      <div class="carousel__lista">
-        {% for inmueble in inmuebles %}
-                {% include "ventas/terreno.html" %}
-        {% endfor %}
+          {% endif %}
+          {% if inmuebles_front_mas10  %}
+          <a href="#frente_mayor_10" class="list-group-item list-group-item-action">Inmuebles con una frente mayor a 10m</a>
+            {% else %}
+          <a href="#frente_mayor_10" class="list-group-item list-group-item-action disabled">Inmuebles con una frente mayor a 10m</a>
+
+          {% endif %}
+          {% if inmuebles_precio_menos20k %}
+          <a href="#precio_menor_20k"  class="list-group-item list-group-item-action">Inmueble con un precio menor a 20 mil persos por metro cuandrado</a>
+          {% else %}
+          <a href="#precio_menor_20k"  class="list-group-item list-group-item-action disabled">Inmueble con un precio menor a 20 mil persos por metro cuandrado</a>
+
+          {% endif %}
+        </div>
       </div>
-  
-      <button aria-label="Siguiente" id="carousel__siguiente">
-        <i class="fas fa-chevron-right"></i>
-      </button>
+      <div class="col-12 col-md">
+        <div class="list-group ">
+          {% if inmuebles_rp_privada %}
+          <a href="#rg_privada" class="list-group-item list-group-item-action">Inmueble con con régimen proiedad privada</a>
+          {% else %}
+          <a href="#rg_privada" class="list-group-item list-group-item-action disabled">Inmueble con con régimen proiedad privada</a>
+
+          {% endif %}
+          {% if inmuebles_Totprecio_menos1m %}
+          <a href="#precio_total_menor_1M" class="list-group-item list-group-item-action">Inmueble con una precio total menor a $1,000,000.00 mxn</a>
+          {% else %}
+          <a href="#precio_total_menor_1M" class="list-group-item list-group-item-action disabled">Inmueble con una precio total menor a $1,000,000.00 mxn</a>
+
+          {% endif %}
+          {% if  inmuebles_us_ap %}
+          <a href="#us_aproductivas" class="list-group-item list-group-item-action">Inmuebles con uso de suelo actividades productivas</a>
+          {% else %}
+          <a href="#us_aproductivas" class="list-group-item list-group-item-action disabled">Inmuebles con uso de suelo actividades productivas</a>
+
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-12 col-md">
+        <div class="list-group  ">{% if inmuebles_rp_comunal %}
+          <a href="#rg_comunal" class="list-group-item list-group-item-action">Inmueble con régimen propiedad Comunal</a>
+          {% else %}
+          <a href="#rg_comunal" class="list-group-item list-group-item-action disabled">Inmueble con régimen propiedad Comunal</a>
+
+          {% endif %}
+          {% if inmuebles_us_equipamiento %}
+          <a href="#us_equipamiento" class="list-group-item list-group-item-action">Inmuebles con uso de suelo Equipamiento</a>
+          {% else %}
+          <a href="#us_equipamiento" class="list-group-item list-group-item-action disabled">Inmuebles con uso de suelo Equipamiento</a>
+
+          {% endif %}{% if inmuebles_us_infraestructura %}
+          <a href="#us_infraestructura" class="list-group-item list-group-item-action">Inmuebles con uso de suelo Infraestructura</a>
+          {% else %}
+          <a href="#us_infraestructura" class="list-group-item list-group-item-action disabled">Inmuebles con uso de suelo Infraestructura</a>
+
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-12 col-md">
+        <div class="list-group end">
+          {% if inmuebles_bot_mas15 %}
+          <a href="#fondo_mayor_16" class="list-group-item list-group-item-action">Inmueble con un fondo mayor a 15m</a>
+          {% else %}
+          <a href="#fondo_mayor_16" class="list-group-item list-group-item-actio disabledn">Inmueble con un fondo mayor a 15m</a>
+
+          {% endif %}
+          {% if inmuebles_rp_ejidal %}
+          <a href="#rg_ejidal" class="list-group-item list-group-item-action">inmueble con régimen proviedad Ejidal</a>
+          {% else %}
+          <a href="#rg_ejidal" class="list-group-item list-group-item-action disabled">inmueble con régimen proviedad Ejidal</a>
+
+          {% endif %}
+          {% if inmuebles_us_averde %}
+          <a href="#us_averde" class="list-group-item list-group-item-action">Inmuebles con uso de suelo Área Verde</a>
+          {% else %}
+          <a href="#us_averde" class="list-group-item list-group-item-action disabled">Inmuebles con uso de suelo Área Verde</a>
+
+          {% endif %}
+          {% if inmuebles_us_residencial %}
+          <a href="#us_residencial" class="list-group-item list-group-item-action">Inmuebles con uso de suelo Residencial</a>
+          {% else %}
+          <a href="#us_residencial" class="list-group-item list-group-item-action disabled">Inmuebles con uso de suelo Residencial</a>
+
+          {% endif %}
+        </div>
+      </div>
     </div>
-  
-    <div role="tablist" class="carousel__indicadores"></div>
-  </div>
-  
-  {% comment %}
-  <div class="carousel-inner" role="listbox">
+    {% endif %}
+    {% endif %}
+    <!-- Todos los inmuebles  -->
+      <!--Carousel Wrapper-->
 
-    <!--First slide-->
-    <div class="carousel-item active">
+    {% if inmuebles %}
+      <h2 class="Subtitulo ancla"id="todos">Tu busqueda ...</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior" >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div id="todos" class="carousel__lista">
+          {% for inmueble in inmuebles %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        <div></div>
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist"  class="carousel__indicadores"></div>
+      </div>
 
-     {% for inmueble in inmuebles %}
-                {% include "ventas/terreno.html" %}
-     {% endfor %}
-    <!--/.First slide-->
+      {% endif %}
 
-    <!--Second slide-->
-    <div id="car1" class="carousel-item"></div>
-    <!--/.Second slide-->
-    </div>
-    <!--/.Slides-->
-  </div>
-  {% endcomment %}
-<!--/.Carousel Wrapper-->
+      
+      {% if mensaje %}
+      <br>
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-5 mensaje-busqueda">
+          <div class="alert alert-danger" role="alert">
+            {{mensaje}}
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      {% endif %}
+        
     
-    <!-- /Característica 1 -->
-    {% comment %} <br>
-    <!Característica 2-->
-    <p id="Subtitulo">Característica 2</p>
-    <!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-  <!--Controls-->
-  <div class="controls-top">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
-  </div>
-  <!--/.Controls-->
-  <!--Indicators-->
-  <ol class="carousel-indicators">
-    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-    <li data-target="#multi-item-example" data-slide-to="1"></li>
-  </ol>
-  <!--/.Indicators-->
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-    <!--First slide--> 
-    </div>
-    <!--/.First slide-->
-    <!--Second slide-->
-    <div id="car1" class="carousel-item"></div>
-    <!--/.Second slide-->
-</div>
-  <!--/.Slides-->
-</div> 
+    {% if not inmuebles %}
+    {% if not mensaje %}
+      {% if inmuebles_todos %}
+      <h2 class="Subtitulo ancla"id="todos">Todos los inmuebles</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior" >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div id="todos" class="carousel__lista">
+          {% for inmueble in inmuebles_todos %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        <div></div>
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist"  class="carousel__indicadores"></div>
+      </div>
 
-{% endcomment %}
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con una superfice menor a 250m  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_sup_menos250 %}
+      <h2 class="Subtitulo ancla" id="superfice_menor_250">Inmuebles con una superfice menor a 250 m²</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior2">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista2">
+          {% for inmueble in inmuebles_sup_menos250 %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente2">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores2"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con una frente mayor a 10m  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_front_mas10 %}
+      <h2 class="Subtitulo ancla" id="frente_mayor_10">Inmuebles con una frente mayor a 10m</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior3">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista3">
+          {% for inmueble in inmuebles_front_mas10 %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente3">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores3"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmueble con un fondo mayor a 16m  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_bot_mas15 %}
+      <h2 class="Subtitulo ancla" id="fondo_mayor_16">Inmueble con un fondo mayor a 15m</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior4">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista4">
+          {% for inmueble in inmuebles_bot_mas15 %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente4">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores4"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmueble con un precio menor a 20 mil persos por metro cuandrado  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_precio_menos20k %}
+      <h2 class="Subtitulo ancla" id="precio_menor_20k">Inmueble con un precio menor a 20 mil persos por metro cuandrado</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior5">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista5">
+          {% for inmueble in inmuebles_precio_menos20k %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente5">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores5"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmueble con una precio total menor a un millón de pesos  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_Totprecio_menos1m %}
+      <h2 class="Subtitulo ancla" id="precio_total_menor_1M">Inmueble con una precio total menor a $1,000,000.00 mxn</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior6">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista6">
+          {% for inmueble in inmuebles_Totprecio_menos1m %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente6">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores6"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmueble con con régimen proiedad privada  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_rp_privada %}
+      <h2 class="Subtitulo ancla" id="rg_privada">Inmueble con con régimen proiedad "Privada"</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior7">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista7">
+          {% for inmueble in inmuebles_rp_privada %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente7">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores7"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- inmueble con régimen proviedad ejidal  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_rp_ejidal %}
+      <h2 class="Subtitulo ancla" id="rg_ejidal">inmueble con régimen proviedad "Ejidal"</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior8">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista8">
+          {% for inmueble in inmuebles_rp_ejidal %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente8">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores8"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmueble con régimen propiedad comunal  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_rp_comunal %}
+      <h2 class="Subtitulo ancla" id="rg_comunal">Inmueble con régimen propiedad "Comunal"</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior9">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista9">
+          {% for inmueble in inmuebles_rp_comunal %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente9">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores9"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con uso de suelo residencial  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_us_residencial %}
+      <h2 class="Subtitulo ancla" id="us_residencial">Inmuebles con uso de suelo Residencial</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior10">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista10">
+          {% for inmueble in inmuebles_us_residencial %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente10">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores10"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con uso de suelo actividades productivas  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_us_ap %}
+      <h2 class="Subtitulo ancla" id="us_aproductivas">Inmuebles con uso de suelo Actividades Productivas</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior11">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista11">
+          {% for inmueble in inmuebles_us_ap %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente11">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores11"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con uso de suelo Equipamiento  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_us_equipamiento %}
+      <h2 class="Subtitulo ancla" id="us_equipamiento">Inmuebles con uso de suelo Equipamiento</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior12">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista12">
+          {% for inmueble in inmuebles_us_equipamiento %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente12">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores12"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con uso de suelo Infraestructura  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_us_infraestructura %}
+      <h2 class="Subtitulo ancla" id="us_infraestructura">Inmuebles con uso de suelo Infraestructura</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior13">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista13">
+          {% for inmueble in inmuebles_us_infraestructura %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente13">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores13"></div>
+      </div>
+
+      {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- Inmuebles con uso de suelo Infraestructura  -->
+      <!--Carousel Wrapper-->
+      
+      {% if inmuebles_us_averde %}
+      <h2 class="Subtitulo ancla" id="us_averde">Inmuebles con uso de suelo Área Verde</h2>
+      <div class="carousel__contenedor">
+        <button aria-label="Anterior" id="carousel__anterior14">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel__lista14">
+          {% for inmueble in inmuebles_us_averde %}
+          {% include "ventas/terreno.html" %}
+          {% endfor %}
+        </div>
+        
+        <button aria-label="Siguiente" id="carousel__siguiente14">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        
+        <div role="tablist" class="carousel__indicadores14"></div>
+      </div>
+
+      {% endif %}
+    {% endif %}
+    {% endif %}
+      <!--/.Carousel Wrapper-->
+    <!-- /Característica 1 -->
 <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
 <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -157,5 +594,4 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="{% static 'js/index.js' %}"></script>
 {% endblock %}

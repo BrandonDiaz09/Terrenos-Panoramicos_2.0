@@ -51,9 +51,11 @@
             </div>
         </div>
     </div>
+
     
+    {% if  inmueble_interesado %}
     <div class="">
-        <p id="Subtitulo">Inmuebles que te interesan</p>
+        <p class="Subtitulo">Inmuebles que te interesan</p>
         <div class="carousel__contenedor">
             <button aria-label="Anterior" id="carousel__anterior">
                 <i class="fas fa-chevron-left"></i>
@@ -71,9 +73,13 @@
         </div>
       
         <div role="tablist" class="carousel__indicadores"></div>
+      
+    {% endif %}
+      
         
-        <!-- Tus inmuebles -->
-        <p id="Subtitulo">Tus inmuebles</p>
+        {% if inmuebles_creador %}
+        
+        <p class="Subtitulo">Tus inmuebles</p>
         <div class="carousel__contenedor">
             <button aria-label="Anterior" id="carousel__anterior2">
 
@@ -93,6 +99,9 @@
       
         <div role="tablist" class="carousel__indicadores2"></div>
       </div>
+        {% endif %}
+          
+        <!-- Tus inmuebles -->
       
 
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
@@ -104,3 +113,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     
     {% endblock %}
+    
+    {% block footer %}
+      
+    {% endblock footer %}
+      

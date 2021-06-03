@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'terrenos_panoramicos.middelware.ProfileCompletionMiddleware',
 ]
 
 ROOT_URLCONF = 'terrenos_panoramicos.urls'

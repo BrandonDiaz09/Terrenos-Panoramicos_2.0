@@ -15,7 +15,7 @@ from ventas.models import Inmueble
 #Forms
 from users.forms import ProfileForm, SignupForm
 
-
+from datetime import date
 # Create your views here.
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -72,8 +72,14 @@ def logout_view(request):
 
 @login_required
 def update_profile(request):
+    hoy = date.today()
+    max = hoy.year-18
+    fecha = hoy.replace(year=max)
+    fecha = fecha.isoformat()
 
     profile = request.user.profile
+    print(profile.born)
+    born = profile.born
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
@@ -84,6 +90,7 @@ def update_profile(request):
             profile.phone_number = data['phone_number']
             profile.ine = data['ine']
             profile.picture = data['picture']
+            profile.born = data['fecha_nacimiento']
             profile.save()
 
             url = reverse('detail', kwargs={'username': request.user.username})
@@ -96,6 +103,8 @@ def update_profile(request):
         request=request,
         template_name='users/update_profile.html',
         context={
+            'born':born,
+            'fecha':fecha,
             'form':form,
             'profile': profile,
             'user':request.user,

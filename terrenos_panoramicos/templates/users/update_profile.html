@@ -29,12 +29,29 @@
 
                     <div class="media-body">
                         <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
-                        <p class="ml-4"><input type="file" name="picture" required="true"></p>
+                        <p class="ml-4"><input type="file" name="picture"></p>
                     </div>
                 </div>
 
                 <hr><br>
-
+                <div class="alert alert-warning" role="alert">
+                * Recuerda que para poder accer al modulo Ofrecer o Reunión necesitas tener tu peril completo.
+                </div>
+                <hr><br>
+                <div class="form-group">
+                    <label>Fecha de nacimiento:</label>
+                    
+                    <input
+                        class="form-control {% if form.fecha_nacimiento.errors %}is-invalid{% endif %}"
+                        type="date"
+                        max="{{fecha}}"
+                        value="{{born|date:'Y-m-d'}}"
+                        name="fecha_nacimiento"
+                    >
+                    <div class="invalid-feedback">
+                        {% for error in form.primera_fecha.errors %}{{ error }}{% endfor %}
+                    </div>
+                </div>
                 <div class="form-group">
                     <label>CURP</label>
                     <input
@@ -52,8 +69,7 @@
                         class="form-control"
                         type="file" 
                         name="ine"
-                        placeholder="Fotografia de tu ine" 
-                        required="true">
+                        placeholder="Fotografia de tu ine" >
                 </div>
 
                 <div class="form-group">
@@ -67,7 +83,7 @@
                     />
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
+                <button type="submit" class="btn btn-primary btn-block mt-5">Actualizar información</button>
             </form>
         </div>
     </div>
