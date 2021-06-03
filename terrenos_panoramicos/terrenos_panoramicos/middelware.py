@@ -15,8 +15,10 @@ class ProfileCompletionMiddleware:
             if request.path in [reverse('solicitud_reunion'),reverse('ofrece')]:
                 if request.user.is_superuser:
                     return self.get_response(request)
-                profile = request.user.profile
-                if not profile.picture or not profile.born or not profile.phone_number or not profile.curp or not profile.ine:
-                    return redirect('update_profile')
+                
+                if request.user.profile:
+                    profile = request.user.profile
+                    if not profile.picture or not profile.born or not profile.phone_number or not profile.curp or not profile.ine:
+                        return redirect('update_profile')
         response = self.get_response(request)
         return response
