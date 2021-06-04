@@ -83,6 +83,16 @@ WSGI_APPLICATION = 'terrenos_panoramicos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': '281280',
+#         'USER': '281280',
+#         'PASSWORD': 'iAAxQ86C_P.pCw2',
+#         'HOST': 'sql5.terrenospanoramicos.freeoda.com',
+#         'PORT': '3306',
+#     }
+#     }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
