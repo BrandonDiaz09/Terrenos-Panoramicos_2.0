@@ -93,18 +93,23 @@ WSGI_APPLICATION = 'terrenos_panoramicos.wsgi.application'
 #         'PORT': '3306',
 #     }
 #     }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'sql5416508',
+#         'USER': 'sql5416508',
+#         'PASSWORD': 'UCzKCWLTls',
+#         'HOST': 'sql5.freesqldatabase.com',
+#         'PORT': '3306',
+#     }
+#     }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sql5416508',
-        'USER': 'sql5416508',
-        'PASSWORD': 'UCzKCWLTls',
-        'HOST': 'sql5.freesqldatabase.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
     }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
