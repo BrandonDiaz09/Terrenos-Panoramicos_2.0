@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from django.db.backends.mysql.base import DatabaseWrapper
-DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
+# from django.db.backends.mysql.base import DatabaseWrapper
+# DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +28,7 @@ SECRET_KEY = '(pji2t4plpbblp7re6mth7ny8mou%&w_oe#rpma1+ooxgjf-e$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['estuvofacil.com','34.70.228.140','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','estuvofacil.com','34.70.228.140','127.0.0.1']
 
 # Application definition
 
