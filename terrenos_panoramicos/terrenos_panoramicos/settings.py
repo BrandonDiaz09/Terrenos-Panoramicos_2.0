@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+from decouple import config
 
 from pathlib import Path
 # from django.db.backends.mysql.base import DatabaseWrapper
@@ -28,7 +29,7 @@ SECRET_KEY = '(pji2t4plpbblp7re6mth7ny8mou%&w_oe#rpma1+ooxgjf-e$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','estuvofacil.com','34.70.228.140','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -104,13 +105,27 @@ WSGI_APPLICATION = 'terrenos_panoramicos.wsgi.application'
 #     }
 #     }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+#     }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': config('DATABASE_HOST'), # Esto debería obtener 'tvision_dev_db' desde el archivo .env
+        'USER': config('DATABASE_USER'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'NAME': config('DATABASE_NAME'),
+        'PORT': '5432'
     }
-    }
+}
 
+
+print("*"*10)
+print(DATABASES)
+print("*"*10)
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
