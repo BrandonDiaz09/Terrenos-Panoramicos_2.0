@@ -1,0 +1,10 @@
+runtime: python39
+instance_class: F2
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: "terrenos_panoramicos.settings"
+  DATABASE_HOST: "/cloudsql/terra-385520:us-south1:terra-385520-sql-prod"
+  DATABASE_USER: "terravision-prod"
+  DATABASE_PASSWORD: "2014Mel&MeTVProd"
+  DATABASE_NAME: "terra-vision"
+  APPENGINE_URL: https://terra-385520.wn.r.appspot.com

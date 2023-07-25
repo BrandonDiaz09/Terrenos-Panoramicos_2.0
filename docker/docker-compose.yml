@@ -1,0 +1,37 @@
+version: "3.2"
+services:
+  tvision_dev_db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=tvision_db
+      - POSTGRES_USER=tvision_user
+      - POSTGRES_PASSWORD=2014Mel&MeTVProd
+    ports:
+      - 5432:5432
+    volumes:
+      - tvision_postgres_data:/var/lib/postgresql/data
+    networks:
+      - main
+  tvision_dev_app:
+    build:
+      context: ../terrenos_panoramicos
+      dockerfile: ../docker/django/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8001
+    networks:
+      - main
+    volumes:
+      - ../terrenos_panoramicos:/code
+    ports:
+      - 8001:8001
+      - 8080:8080
+    env_file:
+      - ./env/.env.dev
+    depends_on:
+      - tvision_dev_db
+
+networks:
+  main:
+volumes:
+  tvision_postgres_data:
+
+

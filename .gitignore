@@ -10,3 +10,16 @@ terrenos_panoramicos/db.sqlite3
 /terrenos_panoramicos/ventas/__pycache__/
 /terrenos_panoramicos/ventas/migrations/__pycache__/
 /terrenos_panoramicos/empresa/__pycache__/__init__.cpython-37.pyc
+env/
+## Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+.vscode/
+.env
+venv/
