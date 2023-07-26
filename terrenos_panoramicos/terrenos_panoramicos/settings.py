@@ -6,10 +6,12 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from google.oauth2 import service_account
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "(pji2t4plpbblp7re6mth7ny8mou%&w_oe#rpma1+ooxgjf-e$"
-
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    BASE_DIR / "terrenos_panoramicos" / "credentials.json"
+)
+SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
     "reuniones",
     "soporte",
     "django.contrib.gis",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -79,10 +82,6 @@ DATABASES = {
     }
 }
 
-
-print("*" * 10)
-print(DATABASES)
-print("*" * 10)
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -112,10 +111,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = "/static/"
 
-MEDIA_ROOT = BASE_DIR / "media"
-MEDIA_URL = "/media/"
+# Importaciones y demás configuraciones...
+
+GS_BUCKET_NAME = "django-qa"
+GS_LOCATION = "us-south1"
+STATIC_URL = "https://storage.googleapis.com/{}/static/".format(GS_BUCKET_NAME)
+MEDIA_URL = "https://storage.googleapis.com/{}/media/".format(GS_BUCKET_NAME)
+
+# Añade esta línea de código
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_DIRS = (BASE_DIR / "static",)
 STATICFILES_FINDERS = [
@@ -125,3 +130,9 @@ STATICFILES_FINDERS = [
 LOGIN_URL = "login"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+
+# Añade esta línea de código
+STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
