@@ -1,13 +1,22 @@
-body{
-  background: #F7F8EC!important;
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+:root {
+  --main-verde: #AACA46;
+  --main-crema: #F7F8EC;
+  --main-white: #F1EEEE;
+  --main-oliva: #344130;
 }
+body{
+  background: var(--main-crema)!important;
+}
+
 
 #Principal{
   top: 57px;
 left: 0.423828125px;
 width: 1366px;
 height: 408px;
-background: #F7F8EC 0% 0% no-repeat padding-box;
+background: var(--main-crema) 0% 0% no-repeat padding-box;
 opacity: 1;
 }
 
@@ -19,12 +28,12 @@ height: 27px;
 text-align: center;
 font: normal normal bold 20px/27px Segoe UI;
 letter-spacing: 0px;
-color: #F1EEEE!important;
+color: var(--main-white)!important;
 opacity: 1;
 }
 
 #boro{
-  background: linear-gradient(to bottom right, #AACA46, #AACA46 50%, #F7F8EC 50%, #F7F8EC 75%);
+  background: linear-gradient(to bottom right, var(--main-verde), var(--main-verde) 50%, var(--main-crema) 50%, var(--main-crema) 75%);
 }
 
 #diagonal{
@@ -32,7 +41,7 @@ top: 57px;
 left: -0.0002111196517944336px;
 width: 1366px;
 height: 408px;
-background: linear-gradient(to bottom right, #AACA46, #AACA46 50%, #F7F8EC 50%, #F7F8EC 75%);
+background: linear-gradient(to bottom right, var(--main-verde), var(--main-verde) 50%, var(--main-crema) 50%, var(--main-crema) 75%);
 
 opacity: 1;
 }
@@ -42,8 +51,8 @@ opacity: 1;
 text-align: center;
 font: normal normal bold 55px/73px Segoe UI;
 letter-spacing: 0px;
-color: #344130!important;
-background: #91D2BD!important;
+color: var(--main-oliva)!important;
+background: var(--main-verde)!important;
 opacity: 1;
 }
 
@@ -61,7 +70,7 @@ height: 81px;
 text-align: left;
 font: italic normal bold 20px/27px Segoe UI;
 letter-spacing: 0px;
-color: #344130;
+color: var(--main-oliva);
 opacity: 1;
 }
 .card-inmueble{
@@ -71,9 +80,14 @@ opacity: 1;
 .card-text{
    opacity: 1;
 }
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  max-height: 200px;
+}
 
 #elementos {
-background: transparent linear-gradient(180deg, #ACE14C 0%, #F7F8EC 100%) 0% 0% no-repeat padding-box;
+background: transparent linear-gradient(180deg, #ACE14C 0%, var(--main-crema) 100%) 0% 0% no-repeat padding-box;
 margin-top: 0px!important;
 }
 
@@ -90,7 +104,7 @@ opacity: 1;
 text-align: left;
 font: normal normal normal 20px/27px Segoe UI Historic;
 letter-spacing: 0px;
-color: #344130;
+color: var(--main-oliva);
 opacity: 1;
 }
 
@@ -99,15 +113,18 @@ text-align: center;
 font: normal normal 900 90px/122px Segoe UI;
 font-size: 100px;
 letter-spacing: 0px;
-color: #344130;
+color: var(--main-oliva);
 opacity: 1;
+line-height: 1;
+@media screen and (max-width: 1000px){
+  font-size: 80px;
+}
 }
 #titulo2{
   text-align: center;
   font: normal normal 750 45px/61px Segoe UI;
   letter-spacing: 0px;
-  color: #F7F8EC;
-  text-shadow: 1px 3px 6px #00000029;
+  text-shadow: 1px 3px 6px #000;
   opacity: 1;
   
   }
@@ -134,11 +151,11 @@ height: 30px;
 padding: 90px 0;
 text-align: center;
 font-size: 18px;
-background: white!important;
+background: var(--main-verde);
 }
 
 .service{
-  background:#AACA46;
+  background:var(--main-verde);
 }
 
 /* Construcción */
