@@ -18,3 +18,16 @@
     font-weight: 300;
     font-style: normal;
 }
+@font-face {
+    font-family: 'LibreCaslonText-Bold';
+    src: url('../fonts/LibreCaslonText-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LibreCaslonText-Regular';
+    src: url('../fonts/LibreCaslonText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
