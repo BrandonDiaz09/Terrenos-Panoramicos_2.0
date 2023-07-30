@@ -2,7 +2,7 @@ asgiref==3.3.4
 cachetools==5.3.1
 certifi==2023.7.22
 charset-normalizer==3.2.0
-Django==3.2
+Django==4.1
 django-storages==1.13.2
 google-api-core==2.11.1
 google-auth==2.22.0
@@ -26,3 +26,4 @@ rsa==4.9
 six==1.16.0
 sqlparse==0.4.1
 urllib3==1.26.16
+django-jsonify

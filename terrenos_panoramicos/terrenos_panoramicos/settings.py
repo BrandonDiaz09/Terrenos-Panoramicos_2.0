@@ -27,13 +27,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.gis",
+    "storages",
+    "jsonify",
     # Local Apps
     "ventas",
     "users",
     "reuniones",
     "soporte",
-    "django.contrib.gis",
-    "storages",
+    "sig",
 ]
 
 MIDDLEWARE = [
