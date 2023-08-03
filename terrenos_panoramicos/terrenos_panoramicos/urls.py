@@ -27,40 +27,52 @@ from ventas import views as catalogo_views
 from empresa import views as terrenospa_views
 from reuniones import views as reuniones_views
 from soporte import views as soporte_views
+from sig import views as sig_views
 
 urlpatterns = [
-    #Admin
-    path('admin/', admin.site.urls),
-
-    #Empresa
-    path('', terrenospa_views.home, name='home'),
-    path('ofrece/', terrenospa_views.ofrecer_predio, name ='ofrece'),
-    path('conocenos/', terrenospa_views.conocenos, name ='conocenos'),
-    
-    #Ventas
-    path('ventas/catalogo/', catalogo_views.catalogo_view , name ='catalogo' ),
-    path('ventas/catalogo/me_interesa', catalogo_views.me_interesa, name ='me_interesa' ),
-
-    #reuniones
-    path('reuniones/solicitud/', reuniones_views.solicitar_reunion,name='solicitud_reunion'),
-
-    #Soporte
-    path('faqs/', soporte_views.soporte_FAQ, name='faqs'),
-    path('faqs/crear', soporte_views.createFAQ, name='faqs_create'),
-    path('faqs/editar/<str:pk>', soporte_views.updateFAQ, name='faqs_update'),
-    path('faqs/borrar/<str:pk>', soporte_views.deleteFAQ, name='faqs_delete'),
-
-    path('reportes/', soporte_views.soporte_reporte, name='reporte'),
-    path('reportes/editar/<str:pk>', soporte_views.updateReporte, name='reporte_update'),
-    path('reportes/editar/<str:pk>', soporte_views.updateReporte_resuelto, name='reporte_resuelto'),
-    path('reportes/borrar/<str:pk>', soporte_views.deleteReporte, name='reporte_delete'),
-
-
-    #Users 
-    path('users/login/', users_views.login_view, name='login'),
-    path('users/logout/', users_views.logout_view, name='logout'),
-    path('users/signup/', users_views.signup_view, name='signup'),
-    path('users/me/profile/', users_views.update_profile, name='update_profile'),
-    path('<str:username>/', view=users_views.UserDetailView.as_view(), name='detail'),
-
+    # Admin
+    path("admin/", admin.site.urls),
+    # Empresa
+    path("", terrenospa_views.home, name="home"),
+    path("ofrece/", terrenospa_views.ofrecer_predio, name="ofrece"),
+    path("conocenos/", terrenospa_views.conocenos, name="conocenos"),
+    # Ventas
+    path("ventas/catalogo/", catalogo_views.catalogo_view, name="catalogo"),
+    path("ventas/catalogo/me_interesa", catalogo_views.me_interesa, name="me_interesa"),
+    # reuniones
+    path(
+        "reuniones/solicitud/",
+        reuniones_views.solicitar_reunion,
+        name="solicitud_reunion",
+    ),
+    # Soporte
+    path("faqs/", soporte_views.soporte_FAQ, name="faqs"),
+    path("faqs/crear", soporte_views.createFAQ, name="faqs_create"),
+    path("faqs/editar/<str:pk>", soporte_views.updateFAQ, name="faqs_update"),
+    path("faqs/borrar/<str:pk>", soporte_views.deleteFAQ, name="faqs_delete"),
+    path("reportes/", soporte_views.soporte_reporte, name="reporte"),
+    path(
+        "reportes/editar/<str:pk>", soporte_views.updateReporte, name="reporte_update"
+    ),
+    path(
+        "reportes/editar/<str:pk>",
+        soporte_views.updateReporte_resuelto,
+        name="reporte_resuelto",
+    ),
+    path(
+        "reportes/borrar/<str:pk>", soporte_views.deleteReporte, name="reporte_delete"
+    ),
+    # Users
+    path("users/login/", users_views.login_view, name="login"),
+    path("users/logout/", users_views.logout_view, name="logout"),
+    path("users/signup/", users_views.signup_view, name="signup"),
+    path("users/me/profile/", users_views.update_profile, name="update_profile"),
+    path("<str:username>/", view=users_views.UserDetailView.as_view(), name="detail"),
+    # Sig
+    path(
+        "sig/test2",
+        sig_views.view_all_geographical_properties,
+        name="view_all_geographical_properties",
+    ),
+    path("sig/test3", sig_views.MarkersMapView.as_view(), name="test3"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
