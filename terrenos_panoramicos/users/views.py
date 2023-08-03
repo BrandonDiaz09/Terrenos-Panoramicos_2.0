@@ -8,92 +8,96 @@ from django.urls import reverse
 from django.views.generic import DetailView
 
 
-#Models
+# Models
 from django.contrib.auth.models import User
 from ventas.models import Inmueble
 
-#Forms
+# Forms
 from users.forms import ProfileForm, SignupForm
 
 from datetime import date
+
 # Create your views here.
+
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     """User detail view."""
 
-    template_name = 'users/detail.html'
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+    template_name = "users/detail.html"
+    slug_field = "username"
+    slug_url_kwarg = "username"
     queryset = User.objects.all()
-    context_object_name = 'user'
+    context_object_name = "user"
 
     def get_context_data(self, **kwargs):
         """Add user's favorites to context."""
         context = super().get_context_data(**kwargs)
         user = self.get_object()
-        context['inmuebles_creador'] = Inmueble.objects.filter(user=user).order_by('-created')
-        context['inmueble_interesado'] = User.objects.get(id=user.pk).meInteresan.all()
+        context["inmuebles_creador"] = Inmueble.objects.filter(user=user).order_by(
+            "-created"
+        )
+        context["inmueble_interesado"] = User.objects.get(id=user.pk).meInteresan.all()
         return context
 
-def login_view(request):
 
-    if request.method=='POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username,password=password)
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('catalogo')
+            return redirect("catalogo")
         else:
-            return render(request, 'users/login.html', {'error' : 'Usuario o contraseña invalidos'})
-    return render(request, 'users/login.html')
+            return render(
+                request, "users/login.html", {"error": "Usuario o contraseña invalidos"}
+            )
+    return render(request, "users/login.html")
+
 
 def signup_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect("login")
     else:
         form = SignupForm()
 
     return render(
-        request=request,
-        template_name='users/signup.html',
-        context={'form': form}
+        request=request, template_name="users/signup.html", context={"form": form}
     )
 
 
 @login_required
 def logout_view(request):
-
     logout(request)
-    return redirect('login')
+    return redirect("login")
+
 
 @login_required
 def update_profile(request):
     hoy = date.today()
-    max = hoy.year-18
+    max = hoy.year - 18
     fecha = hoy.replace(year=max)
     fecha = fecha.isoformat()
 
     profile = request.user.profile
-    print(profile.born)
     born = profile.born
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.cleaned_data
 
-            profile.curp = data['curp']
-            profile.phone_number = data['phone_number']
-            profile.ine = data['ine']
-            profile.picture = data['picture']
-            profile.born = data['fecha_nacimiento']
+            profile.curp = data["curp"]
+            profile.phone_number = data["phone_number"]
+            profile.ine = data["ine"]
+            profile.picture = data["picture"]
+            profile.born = data["fecha_nacimiento"]
             profile.save()
 
-            url = reverse('detail', kwargs={'username': request.user.username})
+            url = reverse("detail", kwargs={"username": request.user.username})
             return redirect(url)
 
     else:
@@ -101,13 +105,12 @@ def update_profile(request):
 
     return render(
         request=request,
-        template_name='users/update_profile.html',
+        template_name="users/update_profile.html",
         context={
-            'born':born,
-            'fecha':fecha,
-            'form':form,
-            'profile': profile,
-            'user':request.user,
-        }
+            "born": born,
+            "fecha": fecha,
+            "form": form,
+            "profile": profile,
+            "user": request.user,
+        },
     )
-   

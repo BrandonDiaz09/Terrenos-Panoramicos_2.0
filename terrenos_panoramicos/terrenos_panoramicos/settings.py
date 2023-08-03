@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "storages",
-    "jsonify",
+    "rest_framework",
+    "rest_framework_gis",
     # Local Apps
     "ventas",
     "users",

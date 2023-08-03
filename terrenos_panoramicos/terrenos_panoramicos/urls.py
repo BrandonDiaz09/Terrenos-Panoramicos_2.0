@@ -69,7 +69,6 @@ urlpatterns = [
     path("users/me/profile/", users_views.update_profile, name="update_profile"),
     path("<str:username>/", view=users_views.UserDetailView.as_view(), name="detail"),
     # Sig
-    path("sig/test", sig_views.add_geographical_property, name="test"),
     path(
         "sig/test2",
         sig_views.view_all_geographical_properties,
