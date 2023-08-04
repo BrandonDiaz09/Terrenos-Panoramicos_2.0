@@ -18,6 +18,10 @@ class Inmueble(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    street = models.CharField(max_length=255, blank=True)
+    number_of = models.CharField(max_length=20, blank=True)
+    postal_code =models.CharField(max_length=10, blank=True)
+    paraje = models.CharField(max_length=255, blank=True)
 
     interesados = models.ManyToManyField(User, default = None, blank = True, related_name='meInteresan')
 
@@ -69,11 +73,12 @@ class Inmueble(models.Model):
     OFERTA = 'Oferta'
     SOLICITUD= 'Solicitud'
     VENDIDO='Vendido'
-    
+    SIG = 'Sig'
     STATUS = [
         (OFERTA,'Oferta'),
         (SOLICITUD,'Solicitud'),
-        (VENDIDO,'Vendido')
+        (VENDIDO,'Vendido'),
+        (SIG,'Sig')
     ]
 
     status = models.CharField(
@@ -81,7 +86,53 @@ class Inmueble(models.Model):
         choices=STATUS,
         default=SOLICITUD
     )
-    
+
+    TEPEXOYUCA = 'Tepexoyuca'
+    LOCATION = [
+        (TEPEXOYUCA,'Tepexoyuca'),
+
+        
+    ]
+    sig_location = models.CharField(
+        max_length=20,
+        choices=LOCATION,
+        null=True,
+        blank=True,
+    )
+
     def __str__(self ):
         
         return 'Inmueble de {}m de @{}'.format(self.surface, self.user.username)
+
+
+class State(models.Model):
+    name = models.CharField(max_length=255, blank=True)
+
+class Municipality(models.Model):
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, blank=True)
+    
+class PostalCode(models.Model):
+    postal_code =  models.CharField(max_length=10)
+    municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE, null=True, blank=True)
+    location = models.ForeignKey('Location', on_delete=models.CASCADE, related_name="postal_codes_auth")
+    
+class Location(models.Model):
+    name = models.CharField(max_length=255, blank=True)
+
+    
+class Colindancias(models.Model):
+    DATOS_PROPIETARIO = "Datos"
+    ANTERIOR = "Anterior"
+    STATUS = [
+        (ACTUAL,'Actual'),
+        (ANTERIOR,'Anterior'),
+        
+    ]
+
+    status = models.CharField(
+        max_length=15,
+        choices=STATUS,
+        null=True, blank=True)
+    sur = models.DecimalField(max_digits=6, decimal_places=2)
+    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE, related_name='inmueble')
