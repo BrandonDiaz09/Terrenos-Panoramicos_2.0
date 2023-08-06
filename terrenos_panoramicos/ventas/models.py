@@ -122,16 +122,16 @@ class Location(models.Model):
 
     
 class Colindancias(models.Model):
-    DATOS_PROPIETARIO = "Datos"
-    ANTERIOR = "Anterior"
+    DATOS_PROPIETARIO = "Prop"
+    DATOS_TERRAVISION = "TV"
     STATUS = [
-        (ACTUAL,'Actual'),
-        (ANTERIOR,'Anterior'),
+        (DATOS_PROPIETARIO,"Datos propietario"),
+        (DATOS_TERRAVISION,"Datos terravision"),
         
     ]
 
     status = models.CharField(
-        max_length=15,
+        max_length=20,
         choices=STATUS,
         null=True, blank=True)
     sur = models.DecimalField(max_digits=6, decimal_places=2)
