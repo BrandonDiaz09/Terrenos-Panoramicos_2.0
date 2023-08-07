@@ -131,8 +131,8 @@ class Colindancias(models.Model):
     ]
 
     status = models.CharField(
-        max_length=20,
+        max_length=45,
         choices=STATUS,
         null=True, blank=True)
     sur = models.DecimalField(max_digits=6, decimal_places=2)
-    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE, related_name='inmueble')
+    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE, related_name='inmueble',null=True, blank=True )

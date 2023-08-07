@@ -75,12 +75,10 @@ WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "HOST": config(
-            "DATABASE_HOST"
-        ),  # Esto debería obtener 'tvision_dev_db' desde el archivo .env
-        "USER": config("DATABASE_USER"),
-        "PASSWORD": config("DATABASE_PASSWORD"),
-        "NAME": config("DATABASE_NAME"),
+        "HOST": "35.232.4.188",  # Esto debería obtener 'tvision_dev_db' desde el archivo .env
+        "USER": "postgres",
+        "PASSWORD": "2014Mel&MeTVGis",
+        "NAME": "terravision_db",
         "PORT": "5432",
     }
 }
