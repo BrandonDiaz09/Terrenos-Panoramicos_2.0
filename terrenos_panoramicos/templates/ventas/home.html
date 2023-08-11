@@ -10,12 +10,14 @@
     <!-- Central -->
 <div id="boro" class="container-fluid" style="margin-left: 0px;">
   <div   class="row justify-content-center">
-      <div   class="col-12 col-md-5 p-4">
-          <h1 id="titulo">
-                 <strong>Terrenos en Venta</strong>
-          </h1>
-          <p id="descriptivo">Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.</p>
-          <a href="{% url 'catalogo' %}">
+      <div   class="col-12 p-4  justify-content-center">  {% comment %} antes col-md-5{% endcomment %}
+        <h1 id="titulo">
+                <strong>Terrenos en Venta</strong>
+        </h1>
+        <div class="d-flex flex-column align-items-center  container">
+          <div class="d-flex flex-column align-items-center mt-3">
+            <p id="descriptivo">Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.</p>
+            <a href="{% url 'catalogo' %}">
             <button type="button" 
                     class="btn btn-brown" 
                     style="background: #A37A37;
@@ -23,9 +25,11 @@
                           margin-top: 20px;
                           ">Saber más
           </button>
-          </a>  
+          </a> 
+          </div> 
+        </div>
       </div>
-      <div class="col-md-7">
+      {% comment %} <div class="col-md-7">
         <div class="row justify-content-start align-items-start">
           <div class="col-6 ">
             <div class="card-inmueble p-2">
@@ -73,7 +77,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
   </div>
 </div>
     

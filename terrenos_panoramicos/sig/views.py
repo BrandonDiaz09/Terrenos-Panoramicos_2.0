@@ -93,17 +93,29 @@ def view_all_geographical_properties(request):
             "ORIENTE": f"{colindancias_prop.este} metros",  # Agregar la información real aquí
             "PONIENTE": f"{colindancias_prop.oeste} metros",  # Agregar la información real aquí
         },
-        "datosMedicion": {
+        "imagenes": imagenes,
+        "datosGen": {
+            "title": "Datos Generales de Medicion",
             "NORTE": f"{colindancias_tv.norte} metros",
             "SUR": f"{colindancias_tv.sur} metros",
             "ORIENTE": f"{colindancias_tv.este} metros",
             "PONIENTE": f"{colindancias_tv.oeste} metros",
             "SUPERFICIE": f"{inmueble_mas_actual.surface} m²",
             "NOMBRE DEL ACTUAL POSEEDOR": f"{inmueble_mas_actual.user.username}",
+            "NOMBRE DEL ACTUAL POSEEDOR": "Eduardo Ramírez",
+        },
+        "detallePago": {
             "TOTAL A PAGAR": f"${random.randint(10000, 50000)}",
             "OBSERVACIONES": "Sin observaciones",
         },
-        "imagenes": imagenes,
+        "imagenes": {
+            "UBICACIÓN EN MUNICIPIO": "https://static.vecteezy.com/system/resources/previews/001/061/391/non_2x/architectural-blueprints-and-blueprint-rolls-with-drawing-instruments-photo.jpg",
+            "CROQUIS DE UBICACIÓN": "https://images.arq.com.mx/thumbnails/4/244331.jpg",
+            "CROQUIS DEL PREDIO": "https://marvich.cl/wp-content/uploads/2019/11/94911bdd6640f0dba85c698d13a7e900.gif",
+            "FOTO DEL PREDIO": "https://images.arq.com.mx/thumbnails/4/244331.jpg",
+            "ORTOFOTO": "https://topografiaygeosistemas.com/wp-content/uploads/2015/05/plano-topografico.jpg",
+            "FOTO DEL POSEDOR ACTUAL": "https://images.arq.com.mx/thumbnails/4/244331.jpg",
+        },
         "datosGen": {
             "title": "Datos Generales de Medicion",
             "REALIZO": "Axel Diaz",
