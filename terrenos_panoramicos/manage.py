@@ -6,9 +6,7 @@ from decouple import config, AutoConfig
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'terrenos_panoramicos.settings')
-    dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
-    AutoConfig(search_path=dotenv_path)
+    os.environ['DJANGO_SETTINGS_MODULE'] = config('DJANGO_SETTINGS_MODULE', default='terrenos_panoramicos.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
