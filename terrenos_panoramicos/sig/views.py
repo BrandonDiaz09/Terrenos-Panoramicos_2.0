@@ -46,6 +46,8 @@ def view_all_geographical_properties(request):
             "PONIENTE": f"{random.randint(100, 300)} metros",
             "SUPERFICIE": f"{random.randint(200, 500)} m²",
             "NOMBRE DEL ACTUAL POSEEDOR": "Eduardo Ramírez",
+        },
+        "detallePago": {
             "TOTAL A PAGAR": f"${random.randint(10000, 50000)}",
             "OBSERVACIONES": "Sin observaciones",
         },
@@ -56,9 +58,6 @@ def view_all_geographical_properties(request):
             "FOTO DEL PREDIO": "https://images.arq.com.mx/thumbnails/4/244331.jpg",
             "ORTOFOTO": "https://topografiaygeosistemas.com/wp-content/uploads/2015/05/plano-topografico.jpg",
             "FOTO DEL POSEDOR ACTUAL": "https://images.arq.com.mx/thumbnails/4/244331.jpg"
-        },
-        "tipo": {
-            "UBICACIÓN EN MUNICIPIO_IMG": "https://images.arq.com.mx/thumbnails/4/244331.jpg"
         },
         "datosGen":{
             "title":"Datos Generales de Medicion",

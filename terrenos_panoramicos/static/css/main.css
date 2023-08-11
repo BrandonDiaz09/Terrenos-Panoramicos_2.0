@@ -1,14 +1,24 @@
+:root {
+    --main-verde: #AACA46;
+    --main-crema: #F7F8EC;
+    --main-white: #F1EEEE;
+    --main-oliva: #344130;
+    --main-azul: #007bff;
+}
+
 html, body {
     background: #F7F8EC;
     height: 100%;
     width: 100%;
     font-family: 'Roboto', sans-serif;
+    max-height: 100vh;
 }
 
 #auth-container {
     background: #95cebc;
     border: 1px solid #e6e6e6;
     border-radius: 1px;
+    padding: 2rem;
 }
 
 

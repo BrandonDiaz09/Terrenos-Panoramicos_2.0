@@ -5,6 +5,7 @@
   --main-crema: #F7F8EC;
   --main-white: #F1EEEE;
   --main-oliva: #344130;
+  --main-azul: #007bff;
 }
 body{
   background: var(--main-crema)!important;

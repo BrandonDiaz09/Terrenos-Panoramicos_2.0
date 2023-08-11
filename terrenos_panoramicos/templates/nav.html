@@ -3,65 +3,71 @@
 <nav id="header" class="navbar navbar-expand-lg navbar-dark sticky-top p-0" style="background-color: #AACA46">
       <div class="container p-0">
         <a class="navbar-brand d-flex align-items-center" href="{% url "home" %}">
-          <img src="{% static "img/logo.png" %}" alt="logo_TerrenosPanorámicos" id="TerrenosPanoramicos" style=" height: 35px; width: auto; padding-right: .5rem;">
-          <p class="p-0 m-0" style="font-family: 'LibreCaslonText-Regular'; font-size: 2rem;">TerraVisión</p>
+          <img src="{% static "img/logo.png" %}" alt="logo_TerrenosPanorámicos" id="TerrenosPanoramicos" style=" height: 35px; width: auto; padding-right: .5rem; ">
+          <p class="p-0 m-0" style="font-family: 'LibreCaslonText-Regular'; font-size: 2rem; text-shadow: 0px -1px 3px #c3e3f4; color: #007bff;
+        }">TerraVisión</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-          <ul class="navbar-nav ml-auto align-items-center">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "home" %}"><img src="{% static "img/casa.png" %}" id="index-home" alt="Home"/></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url "catalogo" %}" id="menú">Ventas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "ofrece" %}" id="menú">Ofrece</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "conocenos" %}" id="menú">Conócenos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "faqs" %}" id="menú">Preguntas frecuentes</a>
-            </li>
-            
-            {% if request.user.profile.agente_soporte or request.user.profile.gerente_soporte  %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "reporte" %}" id="menú">Reportar</a>
-            </li>
-            
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "home" %}"><img src="{% static "img/casa.png" %}" id="index-home" alt="Home"/></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url "catalogo" %}" id="menú">Ventas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "ofrece" %}" id="menú">Ofrece</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "conocenos" %}" id="menú">Conócenos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "faqs" %}" id="menú">Preguntas frecuentes</a>
+                </li>
+                
+                {% if request.user.profile.agente_soporte or request.user.profile.gerente_soporte  %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "reporte" %}" id="menú">Reportar</a>
+                </li>
+                
+                {% endif %}
+                {% if not request.user.is_anonymous %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "view_all_geographical_properties" %}" id="menú">Mis mediciones</a>
+                </li>
             {% endif %}
-              
-            <li class="nav-item">
-              {% if request.user.is_anonymous %}
-                  <a class="nav-link" href="{% url 'login' %}">
-                      <img class="rounded-circle" src="{% static 'img/default-profile.png' %}" id="index-home" alt="user" />
-                  </a>
-              {% else %}
-                  <a class="nav-link" href="{% url 'detail' request.user.username %}">
-                      {% if request.user.profile.picture %}
-                          <img class="rounded-circle" src="{{ request.user.profile.picture.url }}" id="index-home" alt="user" />
-                      {% else %}
-                          <img class="rounded-circle" src="{% static 'img/default-profile.png' %}" id="index-home" alt="user" />
-                      {% endif %}
-                  </a>
-              {% endif %}
-          </li>
-          {% if not request.user.is_anonymous %}
-              <li class="nav-item">
-                  <a href="{% url "logout" %}">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
-                          <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-                      </svg>
-                  </a>
-              </li>
-          {% endif %}
-          
-          </ul>
+                <li class="nav-item">
+                    {% if request.user.is_anonymous %}
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <img class="rounded-circle" src="{% static 'img/default-profile.png' %}" id="index-home" alt="user" />
+                        </a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'detail' request.user.username %}">
+                            {% if request.user.profile.picture %}
+                                <img class="rounded-circle" src="{{ request.user.profile.picture.url }}" id="index-home" alt="user" />
+                            {% else %}
+                                <img class="rounded-circle" src="{% static 'img/default-profile.png' %}" id="index-home" alt="user" />
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                </li>
+
+                {% if not request.user.is_anonymous %}
+                    <li class="nav-item">
+                        <a href="{% url "logout" %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                            </svg>
+                        </a>
+                    </li>
+                {% endif %}
+            
+            </ul>
         </div>
       </div>
     </nav>
