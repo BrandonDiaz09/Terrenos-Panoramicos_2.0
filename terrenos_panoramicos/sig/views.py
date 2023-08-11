@@ -90,3 +90,37 @@ def view_all_geographical_properties(request):
         {"dataState":json.dumps(dataState),
         "dataInmueble": dataInmueble},
     )
+
+
+def owners_list(request):
+    import random
+
+    dataList = {
+        "Axel": {
+            "calle": "Calle Benito Juárez",
+            "Numero Oficial": "123",
+            "Codigo Postal": "52740",
+        },
+        "Mel": {
+            "calle": "Calle Benito Juárez",
+            "Numero Oficial": "123",
+            "Codigo Postal": "52740",
+        },
+        "Bran": {
+            "calle": "Calle Benito Juárez",
+            "Numero Oficial": "123",
+            "Codigo Postal": "52740",
+        },
+        "Juve": {
+            "calle": "Calle Benito Juárez",
+            "Numero Oficial": "123",
+            "Codigo Postal": "52740",
+        },
+    }
+
+
+    return render(
+        request,
+        "sig/owners_list.html", 
+        {"dataState": dataList},
+    )

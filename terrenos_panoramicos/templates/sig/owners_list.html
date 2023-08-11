@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>Conócenos</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" >
+{% endblock %}
+
+{% block container %}
+<!-- Main -->
+<section id="page-hero">
+  <div class="site-inner">
+    <header>
+      <div class="brand-logo">
+        <img src="{% static 'img/logo.png' %}" class="img-fluid rounded mx-auto d-block pb-4" style="max-width: 15vw;">
+      </div>
+    </header>
+
+    <h1 class=" heading h-01">Lista de Propietarios</h1>
+    <p class="sub-header copy-02">Somos una microempresa que piensa en la población en general, que se adapta a los cambios de un Ordenamiento Territorial con miras al futuro. Una herramienta indispensable para el sector inmobiliario. Un escaparate para las personas que buscan un nuevo hogar con un mejor ámbito geográfico.</p>
+    <a class="arrow-down">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="arrow-down" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve" class=" iconic-injected-svg inject-me">
+        <path id="circle" d="M0.2,27.4c-0.2-1.9-0.3-3.4,0-5.3c0.1-0.4,0.2-0.8,0.2-1.1C2.2,9.1,12.3,0.2,24.3,0c8.2-0.1,14.9,3,20.1,9.4  c3,3.8,4.6,8.2,5.3,12.9c0.1,2.5,0.1,2.5,0,4.7c-0.1,0.5-0.2,0.8-0.2,1.3C47.7,40.2,37.9,49.1,26,49.5c-10,0.3-17.5-4-22.7-12.6  C1.5,34,0.7,30.7,0.2,27.4z M2.3,24.7c-0.2,11.6,9.2,22.7,22.6,22.7c13.2,0,22.6-10.7,22.6-22.6c0-12-9.4-22.7-22.6-22.7  C11.4,2.1,2.2,13.3,2.3,24.7z"></path>
+        <path id="arrow" class="st0" d="M31.8,23.4c-0.2-0.3-0.6-0.3-0.9-0.1l-6,5l-6-5c-0.3-0.2-0.7-0.2-0.9,0.1c-0.2,0.3-0.2,0.7,0.1,0.9l6.5,5.4   c0.1,0.1,0.3,0.1,0.4,0.1c0.1,0,0.3,0,0.4-0.1l6.5-5.4C31.9,24,32,23.6,31.8,23.4z"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="page-about" class="section">
+  <div class="site-inner">
+    <h1 class="heading h-01">A TU SERVICIO</h1>
+
+
+    <p class="copy-01">Nuestro equipo esta integrado por expertos de diferentes disciplinas. La diversidad profesional enriquece y aporta distintas perspectivas y fortalece la homogeneidad en todos los sectores. Desde la adquisición de tu inmueble hasta la construcción de tu hogar regularizado ante los diferentes sectores de Gobierno.</p>
+    <p class="copy-01">Sólo tienes que entrar en nuestra página. Así podrás encontrar el inmueble que estás buscando. Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.</p>
+    <div class="columns">
+      <aside>
+        <h3 class="heading h-03">FILOSOFÍA</h3>
+        <p class="copy-02">Satisfacer las necesidades de nuestros clientes con inmediatez. Conjugar el esfuerzo humano con las nuevas tecnologías. Nuestro principal pilar en el Portal es Profesionalismo, Dedicación y Constancia.</p>
+      </aside>
+
+      <aside>
+        <h3 class="heading h-03">MISIÓN</h3>
+        <p class="copy-02"> Ofrecer predios con características excepcionales a precios accesibles. Para lograrlo, hemos establecido en todos los miembros de nuestro equipo honestidad e integridad para ofrecer nuestros servicios pensando en la sustentabilidad, bienestar y confianza en nuestros clientes.</p>
+      </aside>
+
+      <aside>
+        <h3 class="heading h-03">VISIÓN</h3>
+        <p class="copy-02"> Ser los mejores de la región, promoviendo inmuebles y servicios administrativos para mejorar la calidad de vida de nuestros clientes y a la vez pensando en un crecimiento urbano ordenado.</p>
+      </aside>
+      
+    </div class="columns">
+      <sec>
+        <h3 class="heading h-03" style="margin-top: 20px;">PRINCIPIOS Y VALORES</h3>
+        <p class="copy-02" style="font-size: 18px;"><ul>
+          <li>Basado en los principios de honestidad y ética de todos nuestros integrantes.</li>
+          <li>Apolítica. Sin fines gremiales ni ideas religiosas o filosóficas.</li>
+          <li>Respeto, calidad humana pertenencia e igualdad de oportunidades para los integrantes, comprometidos con su Visión y Misión.</li>
+        </ul></p>
+      </sec>
+    </div>
+      
+    </div>
+</section>
+
+{% endblock container %}

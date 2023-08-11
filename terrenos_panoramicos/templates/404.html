@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.ico' %}"/>
+<title>{{exception}}</title>
+<link rel="stylesheet" href="{% static 'css/Beta-css.css' %}" >
+{% endblock %}
+
+{% block container %}
+<style>
+    body{
+        overflow-x:hidden;
+    }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row justify-content-center">
+        <div class="col-10 col-md-6 shadow p-3 mb-5 bg-transparent rounded">
+            <div class="alert alert-danger fs-1" role="alert">
+                <h1>
+                    Pagina no encontrada 
+                    <a href="{% url "home" %}"><img src="{% static "img/casa.png" %}" id="index-home" alt="Home"/>Regresar al inicio </a>
+                </h1>
+              </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock footer %}
+    
