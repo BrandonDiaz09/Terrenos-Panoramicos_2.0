@@ -94,7 +94,7 @@ def view_all_geographical_properties(request):
             "PONIENTE": f"{colindancias_prop.oeste} metros",  # Agregar la información real aquí
         },
         "imagenes": imagenes,
-        "datosGen": {
+        "datosTerra": {
             "title": "Datos Generales de Medicion",
             "NORTE": f"{colindancias_tv.norte} metros",
             "SUR": f"{colindancias_tv.sur} metros",
@@ -136,28 +136,26 @@ def view_all_geographical_properties(request):
 
 
 def owners_list(request):
-    import random
-
     dataList = {
         "Axel": {
             "calle": "Calle Benito Juárez",
-            "Numero Oficial": "123",
-            "Codigo Postal": "52740",
+            "numero_oficial": "123",
+            "codigo_postal": "52740",
         },
         "Mel": {
             "calle": "Calle Benito Juárez",
-            "Numero Oficial": "123",
-            "Codigo Postal": "52740",
+            "numero_oficial": "123",
+            "codigo_postal": "52740",
         },
         "Bran": {
             "calle": "Calle Benito Juárez",
-            "Numero Oficial": "123",
-            "Codigo Postal": "52740",
+            "numero_oficial": "123",
+            "codigo_postal": "52740",
         },
         "Juve": {
             "calle": "Calle Benito Juárez",
-            "Numero Oficial": "123",
-            "Codigo Postal": "52740",
+            "numero_oficial": "123",
+            "codigo_postal": "52740",
         },
     }
 
@@ -165,5 +163,5 @@ def owners_list(request):
     return render(
         request,
         "sig/owners_list.html", 
-        {"dataState": dataList},
+        {"dataList": dataList},
     )

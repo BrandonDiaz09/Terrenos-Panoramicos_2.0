@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link href="{% static 'css/all_properties.css' %}" rel="stylesheet" type="text/css"/>
-
+    <link rel="stylesheet" href="{% static 'css/all_properties.css' %}"
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
@@ -34,7 +34,7 @@
                 <tbody>
                     {% for campo, valor in dataInmueble.datosGenerales.items %}
                     <tr>
-                        <th>{{ campo|title }}</th>
+                        <th class="colored" >{{ campo|title }}</th>
                         <td>{{ valor }}</td>
                     </tr>
                     {% endfor %}
@@ -45,9 +45,9 @@
             <h2>DATOS GENERALES DEL INMUEBLE REGISTRADA POR LA EMPRESA</h2>
             <table class="table table-bordered">
                 <tbody>
-                    {% for campo, valor in dataInmueble.datosMedicion.items %}
+                    {% for campo, valor in dataInmueble.datosTerra.items %}
                     <tr>
-                        <th>{{ campo|title }}</th>
+                        <th class="colored">{{ campo|title }}</th>
                         <td>{{ valor }}</td>
                     </tr>
                     {% endfor %}
@@ -55,7 +55,7 @@
             </table>
         </div>
 
-        {% comment %} <div class="container">
+         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for caption, image_url in dataInmueble.imagenes.items %}
                     <div class="col mb-4">
@@ -68,8 +68,8 @@
                     </div>
                 {% endfor %}
             </div>
-        </div> {% endcomment %}
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        </div> 
+        {% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 {% for caption, image_url in dataInmueble.imagenes.items %}
                     <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
@@ -93,7 +93,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
+        </div> {% endcomment %}
         
 
         
@@ -102,7 +102,7 @@
                 <tbody>
                     {% for campo, valor in dataInmueble.detallePago.items %}
                     <tr>
-                        <th>{{ campo|title }}</th>
+                        <th class="colored">{{ campo|title }}</th>
                         <td>{{ valor }}</td>
                     </tr>
                     {% endfor %}
@@ -169,12 +169,12 @@
         
             // Crear el mapa en el div con el ID 'map'
             var mymap = L.map('map', {
-                minZoom: 5
+                minZoom: 15, maxZoom: 20 
             });
         
             // Ahora usa la función para obtener el centro del polígono
             let center = getCenter(latlngs);
-            mymap.setView(center, 7);
+            mymap.setView(center, 18);
         
             // Agregar una capa de mapa base de OpenStreetMap
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap);
