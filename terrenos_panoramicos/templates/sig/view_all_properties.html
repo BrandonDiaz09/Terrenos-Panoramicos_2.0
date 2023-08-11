@@ -1,212 +1,196 @@
-<!-- templates/sig/view_all_properties.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View All Geographical Properties</title>
-    <!-- Agregar las referencias a los archivos de Bootstrap -->
+
+
+{% extends "base.html" %}
+
+{% block head_content %}
+{%load static%}
+    <title>Mis mediciones</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
     <!-- Agregar las referencias a los archivos de Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    {% block head_content %}{% endblock %}
-
-    {% load static %}
+    <link href="{% static 'css/all_properties.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/all_properties.css' %}"
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
-    <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
 
-    <style>
-        /* Agregar un estilo para el contenedor del mapa */
-        #map {
-            height: 60vh;
-            margin-top: 20px;
-        }
-        th {
-            width : 35%;
-        }
-        .card-container{
-            display: flex;
-            max-width:100%;
-        }
-    </style>
-</head>
-<body>
+{% block container %}
+<!-- Main -->
+<section id="page-hero">
+    <div class="site-inner">
 
-    {% include "nav.html"%}
+        <pre id="json-data" style="display:none;">{{ dataState|safe }}</pre>
+        <!-- Agrega una sección para mostrar los nombres en una tabla -->
 
-    <pre id="json-data" style="display:none;">{{ dataState|safe }}</pre>
-    <!-- Agrega una sección para mostrar los nombres en una tabla -->
-    {% load static %}
+        
+        <div class="container mt-5">
+            <h2>DATOS GENERALES DEL INMUEBLE SEGÚN DOCUMENTACION</h2>
+            <table class="table table-bordered">
+                <tbody>
+                    {% for campo, valor in dataInmueble.datosGenerales.items %}
+                    <tr>
+                        <th class="colored" >{{ campo|title }}</th>
+                        <td>{{ valor }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container mt-5">
+            <h2>DATOS GENERALES DEL INMUEBLE REGISTRADA POR LA EMPRESA</h2>
+            <table class="table table-bordered">
+                <tbody>
+                    {% for campo, valor in dataInmueble.datosTerra.items %}
+                    <tr>
+                        <th class="colored">{{ campo|title }}</th>
+                        <td>{{ valor }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    
-    <div class="container mt-5">
-        <h2>DATOS GENERALES DEL INMUEBLE SEGÚN DOCUMENTACION</h2>
-        <table class="table table-bordered">
-            <tbody>
-                {% for campo, valor in dataInmueble.datosGenerales.items %}
-                <tr>
-                    <th>{{ campo|title }}</th>
-                    <td>{{ valor }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <div class="container mt-5">
-        <h2>DATOS GENERALES DEL INMUEBLE REGISTRADA POR LA EMPRESA</h2>
-        <table class="table table-bordered">
-            <tbody>
-                {% for campo, valor in dataInmueble.datosMedicion.items %}
-                <tr>
-                    <th>{{ campo|title }}</th>
-                    <td>{{ valor }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    {% comment %} <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-            {% for caption, image_url in dataInmueble.imagenes.items %}
-                <div class="col mb-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="{{ image_url }}" alt="{{ caption }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ caption }}</h5>
+         <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                {% for caption, image_url in dataInmueble.imagenes.items %}
+                    <div class="col mb-4">
+                        <div class="card" style="width: 100%;">
+                            <img class="card-img-top" src="{{ image_url }}" alt="{{ caption }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ caption }}</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div> {% endcomment %}
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            {% for caption, image_url in dataInmueble.imagenes.items %}
-                <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
-            {% endfor %}
-        </ol>
-        <div class="carousel-inner">
-            {% for caption, image_url in dataInmueble.imagenes.items %}
-                <div class="carousel-item {% if loop.first %}active{% endif %}">
-                    <img src="{{ image_url }}" alt="{{ caption }}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ caption }}</h5>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    
-
-    
-    <div class="container mt-5">
-        <table class="table table-bordered">
-            <tbody>
-                {% for campo, valor in dataInmueble.detallePago.items %}
-                <tr>
-                    <th>{{ campo|title }}</th>
-                    <td>{{ valor }}</td>
-                </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            </div>
+        </div> 
+        {% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for caption, image_url in dataInmueble.imagenes.items %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% for caption, image_url in dataInmueble.imagenes.items %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ image_url }}" alt="{{ caption }}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ caption }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div> {% endcomment %}
+        
 
-    <!-- Agregar un div para el mapa -->
-    <div id="map" class="container mb-1"></div>
-    
-    <div class="container mt-5">
-        <h2>Nota</h2>
-        <p>{{ dataInmueble.Nota }}</p>
-    </div>
+        
+        <div class="container mt-5">
+            <table class="table table-bordered">
+                <tbody>
+                    {% for campo, valor in dataInmueble.detallePago.items %}
+                    <tr>
+                        <th class="colored">{{ campo|title }}</th>
+                        <td>{{ valor }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    {% block footer %}
-        {% include "footer.html" %}
-    {% endblock footer %}
+        <!-- Agregar un div para el mapa -->
+        <div class="container p-2">
+            <div id="map"></div>
+        </div>
+        
+        <div class="container mt-5">
+            <h2>Nota</h2>
+            <p>{{ dataInmueble.Nota }}</p>
+        </div>
 
-    <script>
-        let jsonElement = document.getElementById('json-data');
-        let jsonText;
-        jsonElement.textContent ? jsonText=jsonElement.textContent: console.log("Error al leer el JSON");
-        const jsonObject = JSON.parse(jsonText);
+        <script>
+            let jsonElement = document.getElementById('json-data');
+            let jsonText;
+            jsonElement.textContent ? jsonText=jsonElement.textContent: console.log("Error al leer el JSON");
+            const jsonObject = JSON.parse(jsonText);
+            
+            // Obtener las coordenadas del polígono
+            const coordinates = jsonObject.geometry.coordinates[0];
         
-        // Obtener las coordenadas del polígono
-        const coordinates = jsonObject.geometry.coordinates[0];
-    
-        // Crear un array para almacenar las coordenadas en formato Leaflet
-        var latlngs = [];
-        for (var i = 0; i < coordinates.length; i++) {
-            latlngs.push([coordinates[i][1], coordinates[i][0]]);
-        }
-    
-        // Función para calcular el centro del conjunto de coordenadas
-        function getCenter(coords) {
-            let x = 0, y = 0, z = 0;
-            let rad = Math.PI / 180; // <-- Mueve esta línea aquí
+            // Crear un array para almacenar las coordenadas en formato Leaflet
+            var latlngs = [];
+            for (var i = 0; i < coordinates.length; i++) {
+                latlngs.push([coordinates[i][1], coordinates[i][0]]);
+            }
         
-            coords.forEach(coord => {
-                let latitude = coord[0], longitude = coord[1];
+            // Función para calcular el centro del conjunto de coordenadas
+            function getCenter(coords) {
+                let x = 0, y = 0, z = 0;
+                let rad = Math.PI / 180; // <-- Mueve esta línea aquí
+            
+                coords.forEach(coord => {
+                    let latitude = coord[0], longitude = coord[1];
+            
+                    let lat = latitude * rad;
+                    let lon = longitude * rad;
+            
+                    let a = Math.cos(lat) * Math.cos(lon);
+                    let b = Math.cos(lat) * Math.sin(lon);
+                    let c = Math.sin(lat);
+            
+                    x += a;
+                    y += b;
+                    z += c;
+                });
+            
+                x /= coords.length;
+                y /= coords.length;
+                z /= coords.length;
+            
+                let lon = Math.atan2(y, x);
+                let hyp = Math.sqrt(x * x + y * y);
+                let lat = Math.atan2(z, hyp);
+            
+                return [lat / rad, lon / rad];
+            }
+            
         
-                let lat = latitude * rad;
-                let lon = longitude * rad;
-        
-                let a = Math.cos(lat) * Math.cos(lon);
-                let b = Math.cos(lat) * Math.sin(lon);
-                let c = Math.sin(lat);
-        
-                x += a;
-                y += b;
-                z += c;
+            // Crear el mapa en el div con el ID 'map'
+            var mymap = L.map('map', {
+                minZoom: 15, maxZoom: 20 
             });
         
-            x /= coords.length;
-            y /= coords.length;
-            z /= coords.length;
+            // Ahora usa la función para obtener el centro del polígono
+            let center = getCenter(latlngs);
+            mymap.setView(center, 18);
         
-            let lon = Math.atan2(y, x);
-            let hyp = Math.sqrt(x * x + y * y);
-            let lat = Math.atan2(z, hyp);
+            // Agregar una capa de mapa base de OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap);
         
-            return [lat / rad, lon / rad];
-        }
-        
-    
-        // Crear el mapa en el div con el ID 'map'
-        var mymap = L.map('map', {
-            minZoom: 5
-        });
-    
-        // Ahora usa la función para obtener el centro del polígono
-        let center = getCenter(latlngs);
-        mymap.setView(center, 7);
-    
-        // Agregar una capa de mapa base de OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap);
-    
-        // Agregar el polígono al mapa
-        var polygon = L.polygon(latlngs, { color: '#AACA46' }).addTo(mymap);
-        
-        // Inicialización del carrusel
-        document.addEventListener('DOMContentLoaded', function () {
-            var carouselElement = document.getElementById('carouselExampleIndicators');
-            var carousel = new bootstrap.Carousel(carouselElement, {
-                interval: 2000
+            // Agregar el polígono al mapa
+            var polygon = L.polygon(latlngs, { color: '#AACA46' }).addTo(mymap);
+            
+            // Inicialización del carrusel
+            document.addEventListener('DOMContentLoaded', function () {
+                var carouselElement = document.getElementById('carouselExampleIndicators');
+                var carousel = new bootstrap.Carousel(carouselElement, {
+                    interval: 2000
+                });
             });
-        });
-    </script>
-    
-</body>
-</html>
+        </script>
+    </div>
+</section>
 
+{% endblock %}

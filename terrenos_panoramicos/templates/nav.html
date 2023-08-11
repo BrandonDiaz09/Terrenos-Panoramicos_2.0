@@ -13,9 +13,9 @@
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto align-items-center">
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" href="{% url "home" %}"><img src="{% static "img/casa.png" %}" id="index-home" alt="Home"/></a>
-                </li>
+                </li> {% endcomment %}
                 <li class="nav-item">
                 <a class="nav-link" href="{% url "catalogo" %}" id="menú">Ventas</a>
                 </li>
@@ -36,10 +36,13 @@
                 
                 {% endif %}
                 {% if not request.user.is_anonymous %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url "view_all_geographical_properties" %}" id="menú">Mis mediciones</a>
-                </li>
-            {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "view_all_geographical_properties" %}" id="menú">Mis mediciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "owners_list" %}" id="menú">Lista</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     {% if request.user.is_anonymous %}
                         <a class="nav-link" href="{% url 'login' %}">
@@ -48,7 +51,7 @@
                     {% else %}
                         <a class="nav-link" href="{% url 'detail' request.user.username %}">
                             {% if request.user.profile.picture %}
-                                <img class="rounded-circle" src="{{ request.user.profile.picture.url }}" id="index-home" alt="user" />
+                                <img class="rounded-circle" src="{{ request.user.profile.picture.url }}" id="index-home" alt="user" style="width: 1.5rem !important; height: 1.5rem !important;" />
                             {% else %}
                                 <img class="rounded-circle" src="{% static 'img/default-profile.png' %}" id="index-home" alt="user" />
                             {% endif %}

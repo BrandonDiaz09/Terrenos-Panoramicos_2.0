@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+  {%load static%}
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.ico' %}"/>
+  <title>Lista</title>
+  <link href="{% static 'css/all_properties.css' %}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'css/all_properties.css' %}"
+{% endblock %}
+
+{% block container %}
+<!-- Main -->
+<section id="page-hero">
+  <div class="site-inner">
+    <header class="p-4">
+      <h2 style="text-align:center">Lista de propietarios</h2>
+    </header>
+
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="page-about" class="section">
+  <div class="site-inner">
+
+    <div class="container mt-5">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Calle</th>
+            <th>Numero Oficial</th>
+            <th>Codigo Postal</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for nombre, datos in dataList.items %}
+            <tr>
+              <td><a href="{% url 'view_all_geographical_properties' %}">{{ nombre }}</a></td>
+                <td>{{ datos.calle }}</td>
+                <td>{{ datos.numero_oficial }}</td>
+                <td>{{ datos.codigo_postal }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    
+    
+    
+    
+
+  </div>
+</section>
+
+{% endblock container %}

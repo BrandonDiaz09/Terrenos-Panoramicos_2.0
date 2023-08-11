@@ -28,6 +28,11 @@ from empresa import views as terrenospa_views
 from reuniones import views as reuniones_views
 from soporte import views as soporte_views
 from sig import views as sig_views
+from errores.views import error_404_view, error_403_view
+
+
+handler404 = error_404_view
+handler403 = error_403_view
 
 urlpatterns = [
     # Admin
@@ -70,9 +75,14 @@ urlpatterns = [
     path("<str:username>/", view=users_views.UserDetailView.as_view(), name="detail"),
     # Sig
     path(
-        "sig/test2",
+        "sig/mediciones",
         sig_views.view_all_geographical_properties,
         name="view_all_geographical_properties",
+    ),
+    path(
+        "sig/lista-propietarios",
+        sig_views.owners_list,
+        name="owners_list",
     ),
     path("sig/test3", sig_views.MarkersMapView.as_view(), name="test3"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
