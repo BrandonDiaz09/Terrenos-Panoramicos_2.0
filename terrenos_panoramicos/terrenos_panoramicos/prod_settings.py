@@ -15,7 +15,12 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["terravision-c7yvkfhtla-uc.a.run.app", "terravisiongis.com"]
+ALLOWED_HOSTS = [
+    "terravision-c7yvkfhtla-uc.a.run.app",
+    "terravisiongis.com",
+    "*",
+    "0.0.0.0",
+]
 print(ALLOWED_HOSTS)
 # Application definition
 
@@ -73,13 +78,13 @@ TEMPLATES = [
 WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'HOST': '/cloudsql/' + config('INSTANCE_CONNECTION_NAME_PROD'),
-        'NAME': config('DATABASE_NAME_PROD'),
-        'USER': config('DATABASE_USER_PROD'),
-        'PASSWORD': config('DATABASE_PASSWORD_PROD'),
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "HOST": config("INSTANCE_CONNECTION_NAME_PROD"),
+        "NAME": config("DATABASE_NAME_PROD"),
+        "USER": config("DATABASE_USER_PROD"),
+        "PASSWORD": config("DATABASE_PASSWORD_PROD"),
+        "PORT": "5432",
     }
 }
 print(DATABASES)
