@@ -13,7 +13,7 @@ python manage.py makemigrations --no-input
 python manage.py migrate
 
 # Imprime el puerto para propósitos de depuración
-echo "Port: $PORT"
+echo "Port: 8001"
 
 # Inicia Gunicorn en el puerto definido por la variable $PORT
-exec gunicorn terrenos_panoramicos.wsgi:application --bind 0.0.0.0:$PORT
+exec gunicorn terrenos_panoramicos.wsgi:application --bind 0.0.0.0:8001

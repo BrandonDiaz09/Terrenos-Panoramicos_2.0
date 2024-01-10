@@ -12,6 +12,10 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     BASE_DIR / "terrenos_panoramicos" / "credentials.json"
 )
 SECRET_KEY = config("SECRET_KEY")
+DATABASE_USER = config("DATABASE_USER_PROD")
+DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
+DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
+DATABASE_HOST_PROD = config("DATABASE_HOST_PROD")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -21,7 +25,7 @@ ALLOWED_HOSTS = [
     "*",
     "0.0.0.0",
 ]
-print(ALLOWED_HOSTS)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -77,17 +81,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 
+# DATABASE_USER = config("DATABASE_USER_PROD")
+# DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
+# DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "HOST": config("INSTANCE_CONNECTION_NAME_PROD"),
-        "NAME": config("DATABASE_NAME_PROD"),
-        "USER": config("DATABASE_USER_PROD"),
-        "PASSWORD": config("DATABASE_PASSWORD_PROD"),
+        "HOST": DATABASE_HOST_PROD,
+        "NAME": DATABASE_NAME_PROD,
+        "USER": DATABASE_USER,
+        "PASSWORD": DATABASE_PASSWORD,
         "PORT": "5432",
     }
 }
-print(DATABASES)
+# print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 

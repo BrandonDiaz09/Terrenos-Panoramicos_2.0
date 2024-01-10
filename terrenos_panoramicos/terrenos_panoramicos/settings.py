@@ -20,6 +20,12 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # Local Apps
+    "ventas",
+    "users",
+    "reuniones",
+    "soporte",
+    "sig",
     # Django apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -31,12 +37,6 @@ INSTALLED_APPS = [
     "storages",
     "rest_framework",
     "rest_framework_gis",
-    # Local Apps
-    "ventas",
-    "users",
-    "reuniones",
-    "soporte",
-    "sig",
 ]
 
 MIDDLEWARE = [
@@ -77,8 +77,8 @@ DATABASES = {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "postgres",
         "USER": "postgres",
-        "HOST": "/cloudsql/terra-385520:us-central1:terravision-prod",
-        # "HOST": "35.232.4.188",
+        # "HOST": "/cloudsql/terra-385520:us-central1:terravision-prod",
+        "HOST": "35.232.4.188",
         "PASSWORD": "2014Mel&MeTVGis",
         "PORT": "5432",
     }
