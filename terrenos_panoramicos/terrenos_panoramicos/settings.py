@@ -20,6 +20,12 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # Local Apps
+    "ventas",
+    "users",
+    "reuniones",
+    "soporte",
+    "sig",
     # Django apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -31,12 +37,6 @@ INSTALLED_APPS = [
     "storages",
     "rest_framework",
     "rest_framework_gis",
-    # Local Apps
-    "ventas",
-    "users",
-    "reuniones",
-    "soporte",
-    "sig",
 ]
 
 MIDDLEWARE = [
@@ -75,12 +75,11 @@ WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "HOST": config(
-            "DATABASE_HOST"
-        ),  # Esto debería obtener 'tvision_dev_db' desde el archivo .env
-        "USER": config("DATABASE_USER"),
-        "PASSWORD": config("DATABASE_PASSWORD"),
-        "NAME": config("DATABASE_NAME"),
+        "NAME": "postgres",
+        "USER": "postgres",
+        # "HOST": "/cloudsql/terra-385520:us-central1:terravision-prod",
+        "HOST": "35.232.4.188",
+        "PASSWORD": "2014Mel&MeTVGis",
         "PORT": "5432",
     }
 }
