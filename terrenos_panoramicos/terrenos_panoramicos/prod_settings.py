@@ -23,10 +23,12 @@ ALLOWED_HOSTS = [
     "terravision-c7yvkfhtla-uc.a.run.app",
     "terravisiongis.com",
     "*",
-    "0.0.0.0",
+    "34.31.38.196",
+    "10.128.0.2"
 ]
 
 # Application definition
+CSRF_TRUSTED_ORIGINS = ['http://34.31.38.196']
 
 INSTALLED_APPS = [
     # Django apps
