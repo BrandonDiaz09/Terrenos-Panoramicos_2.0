@@ -2,8 +2,6 @@ from decouple import config
 
 from pathlib import Path
 
-import os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 from google.oauth2 import service_account
@@ -24,11 +22,11 @@ ALLOWED_HOSTS = [
     "terravisiongis.com",
     "*",
     "34.31.38.196",
-    "10.128.0.2"
+    "10.128.0.2",
 ]
 
 # Application definition
-CSRF_TRUSTED_ORIGINS = ['http://34.31.38.196']
+CSRF_TRUSTED_ORIGINS = ["http://34.31.38.196"]
 
 INSTALLED_APPS = [
     # Django apps
