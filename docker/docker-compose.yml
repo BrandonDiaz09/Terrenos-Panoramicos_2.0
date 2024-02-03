@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   tvision_dev_db:
-    image: postgis/postgis:14-3.1 # Utiliza la imagen que incluye PostGIS
+    image: postgis/postgis:14-3.1
     environment:
       - POSTGRES_DB=tvision_db
       - POSTGRES_USER=tvision_user
@@ -33,5 +33,3 @@ networks:
   main:
 volumes:
   tvision_postgres_data:
-
-

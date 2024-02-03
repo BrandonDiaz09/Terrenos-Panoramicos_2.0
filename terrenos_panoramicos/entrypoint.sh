@@ -5,7 +5,7 @@ set -e
 
 # Recopilación de archivos estáticos
 echo "Recopilando archivos estáticos..."
-# python manage.py collectstatic --no-input
+python manage.py collectstatic --no-input
 
 # Realiza migraciones de la base de datos
 echo "Realizando migraciones..."
