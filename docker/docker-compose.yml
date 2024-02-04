@@ -5,7 +5,7 @@ services:
     environment:
       - POSTGRES_DB=tvision_db
       - POSTGRES_USER=tvision_user
-      - POSTGRES_PASSWORD=2014Mel&MeTVProd
+      - POSTGRES_PASSWORD=random-contraseña-terra
     ports:
       - 5432:5432
     volumes:

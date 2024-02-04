@@ -1,26 +1,56 @@
-*.pyc
-*.cpython-37.pyc
-terrenos_panoramicos/db.sqlite3
-*.cpytho
-*.cpython-3
-/terrenos_panoramicos/terrenos_panoramicos/__pycache__/
-/terrenos_panoramicos/empresa/__pycache__/
-/terrenos_panoramicos/users/__pycache__/
-/terrenos_panoramicos/users/migrations/__pycache__/
-/terrenos_panoramicos/ventas/__pycache__/
-/terrenos_panoramicos/ventas/migrations/__pycache__/
-/terrenos_panoramicos/empresa/__pycache__/__init__.cpython-37.pyc
-env/
-## Django ###
-*.log
-*.pot
+# Bytecode de Python
 *.pyc
 __pycache__/
-local_settings.py
-db.sqlite3
+*.pyo
+*.pyd
+
+# Archivos de base de datos de SQLite (si se usa)
+/terrenos_panoramicos/db.sqlite3
 db.sqlite3-journal
-media
-.vscode/
-.env
+
+# Carpetas de entorno virtual
+env/
 venv/
+ENV/
+
+# Archivos de credenciales y configuraciones locales
+.venv
+.env
 /terrenos_panoramicos/terrenos_panoramicos/credentials.json
+local_settings.py
+
+# Directorio para archivos subidos por los usuarios en desarrollo
+/media/
+
+# Archivos de configuración de IDE y editores
+.vscode/
+.idea/
+*.swp
+
+# Archivos específicos de Django
+*.log
+*.pot
+
+# Migraciones de la aplicación 'users' (opcional, depende de tu flujo de trabajo)
+#/terrenos_panoramicos/users/migrations/*.py
+# NOTA: Comentar la línea anterior si prefieres versionar tus migraciones
+
+# Caché de __pycache__ para diferentes aplicaciones
+/terrenos_panoramicos/*/migrations/__pycache__/
+/terrenos_panoramicos/*/__pycache__/
+
+# Directorio para archivos estáticos recolectados
+/staticfiles/
+
+# Si estás utilizando Docker, podrías querer excluir también
+Dockerfile
+.dockerignore
+docker-compose.yml
+# NOTA: Solo excluye estos archivos si no deseas que estén en tu repositorio
+
+# Archivos temporales o de caché
+*.log
+*.tmp
+*.tmp.*
+temp/
+tmp/

@@ -10,7 +10,7 @@
     <!-- Central -->
 <div id="boro" class="container-fluid" style="margin-left: 0px;">
   <div   class="row justify-content-center">
-      <div   class="col-12 p-4  justify-content-center">  {% comment %} antes col-md-5{% endcomment %}
+      <div   class="col-12 p-4  justify-content-center">
         <h1 id="titulo">
                 <strong>Terrenos en Venta</strong>
         </h1>
@@ -39,7 +39,7 @@
       <div class="container">
         <div class="row">
       <div class="col-lg-7 mx-auto text-center">
-        <h2 id="titulo2" class="text-white mb-4">Nuestros Servicios de Construcción</h2>
+        <h2 id="titulo2" class="text-white mb-4">Nuestros Servicios</h2>
       </div>
     </div>
   </div>
@@ -57,26 +57,33 @@
   </div>
 </div>
 <!-- Topografía -->
-<div class="features-lg">
+
+<!-- Carpinteria -->
+<div class="features-lg ">
   <div class="container">
-    
     <div class="row feature align-items-center justify-content-between">
-      <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
-        <img src="{% static "img/home/topo-example.jpg" %}" alt="Image" class="image-stack__item image-stack__item--top" width="128" height="128" >
-        
+      <div class="col-lg-7 section-stack order-lg-2 mb-4 mb-lg-0 position-relative" data-aos="fade-up" data-aos-delay="0">
+
+        <div class="image-stack">
+          <div class="image-stack__item image-stack__item--top">
+            <img src="{% static "img/home/product-example.jpeg" %}" alt="">
+          </div>
+          <div class="image-stack__item image-stack__item--bottom">
+            <img src="{% static "img/home/product-example-2.jpeg" %}" alt="">
+          </div>
+        </div>
+
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         
         <h2 class="font-weight-bold mb-4">Topografía</h2>
         <p class="mb-4">Agregamos un toque de precisión y eficiencia a tus proyectos con nuestros servicios de topografía. Nuestro equipo altamente capacitado y equipado con tecnología de vanguardia se encargará de proporcionarte datos geoespaciales precisos y detallados para mejorar la planificación y ejecución de tus proyectos.</p>
-        {% comment %} <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Saber más</a></p> {% endcomment %}
-
       </div>
       
     </div>
-
   </div>
 </div>
+
 
 <!-- Carpinteria -->
 <div class="features-lg ">
@@ -98,32 +105,10 @@
         
         <h2 class="font-weight-bold mb-4 heading">Carpinteria</h2>
         <p class="mb-4">Dale vida a tus espacios con nuestros servicios de carpintería. Creamos muebles a medida que se adaptan a tus necesidades y gustos personales. Ya sea que necesites una nueva cocina, muebles de oficina o armarios personalizados, nuestro equipo de carpinteros expertos se encargará de hacer realidad tus sueños.</p>
-        {% comment %} <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Saber más</a></p> {% endcomment %}
 
       </div>
       
     </div>
-  </div>
-</div>
-
-<!-- Obra -->
-<div class="features-lg">
-  <div class="container">
-    
-    <div class="row feature align-items-center justify-content-between">
-      <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
-        <img src="{% static 'img/home/construccion.jpg' %}" alt="Image" class="img-fluid">
-      </div>
-      <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
-        
-        <h2 class="font-weight-bold mb-4">Construcción de Obra</h2>
-        <p class="mb-4">Construimos proyectos sólidos y duraderos para tu hogar o negocio. Contamos con experiencia en obras de diferentes escalas, desde pequeñas renovaciones hasta construcciones completamente nuevas. Confía en nuestro equipo de expertos para llevar a cabo tu proyecto de manera eficiente y satisfactoria.</p>
-        {% comment %} <p><a href="{% url 'catalogo' %}" class="btn btn-primary">Saber más</a></p> {% endcomment %}
-
-      </div>
-      
-    </div>
-
   </div>
 </div>
 
