@@ -7,8 +7,7 @@ import json
 from django.core.serializers import serialize
 from django.views.generic.base import TemplateView
 import random
-from ventas.models import Inmueble, Colindancias
-from sig.models import Perimeter
+from ventas.models import Inmueble
 
 
 class MarkersMapView(TemplateView):
@@ -28,29 +27,13 @@ def view_all_geographical_properties(request):
 
     try:
         inmueble_mas_actual = Inmueble.objects.latest("created")
-        # Filter Colindancias instances with the "Datos propietario" status
-        colindancias_prop = Colindancias.objects.filter(
-            inmueble=inmueble_mas_actual, status=Colindancias.DATOS_PROPIETARIO
-        ).first()
-        perimetro = inmueble_mas_actual.perimeter.all().first()
-        colindancias_tv = Colindancias.objects.filter(
-            inmueble=inmueble_mas_actual, status=Colindancias.DATOS_TERRAVISION
-        ).first()
-
         datos_generales = inmueble_mas_actual
-        if perimetro is not None:
-            perimetro_queryset = Perimeter.objects.filter(pk=perimetro.pk)
-            geojson = serialize("geojson", [perimetro])
-            geojson_data = json.loads(geojson)
-            feature = geojson_data["features"][0]
-            dataState = {"type": "Feature", "geometry": feature["geometry"]}
-        else:
-            perimetro_queryset = []
-            return render(
-                request,
-                "403.html",
-                {},
-            )
+        perimetro_queryset = []
+        return render(
+            request,
+            "403.html",
+            {},
+        )
     except Inmueble.DoesNotExist:
         # Manejar la situación en la que no hay inmuebles en la base de datos
         return render(
