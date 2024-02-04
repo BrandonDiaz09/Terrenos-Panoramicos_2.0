@@ -17,67 +17,11 @@
         <div class="d-flex flex-column align-items-center  container">
           <div class="d-flex flex-column align-items-center mt-3">
             <p id="descriptivo">Sé el primero en descubrir nuevas propiedades y no pierdas ni un segundo en encontrar la tuya.</p>
-            {% comment %} <a href="{% url 'catalogo' %}">
-            <button type="button" 
-                    class="btn btn-brown" 
-                    style="background: #A37A37;
-                          color: #fff;
-                          margin-top: 20px;
-                          ">Saber más
-          </button>
-          </a>  {% endcomment %}
           </div> 
         </div>
       </div>
-      {% comment %} <div class="col-md-7">
-        <div class="row justify-content-start align-items-start">
-          <div class="col-6 ">
-            <div class="card-inmueble p-2">
-              <div class="card w-100">
-                <img class="card-img-top w-100" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
-                  alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Construye la casa de tu sueños</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 ">
-            <div class="card-inmueble p-2">
-              <div class="card w-100">
-                <img class="card-img-top w-100" src="https://www.grupofarko.com/hs-fs/hubfs/terreno%20de%20inversion%20premium.jpg?width=1200&name=terreno%20de%20inversion%20premium.jpg" 
-                  alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Adquiere los más grandes</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-start align-items-start">
+    
 
-          <div class="col-6 ">
-            <div class="card-inmueble p-2">
-              <div class="card w-100">
-                <img class="card-img-top w-100" src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/land.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Ciembra tanto como quieras</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 ">
-            <div class="card-inmueble p-2">
-              <div class="card w-100" >
-                <img class="card-img-top w-100" src="https://www.cafeviena.pe/wp-content/uploads/2020/05/terrenos-5-678x381.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Consigue los lotes que quieras</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> {% endcomment %}
   </div>
 </div>
     
@@ -90,18 +34,7 @@
         <br>
         <br>
     </div>
-    <!--Espaciador-->
-    
-    <!-- Botonera -->
-    <!-- <center>
-      <button id="botonera" type="button" class="btn btn-primary btn-lg col-lg-5 align-items-center" style="height: 187px; margin-right: 34px;">Construcción</button>
-      <button id="botonera" type="button" class="btn btn-secondary btn-lg col-lg-5 align-items-center" style="height: 187px">Servicios</button>
-    </center>     -->
-    <!-- /Botonera -->
-    
-    <!-- /Espaciador-->
-    <!--Espaciador-->
-    <!-- Construcción -->
+
     <div class="site-section overlay site-cover-2" style="background-image: url('{% static 'img/home/portada_cons.jpg' %}')">
       <div class="container">
         <div class="row">
@@ -129,7 +62,8 @@
     
     <div class="row feature align-items-center justify-content-between">
       <div class="col-lg-7 mb-4 mb-lg-0 section-stack" data-aos="fade-up" data-aos-delay="0">
-        <img src="https://sap.mx/images/blog4.jpg" alt="Image" class="img-fluid">
+        <img src="{% static "img/home/topo-example.jpg" %}" alt="Image" class="image-stack__item image-stack__item--top" width="128" height="128" >
+        
       </div>
       <div class="col-lg-4 section-title" data-aos="fade-up" data-aos-delay="100">
         

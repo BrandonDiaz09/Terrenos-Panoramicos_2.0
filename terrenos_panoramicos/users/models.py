@@ -15,7 +15,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-  
     born = models.DateField(null=True, blank=True)
 
     phone_number = models.CharField(max_length=20, blank=True)
@@ -32,4 +31,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-

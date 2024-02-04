@@ -41,5 +41,5 @@ class InmuebleAdmin(admin.ModelAdmin):
         "regimen_propiedad",
         "uso_suelo",
     )
-    # Agrega la clase inline ColindanciasInline
-    inlines = [ColindanciasInline]
+    # # Agrega la clase inline ColindanciasInline
+    # inlines = [ColindanciasInline]
