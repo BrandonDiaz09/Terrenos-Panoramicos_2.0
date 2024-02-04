@@ -1,34 +1,37 @@
 from decouple import config
+
 from pathlib import Path
+
+import os
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 from google.oauth2 import service_account
 
-# Define the base directory of your project
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Configure Google Service Account Credentials For Bucket Data
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     BASE_DIR / "terrenos_panoramicos" / "credentials.json"
 )
-
-# Set your Django Secret Key from environment variables
 SECRET_KEY = config("SECRET_KEY")
-
-# SECURITY WARNING: Don't run with debug turned on in production!
+DATABASE_USER = config("DATABASE_USER_PROD")
+DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
+DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
+DATABASE_HOST_PROD = config("DATABASE_HOST_PROD")
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-# Define allowed hostnames for your application
+print(f"Esta en {DEBUG}")
 ALLOWED_HOSTS = [
-    "terravision-c7yvkfhtla-uc.a.run.app",
     "terravisiongis.com",
-    "*",
+    "www.terravisiongis.com",
     "34.31.38.196",
-    "10.128.0.2",
 ]
 
-# Configure trusted origins for CSRF protection
-CSRF_TRUSTED_ORIGINS = ["http://34.31.38.196"]
 
-# List of installed Django applications
+# Application definition
+CSRF_TRUSTED_ORIGINS = [
+    'https://terravisiongis.com',
+    'https://www.terravisiongis.com',
+]
+
 INSTALLED_APPS = [
     # Django apps
     "django.contrib.admin",
@@ -49,7 +52,6 @@ INSTALLED_APPS = [
     "sig",
 ]
 
-# Define middleware settings
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -61,10 +63,8 @@ MIDDLEWARE = [
     "terrenos_panoramicos.middelware.ProfileCompletionMiddleware",
 ]
 
-# Define the root URL configuration
 ROOT_URLCONF = "terrenos_panoramicos.urls"
 
-# Configure template settings
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -83,22 +83,25 @@ TEMPLATES = [
     },
 ]
 
-# Define the WSGI application
 WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 
-# Configure the database settings
+# DATABASE_USER = config("DATABASE_USER_PROD")
+# DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
+# DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "HOST": "tvision_dev_db",
-        "NAME": "tvision_db",
-        "USER": "tvision_user",
-        "PASSWORD": "2014Mel&MeTVProd",
-        "PORT": "5432",
+        "HOST": config("DATABASE_HOST", default="tvision_dev_db"), 
+        "NAME": config("DATABASE_NAME", default="tvision_db"),
+        "USER": config("DATABASE_USER", default="tvision_user"),
+        "PASSWORD": config("DATABASE_PASSWORD", default="random-contraseña-terra"),
+        "PORT": config("DATABASE_PORT", default="5432"),
     }
 }
+# print(DATABASES)
+# Password validation
+# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
-# Define password validation settings
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -114,49 +117,39 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Set the default language code
+
 LANGUAGE_CODE = "es"
 
-# Set the default time zone
 TIME_ZONE = "UTC"
 
-# Enable internationalization
 USE_I18N = True
 
-# Enable localization
 USE_L10N = True
 
-# Enable timezone support
 USE_TZ = True
 
-# Import other configurations...
 
-# Configure Google Cloud Storage settings
+# Importaciones y demás configuraciones...
+
 GS_BUCKET_NAME = "django-qa"
 GS_LOCATION = "us-south1"
 STATIC_URL = "https://storage.googleapis.com/{}/static/".format(GS_BUCKET_NAME)
 MEDIA_URL = "https://storage.googleapis.com/{}/media/".format(GS_BUCKET_NAME)
 
-# Specify the static root directory
+# Añade esta línea de código
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# Define additional static file directories
 STATICFILES_DIRS = (BASE_DIR / "static",)
-
-# Specify static file finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-# Define the login URL
 LOGIN_URL = "login"
 
-# Set the default auto field for Django models
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Configure the default file storage for media files
+
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 
-# Configure the default file storage for static files
+# Añade esta línea de código
 STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
