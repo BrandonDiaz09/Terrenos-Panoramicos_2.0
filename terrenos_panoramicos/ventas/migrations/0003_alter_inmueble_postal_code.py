@@ -3,6 +3,13 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
+def corregir_postal_code(apps, schema_editor):
+    Inmueble = apps.get_model('ventas', 'Inmueble')
+    for inmueble in Inmueble.objects.all():
+        if inmueble.postal_code == "":
+            inmueble.postal_code = None  # Establece un valor que sea compatible con bigint o un valor por defecto válido.
+            inmueble.save()
+
 
 class Migration(migrations.Migration):
 
@@ -12,6 +19,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(corregir_postal_code),
         migrations.AlterField(
             model_name='inmueble',
             name='postal_code',
