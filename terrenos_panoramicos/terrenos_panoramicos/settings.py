@@ -133,13 +133,14 @@ USE_TZ = True
 
 GS_BUCKET_NAME = "django-qa"
 GS_LOCATION = "us-south1"
-STATIC_URL = "https://storage.googleapis.com/{}/static/".format(GS_BUCKET_NAME)
-MEDIA_URL = "https://storage.googleapis.com/{}/media/".format(GS_BUCKET_NAME)
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Añade esta línea de código
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_DIRS = (BASE_DIR / "static",)
+STATICFILES_DIRS = [BASE_DIR / "static",]  
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
