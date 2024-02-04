@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# from terrenos_panoramicos.sig.models import PostalCode
+# from sig.models import PostalCode
 # Opciones para regimen_propiedad
 REGIMEN_PROPIEDAD_CHOICES = [
     ("Privada", "Privada"),
@@ -48,7 +48,6 @@ class Inmueble(models.Model):
     modified = models.DateTimeField(auto_now=True)
     street = models.CharField(max_length=255, blank=True)
     number_of = models.CharField(max_length=20, blank=True)
-    postal_code = models.CharField(max_length=10, blank=True)
     paraje = models.CharField(max_length=255, blank=True)
     interesados = models.ManyToManyField(
         User, default=None, blank=True, related_name="meInteresan"
@@ -92,7 +91,7 @@ class Inmueble(models.Model):
 
     lat = models.CharField(max_length=255, blank=True)
     long = models.CharField(max_length=255, blank=True)
-    # postal_code = models.ForeignKey(PostalCode, on_delete=models.SET_NULL, null=True, blank=True, related_name='inmuebles')
+    postal_code = models.ForeignKey("sig.PostalCode", on_delete=models.SET_NULL, null=True, blank=True, related_name='inmuebles')
 
     def __str__(self):
         return "Inmueble de {}m de @{}".format(self.surface, self.user.username)
