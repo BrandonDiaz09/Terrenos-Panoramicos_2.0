@@ -8,14 +8,12 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 """
 
 import os
-
-
 from django.core.wsgi import get_wsgi_application
+from decouple import Config, RepositoryEnv
 
-from decouple import config, AutoConfig
+# Asegúrate de que el path al archivo .env es correcto.
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "terrenos_panoramicos.settings")
-dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "./env")
-AutoConfig(search_path=dotenv_path)
+os.environ['DJANGO_SETTINGS_MODULE'] = Config(RepositoryEnv(dotenv_path)).get('DJANGO_SETTINGS_MODULE', default='terrenos_panoramicos.settings')
 
 application = get_wsgi_application()
