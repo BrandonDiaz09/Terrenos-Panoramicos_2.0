@@ -6,23 +6,20 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 from google.oauth2 import service_account
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     BASE_DIR / "terrenos_panoramicos" / "credentials.json"
 )
+
+
 SECRET_KEY = config("SECRET_KEY")
-DATABASE_USER = config("DATABASE_USER_PROD")
-DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
-DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
-DATABASE_HOST_PROD = config("DATABASE_HOST_PROD")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 print(f"Esta en {DEBUG}")
 ALLOWED_HOSTS = [
-    "terravisiongis.com",
-    "www.terravisiongis.com",
-    "34.31.38.196",
+    "*"
 ]
 
 
@@ -85,9 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 
-# DATABASE_USER = config("DATABASE_USER_PROD")
-# DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
-# DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
@@ -98,9 +92,6 @@ DATABASES = {
         "PORT": config("DATABASE_PORT", default="5432"),
     }
 }
-# print(DATABASES)
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -129,28 +120,29 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Importaciones y demás configuraciones...
-
-GS_BUCKET_NAME = "django-qa"
-GS_LOCATION = "us-south1"
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
-
-# Añade esta línea de código
 STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_ROOT = BASE_DIR / "media"
+STATICFILES_DIRS = [BASE_DIR / "static",]
+
 
 STATICFILES_DIRS = [BASE_DIR / "static",]  
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-LOGIN_URL = "login"
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 
 # Añade esta línea de código
 STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+
+# En desarrollo, utiliza el almacenamiento local para archivos estáticos y de media
+if DEBUG:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+LOGIN_URL = "login"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
