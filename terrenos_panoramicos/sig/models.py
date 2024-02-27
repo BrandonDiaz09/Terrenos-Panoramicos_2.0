@@ -11,24 +11,24 @@ class ConstructionFrame(models.Model):
 
 class ConstructionPoint(models.Model):
     # numero de inicio
-    est = models.IntegerField()
+    est = models.IntegerField(blank=True, null=True)
     # numero final
-    pv = models.IntegerField()
+    pv = models.IntegerField(blank=True, null=True)
     # direccion de un punto a otro
     rumbo = models.CharField(max_length=255, blank=True, null=True)
     # distancia entre un punto y otro
-    distancia = models.FloatField()
+    distancia = models.FloatField(blank=True, null=True)
     # no estro seguro es como el numero de punto
-    v = models.IntegerField()
-    # latitud
-    lat = models.FloatField()
-    # longitud
-    long = models.FloatField()
+    v = models.IntegerField(blank=True, null=True)
+    # # latitud
+    # lat = models.FloatField()
+    # # longitud
+    # long = models.FloatField()
     # inmuble al que esta relacionado
-    construccion_frame = models.ForeignKey(ConstructionFrame, on_delete=models.CASCADE, related_name='construction_points')
-
+    construction_frame = models.ForeignKey(ConstructionFrame, on_delete=models.CASCADE, related_name='construction_points')
+    point = models.PointField(blank=True,null=True)
     def __str__(self):
-        return f"ConstructionPoint {self.id} for {self.inmueble}"
+        return f"ConstructionPoint {self.id} for {self.construction_frame}"
 
 class GeoData(models.Model):
     poligon = models.PolygonField(),
