@@ -5,17 +5,30 @@ from ventas.models import Inmueble
 
 
 class ConstructionFrame(models.Model):
+    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE, related_name='construction_frame')
+
+
+
+class ConstructionPoint(models.Model):
+    # numero de inicio
     est = models.IntegerField()
+    # numero final
     pv = models.IntegerField()
-    rumbo = models.PointField()
+    # direccion de un punto a otro
+    rumbo = models.CharField(max_length=255, blank=True, null=True)
+    # distancia entre un punto y otro
     distancia = models.FloatField()
+    # no estro seguro es como el numero de punto
     v = models.IntegerField()
+    # latitud
     lat = models.FloatField()
+    # longitud
     long = models.FloatField()
-    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE, related_name='construction_frames')
+    # inmuble al que esta relacionado
+    construccion_frame = models.ForeignKey(ConstructionFrame, on_delete=models.CASCADE, related_name='construction_points')
 
     def __str__(self):
-        return f"ConstructionFrame {self.id} for {self.inmueble}"
+        return f"ConstructionPoint {self.id} for {self.inmueble}"
 
 class GeoData(models.Model):
     poligon = models.PolygonField(),
@@ -57,8 +70,8 @@ class Municipality(models.Model):
 
 class Colonia(models.Model):
     municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE, related_name='colonias')
-    cv_mun = models.CharField(max_length=255, blank=True)  # Clave de municipio
-    cve_col = models.CharField(max_length=255, blank=True)  # Clave de colonia
+    cv_mun = models.CharField(max_length=255, blank=True)
+    cve_col = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, blank=True)
     geometry = models.GeometryField(null=True, blank=True)
     centroid = models.PointField(null=True, blank=True)
