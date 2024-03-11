@@ -90,6 +90,6 @@ class Inmueble(models.Model):
     postal_code = models.ForeignKey("sig.PostalCode", on_delete=models.SET_NULL, null=True, blank=True, related_name='inmuebles')
 
     def __str__(self):
-        return "Inmueble de {}m de @{}".format(self.surface, self.user.username)
+        return "Inmueble de {}m de @{}".format(self.surface, self.user.profile)
 
 
