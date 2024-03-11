@@ -31,7 +31,7 @@ def ofrecer_predio(request):
         template_name = 'empresa/ofrece.html',
         context = {
             'form': form,
-            'user': request.user,
+            # 'user': request.user,
             'profile': request.user.profile
         }
     )

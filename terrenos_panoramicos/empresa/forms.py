@@ -9,4 +9,4 @@ class OfreceForm(ModelForm):
         """ Form Settings"""
 
         model = Inmueble
-        fields = ['user', 'profile','surface','front','bottom','price','totalprice','description','photo','regimen_propiedad','uso_suelo']
+        fields = ['profile','surface','front','bottom','price','totalprice','description','photo','regimen_propiedad','uso_suelo']
