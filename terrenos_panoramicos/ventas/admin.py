@@ -61,13 +61,10 @@ def calculate_rumbo(bearing):
 @admin.register(Inmueble)
 class InmuebleAdmin(admin.ModelAdmin):
     form = InmuebleForm
-    list_display = ("pk", "user", "surface", "front", "bottom", "status")
-    list_display_links = ("pk", "user")
+    list_display = ("pk", "profile","surface", "front", "bottom", "status")
+    list_display_links = ("pk", "profile")
     list_editable = ("surface", "front", "bottom", "status")
     search_fields = (
-        "user__email",
-        "user__first_name",
-        "user__last_name",
         "status",
         "regimen_propiedad",
         "uso_suelo",

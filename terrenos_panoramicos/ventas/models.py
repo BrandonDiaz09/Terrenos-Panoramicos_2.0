@@ -31,11 +31,7 @@ LOCATION_CHOICES = [
     ("Tepexoyuca", "Tepexoyuca"),
 ]
 
-
-
-
 class Inmueble(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="inmuebles")
     profile = models.ForeignKey("users.Profile", on_delete=models.CASCADE)
     surface = models.DecimalField(max_digits=19, decimal_places=2)
     front = models.DecimalField(max_digits=15, decimal_places=2)
