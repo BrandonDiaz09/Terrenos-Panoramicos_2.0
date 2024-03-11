@@ -62,13 +62,13 @@ class StateAdmin(admin.ModelAdmin):
 
 @admin.register(Municipality)
 class MunicipalityAdmin(admin.ModelAdmin):
-    list_display = ('id', 'cv_mun', 'cve_ent', 'name', 'state')
+    list_display = ('id', 'cve_mun', 'cve_ent', 'name', 'state')
     search_fields = ('name', 'state__name')
     list_filter = ('state',)
 
 @admin.register(Colonia)
 class ColoniaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'cv_mun', 'cve_col', 'name', 'municipality')
+    list_display = ('id', 'cve_mun', 'cve_col', 'name', 'municipality')
     search_fields = ('name', 'municipality__name')
     list_filter = ('municipality',)
 

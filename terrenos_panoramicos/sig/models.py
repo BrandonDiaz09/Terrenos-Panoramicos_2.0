@@ -57,24 +57,25 @@ class State(models.Model):
 
 
 class Municipality(models.Model):
-    state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='municipalities')
-    cv_mun = models.CharField(max_length=255, blank=True)  # Clave de municipio
+    cve_mun = models.CharField(max_length=255, blank=True)  # Clave de municipio
     cve_ent = models.CharField(max_length=255, blank=True)  # Clave de entidad
     name = models.CharField(max_length=255, blank=True)
     geometry = models.GeometryField(null=True, blank=True)
     centroid = models.PointField(null=True, blank=True)
+    state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='municipalities')
 
     def __str__(self):
         return self.name
 
 
 class Colonia(models.Model):
-    municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE, related_name='colonias')
-    cv_mun = models.CharField(max_length=255, blank=True)
+    cve_ent = models.CharField(max_length=255, blank=True)
+    cve_mun = models.CharField(max_length=255, blank=True)
     cve_col = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, blank=True)
     geometry = models.GeometryField(null=True, blank=True)
     centroid = models.PointField(null=True, blank=True)
+    municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE, related_name='colonias')
 
     def __str__(self):
         return self.name
