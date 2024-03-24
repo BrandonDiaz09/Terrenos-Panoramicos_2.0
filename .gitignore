@@ -45,7 +45,7 @@ local_settings.py
 # Si estás utilizando Docker, podrías querer excluir también
 Dockerfile
 .dockerignore
-docker-compose.yml
+# docker-compose.yml
 # NOTA: Solo excluye estos archivos si no deseas que estén en tu repositorio
 
 # Archivos temporales o de caché
