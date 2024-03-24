@@ -2,8 +2,6 @@ from decouple import config
 
 from pathlib import Path
 
-import os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 from google.oauth2 import service_account
@@ -85,9 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "terrenos_panoramicos.wsgi.application"
 
-# DATABASE_USER = config("DATABASE_USER_PROD")
-# DATABASE_PASSWORD = config("DATABASE_PASSWORD_PROD")
-# DATABASE_NAME_PROD = config("DATABASE_NAME_PROD")
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
@@ -98,9 +93,6 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-# print(DATABASES)
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
